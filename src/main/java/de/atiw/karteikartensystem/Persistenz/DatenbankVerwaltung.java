@@ -8,57 +8,55 @@ import java.util.List;
 
 public class DatenbankVerwaltung {
 
-    private DatenbankVerwaltung instance = new DatenbankVerwaltung();
-
-    public void connectToDB() {
+    public static void connectToDB() {
         //TODO: implementieren
     }
 
-    public List<Stapel> readStapelliste() {
+    public static List<Stapel> readStapelliste() {
         //TODO: implementieren
         return null;
     }
 
-    public void createStapel(Stapel stapel) {
+    public static void createStapel(Stapel stapel) {
         //TODO: implementieren
     }
 
-    public List<Stapel> readStapel(int stapelID) {
-        //TODO: implementieren
-        return null;
-    }
-
-    public void updateStapel(Stapel stapel) {
-        //TODO: implementieren
-    }
-
-    public void deleteStapel(Stapel stapel) {
-        //TODO: implementieren
-    }
-
-    public void createKarteikarte(Karteikarte karte) {
-        //TODO: implementieren
-    }
-
-    public void updateKarteikarte(Karteikarte karte, String vorderseiteNeu, String rueckseiteNeu) {
-        //TODO: implementieren
-    }
-
-    public void deleteKarteikarte(Karteikarte karte) {
-        //TODO: implementieren
-    }
-
-    public void stapelSynchronisieren(Stapel stapel) {
-        //TODO: implementieren
-    }
-
-
-    public Stapel readCSV(File file) {
+    public static List<Stapel> readStapel(int stapelID) {
         //TODO: implementieren
         return null;
     }
 
-    public void writeCSV(File file) {
+    public static void updateStapel(Stapel stapel) {
+        //TODO: implementieren
+    }
+
+    public static void deleteStapel(Stapel stapel) {
+        //TODO: implementieren
+    }
+
+    public static void createKarteikarte(Karteikarte karte) {
+        //TODO: implementieren
+    }
+
+    public static void updateKarteikarte(Karteikarte karte, String vorderseiteNeu, String rueckseiteNeu) {
+        //TODO: implementieren
+    }
+
+    public static void deleteKarteikarte(Karteikarte karte) {
+        //TODO: implementieren
+    }
+
+    public static void stapelSynchronisieren(Stapel stapel) {
+        //TODO: implementieren
+    }
+
+
+    public static Stapel readCSV(File file) {
+        //TODO: implementieren
+        return null;
+    }
+
+    public static void writeCSV(File file) {
         //TODO: implementieren
     }
 }

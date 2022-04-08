@@ -21,6 +21,16 @@ public class Run {
             System.out.println(kk.getVoderseite());
         }
 
+        controller.abfrageFuenfKaesten(stapel, (byte) 1);
+
+        Karteikarte karte;
+        while((karte = controller.getRandomkarte()) != null) {
+            System.out.println(karte.getVoderseite());
+        }
+
+        controller.getRandomkarte();
+
+
     }
 
 }

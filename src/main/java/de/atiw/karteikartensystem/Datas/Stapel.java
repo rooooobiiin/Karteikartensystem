@@ -5,20 +5,19 @@ import java.util.List;
 
 public class Stapel {
     private int stapelID;
-    private List<Karteikarte> kartenSet;
+    private final List<Karteikarte> kartenSet;
     private String name;
-    private int zaehlerAktuelleKarte;
 
     /**
      * @param name Name bzw. bezeichnung des Stapels
      */
     public Stapel(String name) {
         this.name = name;
-        kartenSet = new LinkedList<Karteikarte>();
+        kartenSet = new LinkedList<>();
     }
 
     /**
-     * @return Wirft eine Liste mit in dem Stapel gespeicherten Karteikarten zurück.
+     * @return Wirft eine Liste mit in dem Stapel gespeicherten <Karteikarten> zurück.
      */
     public List<Karteikarte> getKartenSet() {
         return kartenSet;
@@ -69,17 +68,16 @@ public class Stapel {
 
     /**
      *
-     * @param boxnummer nummer der zurückzuliefernden Box
+     * @param boxnummer Nummer vom zurückzuliefernden Kasten
      * @return liefert eine bestimmte Box zurück
      */
     public List<Karteikarte> getBox(byte boxnummer) {
-        List<Karteikarte> box = new LinkedList<Karteikarte>();
+        List<Karteikarte> box = new LinkedList<>();
 
-        for (int i = 0; i < kartenSet.size(); i++) {
-            if (kartenSet.get(i).getBox() == boxnummer) {
-                box.add(kartenSet.get(i));
+        for (Karteikarte karteikarte : kartenSet)
+            if (karteikarte.getBox() == boxnummer) {
+                box.add(karteikarte);
             }
-        }
         return box;
     }
 
