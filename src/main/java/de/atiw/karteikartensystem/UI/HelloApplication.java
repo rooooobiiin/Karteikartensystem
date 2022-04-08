@@ -1,4 +1,4 @@
-package de.atiw.karteikartensystem;
+package de.atiw.karteikartensystem.UI;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

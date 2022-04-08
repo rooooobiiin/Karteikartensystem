@@ -3,6 +3,6 @@ module de.atiw.karteikartensystem {
     requires javafx.fxml;
 
 
-    opens de.atiw.karteikartensystem to javafx.fxml;
-    exports de.atiw.karteikartensystem;
+    exports de.atiw.karteikartensystem.UI;
+    opens de.atiw.karteikartensystem.UI to javafx.fxml;
 }

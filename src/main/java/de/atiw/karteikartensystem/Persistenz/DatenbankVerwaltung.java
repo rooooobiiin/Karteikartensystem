@@ -14,11 +14,16 @@ public class DatenbankVerwaltung {
         //TODO: implementieren
     }
 
+    public List<Stapel> readStapelliste() {
+        //TODO: implementieren
+        return null;
+    }
+
     public void createStapel(Stapel stapel) {
         //TODO: implementieren
     }
 
-    public List<Karteikarte> readStapelliste() {
+    public List<Stapel> readStapel(int stapelID) {
         //TODO: implementieren
         return null;
     }
@@ -35,13 +40,18 @@ public class DatenbankVerwaltung {
         //TODO: implementieren
     }
 
-    public void updateKarteikarte(Karteikarte karte) {
+    public void updateKarteikarte(Karteikarte karte, String vorderseiteNeu, String rueckseiteNeu) {
         //TODO: implementieren
     }
 
     public void deleteKarteikarte(Karteikarte karte) {
         //TODO: implementieren
     }
+
+    public void stapelSynchronisieren(Stapel stapel) {
+        //TODO: implementieren
+    }
+
 
     public Stapel readCSV(File file) {
         //TODO: implementieren

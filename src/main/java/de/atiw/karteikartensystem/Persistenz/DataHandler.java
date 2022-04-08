@@ -10,7 +10,7 @@ public class DataHandler {
         return null;
     }
 
-    public static void writeCSV(File file) {
+    public static void writeCSV(Stapel stapel, File file) {
         //TODO: implementieren
     }
 }
