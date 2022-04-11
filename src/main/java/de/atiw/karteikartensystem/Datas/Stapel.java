@@ -16,6 +16,16 @@ public class Stapel {
         kartenSet = new LinkedList<>();
     }
 
+    public Stapel(int ID, String name) {
+        this.stapelID = ID;
+        this.name = name;
+        this.kartenSet = new LinkedList<>();
+    }
+
+    public void setStapelID(int id) {
+        this.stapelID = id;
+    }
+
     /**
      * @return Wirft eine Liste mit in dem Stapel gespeicherten <Karteikarten> zurück.
      */
@@ -97,5 +107,14 @@ public class Stapel {
      */
     public void verringereBox(Karteikarte karte) {
         karte.setBox((byte) (karte.getBox()+1));
+    }
+
+    @Override
+    public String toString() {
+        return "Stapel{" +
+                "stapelID=" + stapelID +
+                ", kartenSet=" + kartenSet +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
