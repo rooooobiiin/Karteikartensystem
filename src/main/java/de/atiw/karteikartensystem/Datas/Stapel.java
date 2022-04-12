@@ -25,7 +25,7 @@ public class Stapel {
     public void setStapelID(int id) {
         this.stapelID = id;
     }
-
+    public int getStapelID() {return this.stapelID;}
     /**
      * @return Wirft eine Liste mit in dem Stapel gespeicherten <Karteikarten> zurück.
      */

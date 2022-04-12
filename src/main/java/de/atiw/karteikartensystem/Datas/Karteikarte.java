@@ -87,4 +87,14 @@ public class Karteikarte {
     public void setBox(byte box) {
         this.box = box;
     }
+
+    @Override
+    public String toString() {
+        return "Karteikarte{" +
+                "karteiKartenID=" + karteiKartenID +
+                ", voderseite='" + voderseite + '\'' +
+                ", rueckseite='" + rueckseite + '\'' +
+                ", box=" + box +
+                '}';
+    }
 }

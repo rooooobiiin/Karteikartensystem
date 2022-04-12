@@ -89,7 +89,7 @@ public class SystemController {
      */
     public void createKarteikarte(Karteikarte karte) {
         aktuellerStapel.addKarteikarte(karte);
-        DatenbankVerwaltung.createKarteikarte(karte);
+        //DatenbankVerwaltung.createKarteikarte(karte);
     }
 
     /**

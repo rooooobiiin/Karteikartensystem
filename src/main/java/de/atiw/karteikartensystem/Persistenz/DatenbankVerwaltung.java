@@ -15,10 +15,19 @@ public class DatenbankVerwaltung {
     private String Username;
     private String Password;
 
+    /***
+     * Privater Konstruktor, der überprüft, ob die Anmeldedaten korrekt sind und eine Verbindung zur
+     * Datenbank aufgebaut werden kann.
+     * @param username Benutzername für den Datenbankaccount.
+     * @param password Passwort für den Datenbankaccount.
+     * @throws InvalidParameterException wird geworfen, falls die Anmeldedaten ungültig sind.
+     */
     private DatenbankVerwaltung(String username, String password) throws InvalidParameterException {
         try {
+            //Attribute setzten
             this.Username = username;
             this.Password = password;
+            //Überprüfe ob man sich verbinden kann.
             Connection con = connectToDB();
             con.close();
         }catch(SQLException sqlEx) {
@@ -26,12 +35,22 @@ public class DatenbankVerwaltung {
         }
     }
 
+    /***
+     * Erstellt eine Instanz, die die Zugriffsdaten für die Datenbank speichert.
+     * @param username Benutzername für den Datenbankzugriff.
+     * @param password Passwort für den Datenbankzugriff.
+     * @throws InvalidParameterException wird geworfen, falls ein Verbindungsfehler entsteht.
+     */
     public static void createInstance(String username, String password) throws InvalidParameterException {
         Instance = new DatenbankVerwaltung(username, password);
     }
 
+    /***
+     * Baut eine einmalige Datenbankverbindung auf.
+     * @return Eine offene Verbindung zur Datenebank.
+     * @throws InvalidParameterException wird geworfen, falls ein Verbindungsfehler entsteht.
+     */
     private Connection connectToDB() throws InvalidParameterException {
-        //TODO: implementieren
         try {
             Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@db-server.s-atiw.de:1521:atiwora", this.Username, this.Password);
             return conn;
@@ -48,13 +67,14 @@ public class DatenbankVerwaltung {
      */
     public static List<Stapel> readStapelliste() throws SQLException {
         LinkedList<Stapel> stapelListe = new LinkedList<>();
-        Connection con = Instance.connectToDB();
-        Statement statement = con.createStatement();
-        ResultSet results = statement.executeQuery("SELECT * FROM \"Cardtiw_Stapel\"");
+        Connection con = Instance.connectToDB(); //Verbinden mit der Datenbank
+        Statement statement = con.createStatement(); //Erstellen eines SQL Statements
+        ResultSet results = statement.executeQuery("SELECT * FROM \"Cardtiw_Stapel\""); //Ausführen
+        //Für jede Zeile soll ein Stapel Objekt erstellt werden.
         while(results.next()) {
             stapelListe.add(new Stapel(
-                results.getInt(1),
-                    results.getString(2)
+                results.getInt("ID"),
+                    results.getString("Name")
             ));
         }
         return stapelListe;
@@ -65,14 +85,35 @@ public class DatenbankVerwaltung {
      * @param stapel Ein einzufügender Stapel.
      * @throws SQLException wird bei einem
      */
-    public static void createStapel(Stapel stapel) throws InvalidParameterException {
-        //TODO: implementieren
+    public static Stapel createStapel(Stapel stapel) throws InvalidParameterException {
         try {
-            Connection con = Instance.connectToDB();
+            Connection con = Instance.connectToDB(); //Mit Datenbank verbinden
             String sql = "INSERT INTO \"Cardtiw_Stapel\"(Name) VALUES (?)";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, stapel.getName());
-            statement.executeUpdate();
+            statement.executeUpdate();//SQL Statement ausführen
+            //Setze den übegebenen Stapel seine ID.
+            stapel.setStapelID(getStapelLastID());
+            return stapel;
+        }catch(SQLException sqlEx) {
+            throw new InvalidParameterException("Ungültiger Stapel: " + sqlEx);
+        }
+    }
+
+    /***
+     * Findet die letzte hinzugefügte ID in der Stapel Tabelle von der Datenbank.
+     * @return Ganzzahl, die die ID representiert.
+     */
+    private static int getStapelLastID() {
+        try {
+            //Verbinde zur DB
+            Connection con = Instance.connectToDB();
+            String sql = "SELECT max(ID) AS \"Last ID\" FROM \"Cardtiw_Stapel\" cs";
+            Statement statement = con.createStatement();
+            //Lese Resultate, sollte nur eine Zeile sein
+            ResultSet result = statement.executeQuery(sql);
+            result.next();
+            return result.getInt("Last ID");
         }catch(SQLException sqlEx) {
             throw new InvalidParameterException("Ungültiger Stapel: " + sqlEx);
         }
@@ -86,11 +127,12 @@ public class DatenbankVerwaltung {
      */
     public static List<Karteikarte> readStapel(int stapelID) throws SQLException {
         LinkedList<Karteikarte> liste = new LinkedList<>();
-        Connection con = Instance.connectToDB();
+        Connection con = Instance.connectToDB(); //Verbinde zur DB
         String sql = "SELECT karte.ID, szk.Stufe, karte.Vorderseite, karte.Rückseite FROM \"Cardtiw_StapelZuKarte\" szk, \"Cardtiw_Karte\" karte WHERE szk.SID=? AND karte.ID=szk.KID";
         PreparedStatement statement = con.prepareStatement(sql);
-        statement.setInt(1,stapelID);
+        statement.setInt(1,stapelID); //Setzt den Parameter ID
         ResultSet results = statement.executeQuery();
+        //Für jede Zeile Query-Resultat, soll ein neues Karteikartenobjekt erstellt werden.
         while(results.next()) {
             liste.add(new Karteikarte(
                 results.getInt("ID"),
@@ -102,24 +144,152 @@ public class DatenbankVerwaltung {
         return liste;
     }
 
-    public static void updateStapel(Stapel stapel) {
-        //TODO: implementieren
+    /***
+     * Updatet die Attribute eines Stapels.
+     * @param stapel der geupdatet werden soll.
+     * @throws InvalidParameterException wird geworfen, wenn die Datenbank nicht in der Lage ist, den Stapel zu updaten.
+     */
+    public static void updateStapel(Stapel stapel) throws InvalidParameterException {
+        try {
+            Connection con = Instance.connectToDB();//Verbinde mit DB
+            String sql = "UPDATE \"Cardtiw_Stapel\" SET Name=? WHERE ID=?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1, stapel.getName()); //Setzt neuen Namen
+            statement.setInt(2, stapel.getStapelID()); //Setzt ID
+            statement.executeUpdate();
+        }catch(SQLException sqlEx){
+            throw new InvalidParameterException(sqlEx.getMessage());
+        }
     }
 
-    public static void deleteStapel(Stapel stapel) {
-        //TODO: implementieren
+    /***
+     * Löscht den übergebenen Stapel aus der Datenbank.
+     * @param stapel der gelöscht werden soll.
+     * @throws InvalidParameterException wird geworfen, wenn die Datenbank den Stapel nicht löschen konnte.
+     */
+    public static void deleteStapel(Stapel stapel) throws InvalidParameterException {
+        try {
+            //Zuerst den Key constraint löschen
+            Connection con = Instance.connectToDB();
+            String sql = "DELETE FROM \"Cardtiw_StapelZuKarte\" cszk WHERE SID=?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setInt(1, stapel.getStapelID());
+            statement.executeUpdate();
+            //Danach lösche den Stapel
+            con = Instance.connectToDB();
+            sql = "DELETE FROM \"Cardtiw_Stapel\" WHERE ID=?";
+            statement = con.prepareStatement(sql);
+            statement.executeUpdate();
+        }catch(SQLException sqlEx) {
+            throw new InvalidParameterException(sqlEx.getMessage());
+        }
     }
 
-    public static void createKarteikarte(Karteikarte karte) {
-        //TODO: implementieren
+    /***
+     * Speichert die Karteikarte in der Datenbank und weist dieser, dem übergebenen Stapel hinzu.
+     * @param karte Die in die Datenbank einzufügende Karteikarte.
+     * @param StapelID ID vom Stapel, zu der die Karteikarte gehört.
+     */
+    public static void createKarteikarte(Karteikarte karte, int StapelID) throws InvalidParameterException {
+        try {
+            //Füge die Karteikarte in die Datenbank ein.
+            Connection con = Instance.connectToDB();
+            String sql = "INSERT INTO \"Cardtiw_Karte\"(Vorderseite, Rückseite) VALUES(?,?)";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1, karte.getVoderseite());
+            statement.setString(2, karte.getRueckseite());
+            statement.executeUpdate();
+            int id = getKarteikarteLastID();//Finde passende ID
+            //Füge die Verbindung von Stapel und der Karteikarte hinzu.
+            con = Instance.connectToDB();
+            sql = "INSERT INTO \"Cardtiw_StapelZuKarte\"(SID, KID, Stufe) VALUES (?,?,?)";
+            statement = con.prepareStatement(sql);
+            statement.setInt(1, StapelID);
+            statement.setInt(2, id);
+            statement.setInt(3, 1); //Neu erstellte Karteikarten kommen in die 1. Stufe
+            statement.executeUpdate();
+        }catch(SQLException sqlEx){
+            throw new InvalidParameterException(sqlEx.getMessage());
+        }
     }
 
-    public static void updateKarteikarte(Karteikarte karte, String vorderseiteNeu, String rueckseiteNeu) {
-        //TODO: implementieren
+    /***
+     * Sucht nach der letzten ID die in der Tabelle Karteikarten eingefügt wurde.
+     * @return Ganzzahl, die die letzte hinzugefügte ID representiert.
+     * @throws SQLException wird geworfen, sobald ein Fehler mit der Datenbankverbindung auftritt.
+     */
+    private static int getKarteikarteLastID() throws SQLException {
+        Connection con = Instance.connectToDB();
+        String sql = "SELECT ID FROM \"Cardtiw_Karte\" ck WHERE ck.ID=(SELECT max(ID) FROM \"Cardtiw_Karte\" ck2 )";
+        Statement statement = con.createStatement();
+        ResultSet result = statement.executeQuery(sql);
+        result.next();
+        return result.getInt("ID");
     }
 
-    public static void deleteKarteikarte(Karteikarte karte) {
-        //TODO: implementieren
+    /***
+     * Updatet die Attribute der Karteikarte in der Datenbank.
+     * @param karte Karte die geupdatet werden soll.
+     * @param vorderseiteNeu Neuer Text, der auf der Vorderseite sein soll.
+     * @param rueckseiteNeu Neuer Text, der auf der Rückseite sein soll.
+     * @throws InvalidParameterException wird geworfen, falls die Datenbank die Anfrage nicht bearbeiten kann.
+     */
+    public static void updateKarteikarte(Karteikarte karte, String vorderseiteNeu, String rueckseiteNeu) throws InvalidParameterException {
+        try {
+            Connection con = Instance.connectToDB();
+            String sql = "UPDATE \"Cardtiw_Karte\" SET VORDERSEITE='?', RÜCKSEITE='?' WHERE ID=?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1, vorderseiteNeu);
+            statement.setString(2, rueckseiteNeu);
+            statement.setInt(3, karte.getKarteiKartenID());
+            statement.executeUpdate();
+        }catch(SQLException sqlEx){
+            throw new InvalidParameterException(sqlEx.getMessage());
+        }
+    }
+
+    /***
+     * Löscht die Karteikarte aus der Datenbank.
+     * @param karte die gelöscht werden soll.
+     * @throws InvalidParameterException wird geworfen, falls die Datenbank den Auftrag nicht verarbeiten kann.
+     */
+    public static void deleteKarteikarte(Karteikarte karte) throws InvalidParameterException {
+        try {
+            //Zuerst Key constraint löschen
+            Connection con = Instance.connectToDB();
+            String sql = "DELETE FROM \"Cardtiw_StapelZuKarte\" ck  WHERE KID=?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setInt(1, karte.getKarteiKartenID());
+            statement.executeUpdate();
+
+            //Danach die Karte an sich.
+            con = Instance.connectToDB();
+            sql = "DELETE FROM \"Cardtiw_Karte\" ck  WHERE ID=?";
+            statement = con.prepareStatement(sql);
+            statement.setInt(1, karte.getKarteiKartenID());
+            statement.executeUpdate();
+        }catch(SQLException sqlEx){
+            throw new InvalidParameterException(sqlEx.getMessage());
+        }
+    }
+
+    /***
+     * Entfernt die Karteikarte aus einem Stapel, bleibt aber dennoch in der Datenbank vorhanden.
+     * @param karte die aus dem Stapel entfernt werden soll.
+     * @param stapelID ID des Stapels, aus dem die Karteikarte entfernt werden soll.
+     */
+    public static void removeKarteVonStapel(Karteikarte karte, int stapelID){
+        try {
+            //Zuerst Key constraint löschen
+            Connection con = Instance.connectToDB();
+            String sql = "DELETE FROM \"Cardtiw_StapelZuKarte\" ck  WHERE KID=? AND SID=?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setInt(1, karte.getKarteiKartenID());
+            statement.setInt(2, stapelID);
+            statement.executeUpdate();
+        }catch(SQLException sqlEx){
+            throw new InvalidParameterException(sqlEx.getMessage());
+        }
     }
 
     public static void stapelSynchronisieren(Stapel stapel) {

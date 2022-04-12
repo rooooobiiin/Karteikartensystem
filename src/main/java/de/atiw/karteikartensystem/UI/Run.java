@@ -6,6 +6,9 @@ import de.atiw.karteikartensystem.Logic.SystemController;
 import de.atiw.karteikartensystem.Persistenz.DatenbankVerwaltung;
 
 import java.sql.SQLException;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Run {
     public static void main(String[] args) throws SQLException {
@@ -17,12 +20,35 @@ public class Run {
         stapel.addKarteikarte(new Karteikarte(4, "d", "d", (byte) 1));
 
         controller.durchschauen(stapel);
+        /*
+        //Test Datensatz Karteikarte
+        Karteikarte testKarte = new Karteikarte(5, "Test Karte Vorderseit", "Test Karte Rückseite", (byte) 1);
 
+
+        //Datenbankinstanz erstellen
         DatenbankVerwaltung.createInstance("FS202_knikol", "kevin");
-        for(var s: DatenbankVerwaltung.readStapel(3))  {
-            System.out.println(s);
-        }
-
+        //Erhalte eine Liste an gespeicherten Stapel.
+        List<Stapel> stapelList = DatenbankVerwaltung.readStapelliste();
+        //Erstelle einen Stapel
+        DatenbankVerwaltung.createStapel(stapel);
+        //Update einen Stapel
+        Stapel testStapel = stapelList.get(0);
+        testStapel.setName("Erstes Set");
+        DatenbankVerwaltung.updateStapel(testStapel);
+        //Lösche einen Stapel
+        DatenbankVerwaltung.deleteStapel(testStapel);
+        //Erhalte eine Liste von Karteikarten in einem Stapel
+        List<Karteikarte> karten = DatenbankVerwaltung.readStapel(testStapel.getStapelID());
+        //Erstelle eine neue Karteikarte
+        DatenbankVerwaltung.createKarteikarte(testKarte, testStapel.getStapelID());
+        //Update eine Karteikarte
+        DatenbankVerwaltung.updateKarteikarte(testKarte, "to persuade", "überzeugen, überreden");
+        //Löschen einer Karteikarte aus der Datenbank
+        DatenbankVerwaltung.deleteKarteikarte(testKarte);
+        //Entfernen einer Karteikarte aus dem Stapel
+        DatenbankVerwaltung.removeKarteVonStapel(testKarte, testStapel.getStapelID());
+        
+         */
         /*
         Karteikarte kk;
         while ((kk = controller.getKarteikarte()) != null) {
