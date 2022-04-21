@@ -25,24 +25,34 @@ public class GUIController {
         switch (name){
             case Welcome:
                 welcome();
+                break;
             case Stackview:
                 stackview();
+                break;
             case Stack:
                 stack();
+                break;
             case ReadFront:
                 readFront();
+                break;
             case ReadBack:
                 readBack();
+                break;
             case WriteFront:
                 writeFront();
+                break;
             case WriteBack:
                 writeBack();
+                break;
             case Edit:
                 edit();
+                break;
             case NewCard:
                 newCard();
+                break;
             case NewStack:
                 newStack();
+                break;
         }
     }
 
