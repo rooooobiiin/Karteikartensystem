@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class StackviewController {
-    List<Stapel> stapel;
+    List<String> stapel;
 
     public StackviewController(){
         stapel = SystemController.readStapelList();

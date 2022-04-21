@@ -46,13 +46,20 @@ public class SystemController {
      *
      * @return Wirft eine Liste aller Karteikartenstapel zurück die in der Datenbank existieren.
      */
-    public static List<Stapel> readStapelList() {
+    public static List<String> readStapelList() {
+        List<Stapel> liste;
+        List<String> returnList = new LinkedList<>();
         try {
-            return DatenbankVerwaltung.readStapelliste();
+             liste = DatenbankVerwaltung.readStapelliste();
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
+            liste = null;
         }
+        for (int i = 0; i < liste.size(); i++) {
+            returnList.add(liste.get(i).getName());
+        }
+
+        return returnList;
     }
 
     /**
