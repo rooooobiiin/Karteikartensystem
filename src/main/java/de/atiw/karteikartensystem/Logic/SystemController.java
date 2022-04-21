@@ -178,7 +178,9 @@ public class SystemController {
      * @param stapel Der Stapel, der durchgeschaut werden soll
      */
     public static void durchschauen(Stapel stapel) {
-        abfrageManager = new AbfrageManager(stapel);
+        AbfrageManager.setStapel(stapel);
+        AbfrageManager.setAktuelleKarteikarte(AbfrageManager.getStapel().getKartenSet().get(0));
+
     }
 
     /**
@@ -187,7 +189,9 @@ public class SystemController {
      * @param box Die Nummer des Kastens der innerhalb dieser Box durchgesehen werden soll
      */
     public static void abfrageFuenfKaesten(Stapel stapel, Byte box) {
-        abfrageManager = new AbfrageManager(stapel, box);
+        AbfrageManager.setStapel(stapel);
+        AbfrageManager.setBoxNummer(box);
+        AbfrageManager.setAktuelleKarteikarte(AbfrageManager.getStapel().getKartenSet().get(0));
     }
 
     public static void import_csv(){
