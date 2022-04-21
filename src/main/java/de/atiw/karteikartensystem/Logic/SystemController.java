@@ -4,6 +4,7 @@ import de.atiw.karteikartensystem.Datas.Karteikarte;
 import de.atiw.karteikartensystem.Datas.Stapel;
 import de.atiw.karteikartensystem.Persistenz.DatenbankVerwaltung;
 
+import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class SystemController {
      * @param password Passwort für die Datenbankverbindung
      */
     public static void connectToDB(String username, String password) {
-        //TODO: implementieren
+        DatenbankVerwaltung.createInstance(username, password);
     }
 
     //KARTEIKARTEN AUS DER DB BEKOMMEN
@@ -45,9 +46,13 @@ public class SystemController {
      *
      * @return Wirft eine Liste aller Karteikartenstapel zurück die in der Datenbank existieren.
      */
-    public static LinkedList<Stapel> readStapelList() {
-        //TODO: implementieren
-        return null;
+    public static List<Stapel> readStapelList() {
+        try {
+            return DatenbankVerwaltung.readStapelliste();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**
@@ -55,7 +60,7 @@ public class SystemController {
      * @param stapel Das "Rohobjekt" des Stapels
      */
     public static void createStapel(Stapel stapel) {
-        //TODO: implementieren
+        DatenbankVerwaltung.createStapel(stapel);
     }
 
     /**
@@ -73,7 +78,7 @@ public class SystemController {
      * @param stapel Stapel der aktualisiert werden soll
      */
     public static void updateStapel(Stapel stapel) {
-        //TODO: implementieren
+        DatenbankVerwaltung.updateStapel(stapel);
     }
 
     /**
@@ -81,7 +86,9 @@ public class SystemController {
      * @param stapel Stapel der gelöscht werden soll
      */
     public static void deleteStapel(Stapel stapel) {
-        //TODO: implementieren
+        DatenbankVerwaltung.deleteStapel(stapel);
+        //TODO: macht das Sinn?
+        aktuellerStapel = null;
     }
 
     /**

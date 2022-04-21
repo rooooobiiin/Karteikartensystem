@@ -6,9 +6,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class StackviewController {
-    LinkedList<Stapel> stapel;
+    List<Stapel> stapel;
 
     public StackviewController(){
         stapel = SystemController.readStapelList();
