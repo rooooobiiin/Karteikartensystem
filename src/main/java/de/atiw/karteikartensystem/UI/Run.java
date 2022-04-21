@@ -4,22 +4,27 @@ import de.atiw.karteikartensystem.Datas.Karteikarte;
 import de.atiw.karteikartensystem.Datas.Stapel;
 import de.atiw.karteikartensystem.Logic.SystemController;
 import de.atiw.karteikartensystem.Persistenz.DatenbankVerwaltung;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Run {
+public class Run extends Application {
     public static void main(String[] args) throws SQLException {
-        SystemController controller = new SystemController();
-        Stapel stapel = new Stapel("test");
-        stapel.addKarteikarte(new Karteikarte(1, "a", "a", (byte) 1));
-        stapel.addKarteikarte(new Karteikarte(2, "b", "b", (byte) 1));
-        stapel.addKarteikarte(new Karteikarte(3, "c", "c", (byte) 1));
-        stapel.addKarteikarte(new Karteikarte(4, "d", "d", (byte) 1));
 
-        controller.durchschauen(stapel);
+        launch();
+
+//        SystemController controller = new SystemController();
+//        Stapel stapel = new Stapel("test");
+//        stapel.addKarteikarte(new Karteikarte(1, "a", "a", (byte) 1));
+//        stapel.addKarteikarte(new Karteikarte(2, "b", "b", (byte) 1));
+//        stapel.addKarteikarte(new Karteikarte(3, "c", "c", (byte) 1));
+//        stapel.addKarteikarte(new Karteikarte(4, "d", "d", (byte) 1));
+//
+//        controller.durchschauen(stapel);
         /*
         //Test Datensatz Karteikarte
         Karteikarte testKarte = new Karteikarte(5, "Test Karte Vorderseit", "Test Karte Rückseite", (byte) 1);
@@ -65,6 +70,11 @@ public class Run {
         controller.getRandomkarte();
         */
 
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        GUIController.start();
     }
 
 }

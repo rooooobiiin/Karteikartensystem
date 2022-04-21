@@ -4,17 +4,19 @@ import de.atiw.karteikartensystem.Datas.Karteikarte;
 import de.atiw.karteikartensystem.Datas.Stapel;
 import de.atiw.karteikartensystem.Persistenz.DatenbankVerwaltung;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class SystemController {
-    private Stapel aktuellerStapel;
-    private AbfrageManager abfrageManager;
+    private static Stapel aktuellerStapel;
+    private static AbfrageManager abfrageManager;
+
 
     /**
      *
      * @return Wirft den aktuell ausgewählten Stapel zurück.
      */
-    public Stapel getAktuellerStapel() {
+    public static Stapel getAktuellerStapel() {
         return aktuellerStapel;
     }
 
@@ -22,8 +24,8 @@ public class SystemController {
      *
      * @param aktuellerStapel Stapel, auf den der aktuelle Stapel gesetzt werden soll.
      */
-    public void setAktuellerStapel(Stapel aktuellerStapel) {
-        this.aktuellerStapel = aktuellerStapel;
+    public static void setAktuellerStapel(Stapel aktuellerStapel) {
+        aktuellerStapel = aktuellerStapel;
     }
 
     //DATENBANKCONNECTION
@@ -33,7 +35,7 @@ public class SystemController {
      * @param username Username für die Datenbankverbindung
      * @param password Passwort für die Datenbankverbindung
      */
-    public void connectToDB(String username, String password) {
+    public static void connectToDB(String username, String password) {
         //TODO: implementieren
     }
 
@@ -43,7 +45,7 @@ public class SystemController {
      *
      * @return Wirft eine Liste aller Karteikartenstapel zurück die in der Datenbank existieren.
      */
-    public List<Karteikarte> readStapelList() {
+    public static LinkedList<Stapel> readStapelList() {
         //TODO: implementieren
         return null;
     }
@@ -52,7 +54,7 @@ public class SystemController {
      *Erstellt einen neuen Karteikartenstapel
      * @param stapel Das "Rohobjekt" des Stapels
      */
-    public void createStapel(Stapel stapel) {
+    public static void createStapel(Stapel stapel) {
         //TODO: implementieren
     }
 
@@ -61,7 +63,7 @@ public class SystemController {
      * @param name die Bezeichnung des Stapels
      * @return Wirft den Stapel zurück der unter dem Namen zu finden ist.
      */
-    public Stapel readStapel(String name) {
+    public static Stapel readStapel(String name) {
         //TODO: implementieren
         return null;
     }
@@ -70,7 +72,7 @@ public class SystemController {
      *
      * @param stapel Stapel der aktualisiert werden soll
      */
-    public void updateStapel(Stapel stapel) {
+    public static void updateStapel(Stapel stapel) {
         //TODO: implementieren
     }
 
@@ -78,7 +80,7 @@ public class SystemController {
      *
      * @param stapel Stapel der gelöscht werden soll
      */
-    public void deleteStapel(Stapel stapel) {
+    public static void deleteStapel(Stapel stapel) {
         //TODO: implementieren
     }
 
@@ -87,7 +89,7 @@ public class SystemController {
      *
      * @param karte Karteikartenobjekt hinzugefügt werden soll
      */
-    public void createKarteikarte(Karteikarte karte) {
+    public static void createKarteikarte(Karteikarte karte) {
         aktuellerStapel.addKarteikarte(karte);
         //DatenbankVerwaltung.createKarteikarte(karte);
     }
@@ -99,7 +101,7 @@ public class SystemController {
      * @param vorderseiteNEW Text auf der Vorderseite der geupdatet werden soll
      * @param rueckseiteNEW Text auf der Rückseite der geupdatet werden soll
      */
-    public void updateKarteikarte(Karteikarte karte, String vorderseiteNEW, String rueckseiteNEW) {
+    public static void updateKarteikarte(Karteikarte karte, String vorderseiteNEW, String rueckseiteNEW) {
         aktuellerStapel.updateKarteikarte(karte, vorderseiteNEW, rueckseiteNEW);
         DatenbankVerwaltung.updateKarteikarte(karte, vorderseiteNEW, rueckseiteNEW);
     }
@@ -109,7 +111,7 @@ public class SystemController {
      *
      * @param karte Karteikarte die gelöscht werden soll
      */
-    public void deleteKarteikarte(Karteikarte karte) {
+    public static void deleteKarteikarte(Karteikarte karte) {
         aktuellerStapel.deleteKarteikarte(karte);
         DatenbankVerwaltung.deleteKarteikarte(karte);
     }
@@ -120,7 +122,7 @@ public class SystemController {
      *
      * @return Die nächste Karteikarte des Stapels der dem Abfragemanager übergebene wurde
      */
-    public Karteikarte getKarteikarte() {
+    public static Karteikarte getKarteikarte() {
         return abfrageManager.getNextKarteikarte();
     }
 
@@ -128,7 +130,7 @@ public class SystemController {
      *
      * @return Wirft eine Zufällige Karteikarte aus dem übergebenen Stapel des Abfragemanagers zurück
      */
-    public Karteikarte getRandomkarte() {
+    public static Karteikarte getRandomkarte() {
         return abfrageManager.getRandomKarte();
     }
 
@@ -138,7 +140,7 @@ public class SystemController {
      * @param input Zu vergleichender eingegebener Text
      * @return Wirft einen boolean zurück ob die Eingabe und der Text Karteikartenrückseite gleich sind (true) oder nicht (false)
      */
-    public boolean vergleicheInhaltUndInput(Karteikarte karte, String input) {
+    public static boolean vergleicheInhaltUndInput(Karteikarte karte, String input) {
         return abfrageManager.vergleicheInhaltUndInput(karte, input);
     }
 
@@ -148,7 +150,7 @@ public class SystemController {
      * @param karte Karteikarte die einem anderem Kasten hinzugefügt werden soll
      * @param eingabeRichtig Boolean der aussagt, ob die Eingabe richtig war oder falsch.
      */
-    public void changeBox(Karteikarte karte, boolean eingabeRichtig) {
+    public static void changeBox(Karteikarte karte, boolean eingabeRichtig) {
         if (eingabeRichtig) {
             karte.setBox((byte) (karte.getBox() + 1));
         } else if (!eingabeRichtig) {
@@ -161,7 +163,7 @@ public class SystemController {
      *
      * @param stapel Der Stapel, der durchgeschaut werden soll
      */
-    public void durchschauen(Stapel stapel) {
+    public static void durchschauen(Stapel stapel) {
         abfrageManager = new AbfrageManager(stapel);
     }
 
@@ -170,11 +172,17 @@ public class SystemController {
      * @param stapel Der Stapel, der durchgeschaut werden soll
      * @param box Die Nummer des Kastens der innerhalb dieser Box durchgesehen werden soll
      */
-    public void abfrageFuenfKaesten(Stapel stapel, Byte box) {
+    public static void abfrageFuenfKaesten(Stapel stapel, Byte box) {
         abfrageManager = new AbfrageManager(stapel, box);
     }
 
+    public static void import_csv(){
 
+    }
+
+    public static void export_csv(){
+
+    }
 
 
 
