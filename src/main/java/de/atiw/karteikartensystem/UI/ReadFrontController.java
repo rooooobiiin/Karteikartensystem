@@ -3,6 +3,9 @@ package de.atiw.karteikartensystem.UI;
 import javafx.event.ActionEvent;
 
 public class ReadFrontController {
+
+
+
     public void stackview(ActionEvent actionEvent) {
         GUIController.switchScene(SceneName.Stackview);
     }

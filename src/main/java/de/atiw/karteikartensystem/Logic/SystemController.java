@@ -159,7 +159,6 @@ public class SystemController {
      */
     public static Karteikarte getNextKarteikarte() {
         return AbfrageManager.getNextKarteikarte();
-
     }
 
     /**
