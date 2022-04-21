@@ -14,10 +14,11 @@ public class WelcomeController {
 
     @FXML
     public void login(ActionEvent actionEvent) {
-        GUIController.username = user.getText();
-        GUIController.password = password.getText();
         SystemController.connectToDB(user.getText(), password.getText());
         GUIController.switchScene(SceneName.Stackview);
+
+        // TODO: Überprüfe, wenn nicht Fehlermeldung und nochmal veruschen
+        // TODO: AMIN: --> Brauchen Textfeld für Fehlermeldung
     }
 
 }

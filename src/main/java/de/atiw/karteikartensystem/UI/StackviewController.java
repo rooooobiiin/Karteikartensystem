@@ -9,20 +9,17 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class StackviewController {
-    List<String> stapel;
 
     public StackviewController(){
-        stapel = SystemController.readStapelList();
+        //TODO: Liste der Stacks muss links angezeigt werden
+        // --> Durch auswahl des Stapels wird aktueller Stapel gesetzt
+        // --> Scene stack wird gezeigt
+
     }
 
     @FXML
     public void newstack(ActionEvent actionEvent) {
-
-    }
-
-    @FXML
-    public void csv(ActionEvent actionEvent) {
-
+        GUIController.switchScene(SceneName.NewStack);
     }
 
     @FXML

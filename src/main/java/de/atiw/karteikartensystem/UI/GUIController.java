@@ -29,17 +29,43 @@ public class GUIController {
                 stackview();
             case Stack:
                 stack();
-            case DurchschauenFront:
-                durchschauenFront();
-            case DurchschauenBack:
-                durchschauenBack();
-            case EingabeFront:
-                eingabeFront();
-            case EingabeBack:
-                eingabeBack();
-            case Bearbeiten:
-                bearbeiten();
+            case ReadFront:
+                readFront();
+            case ReadBack:
+                readBack();
+            case WriteFront:
+                writeFront();
+            case WriteBack:
+                writeBack();
+            case Edit:
+                edit();
+            case NewCard:
+                newCard();
+            case NewStack:
+                newStack();
         }
+    }
+
+    private static void newStack() {
+        fxmlLoader = new FXMLLoader(Run.class.getResource("newStack.fxml"));
+        scene = null;
+        try {
+            scene = new Scene(fxmlLoader.load(), 1000, 700);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setScene(scene);
+    }
+
+    private static void newCard() {
+        fxmlLoader = new FXMLLoader(Run.class.getResource("newcard.fxml"));
+        scene = null;
+        try {
+            scene = new Scene(fxmlLoader.load(), 1000, 700);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setScene(scene);
     }
 
     private static void welcome(){
@@ -75,7 +101,7 @@ public class GUIController {
         stage.setScene(scene);
     }
 
-    private static void durchschauenFront(){
+    private static void readFront(){
         fxmlLoader = new FXMLLoader(Run.class.getResource("readfront.fxml"));
         scene = null;
         try {
@@ -86,7 +112,7 @@ public class GUIController {
         stage.setScene(scene);
     }
 
-    private static void durchschauenBack(){
+    private static void readBack(){
         fxmlLoader = new FXMLLoader(Run.class.getResource("readback.fxml"));
         scene = null;
         try {
@@ -97,7 +123,7 @@ public class GUIController {
         stage.setScene(scene);
     }
 
-    private static void eingabeFront(){
+    private static void writeFront(){
         fxmlLoader = new FXMLLoader(Run.class.getResource("readfront.fxml"));
         scene = null;
         try {
@@ -108,7 +134,7 @@ public class GUIController {
         stage.setScene(scene);
     }
 
-    private static void eingabeBack(){
+    private static void writeBack(){
         fxmlLoader = new FXMLLoader(Run.class.getResource("writeback.fxml"));
         scene = null;
         try {
@@ -119,7 +145,7 @@ public class GUIController {
         stage.setScene(scene);
     }
 
-    public static void bearbeiten(){
+    public static void edit(){
         fxmlLoader = new FXMLLoader(Run.class.getResource("edit.fxml"));
         scene = null;
         try {
