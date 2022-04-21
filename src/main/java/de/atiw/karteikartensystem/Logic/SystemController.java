@@ -12,7 +12,6 @@ public class SystemController {
     private static Stapel aktuellerStapel;
     private static AbfrageManager abfrageManager;
 
-
     /**
      *
      * @return Wirft den aktuell ausgewählten Stapel zurück.
@@ -180,7 +179,6 @@ public class SystemController {
     public static void durchschauen(Stapel stapel) {
         AbfrageManager.setStapel(stapel);
         AbfrageManager.setAktuelleKarteikarte(AbfrageManager.getStapel().getKartenSet().get(0));
-
     }
 
     /**

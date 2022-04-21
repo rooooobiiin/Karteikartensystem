@@ -24,4 +24,22 @@ public class StackController {
     public void stackview(ActionEvent actionEvent) {
         GUIController.switchScene(SceneName.Stackview);
     }
+
+    public void alle(ActionEvent actionEvent) {
+    }
+
+    public void box1(ActionEvent actionEvent) {
+    }
+
+    public void box2(ActionEvent actionEvent) {
+    }
+
+    public void box3(ActionEvent actionEvent) {
+    }
+
+    public void box4(ActionEvent actionEvent) {
+    }
+
+    public void box5(ActionEvent actionEvent) {
+    }
 }

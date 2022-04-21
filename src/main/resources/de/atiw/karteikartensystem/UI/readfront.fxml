@@ -8,7 +8,6 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -17,7 +16,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.atiw.karteikartensystem.UI.StackController">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="de.atiw.karteikartensystem.UI.ReadFrontController">
    <children>
       <Label prefHeight="26.0" prefWidth="274.0" text="CARDTIW - Karteikartensystem">
          <font>
@@ -46,10 +45,10 @@
          <items>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <VBox prefHeight="638.0" prefWidth="126.0" />
+                  <VBox prefHeight="630.0" prefWidth="126.0" />
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Button fx:id="btn_stackview" mnemonicParsing="false" onAction="#stackview" prefHeight="47.0" prefWidth="134.0" text="Stackview" />
+                        <Button fx:id="btn_stackview" mnemonicParsing="false" onAction="#stackview" onMouseClicked="#stackview" prefHeight="47.0" prefWidth="135.0" text="Stackview" />
                      </children>
                   </VBox>
                </children>
@@ -58,44 +57,26 @@
                <content>
                   <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="546.0" prefWidth="756.0">
                      <children>
-                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="Stack" textAlignment="CENTER" textFill="#337cb4" wrapText="false">
+                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="ReadFront" textAlignment="CENTER" textFill="#337cb4" wrapText="false">
                            <font>
                               <Font size="30.0" fx:id="x7" />
                            </font>
                         </Label>
-                        <Button fx:id="btn_quiz" layoutX="186.0" layoutY="351.0" mnemonicParsing="false" onAction="#quiz" prefHeight="82.0" prefWidth="362.0" style="-fx-background-color: green; -fx-border-image-width: FF0000; -fx-border-color: 888888;" text="Let's Go !">
+                        <Button fx:id="btn_flip" layoutX="186.0" layoutY="351.0" mnemonicParsing="false" onAction="#flip" onMouseClicked="#flip" prefHeight="82.0" prefWidth="484.0" style="-fx-background-color: Grey; -fx-border-color: Black;" text="Drehen!">
                            <font>
                               <Font name="System Bold Italic" size="23.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btn_delete" layoutX="577.0" layoutY="351.0" mnemonicParsing="false" onAction="#delete" prefHeight="80.0" prefWidth="94.0" style="-fx-background-color: red;" text="Delete Stack" />
-                        <Button fx:id="btn_wechsel" layoutX="540.0" layoutY="297.0" mnemonicParsing="false" onAction="#wechsel" prefHeight="41.0" prefWidth="131.0" text="Modus-Wechsel" />
-                        <AnchorPane layoutX="186.0" layoutY="127.0" prefHeight="211.0" prefWidth="339.0" style="-fx-background-color: DAE3F3;">
+                        <AnchorPane layoutX="186.0" layoutY="125.0" prefHeight="211.0" prefWidth="339.0" style="-fx-background-color: DAE3F3; -fx-border-color: grey;">
                            <children>
-                              <Label fx:id="box1" layoutX="165.0" layoutY="35.0" text="Label" />
-                              <Label fx:id="box2" layoutX="165.0" layoutY="63.0" text="Label" />
-                              <Label fx:id="box3" layoutX="165.0" layoutY="90.0" text="Label" />
-                              <Label fx:id="box4" layoutX="165.0" layoutY="116.0" text="Label" />
-                              <Label fx:id="box5" layoutX="165.0" layoutY="142.0" text="Label" />
-                              <Label layoutX="62.0" layoutY="35.0" prefHeight="18.0" prefWidth="119.0" text="Anzahl Box 1:" />
-                              <Label layoutX="62.0" layoutY="63.0" text="Anzahl Box 2:" />
-                              <Label layoutX="62.0" layoutY="90.0" text="Anzahl Box 3:" />
-                              <Label layoutX="62.0" layoutY="142.0" text="Anzahl Box 5:" />
-                              <Label layoutX="62.0" layoutY="116.0" text="Anzahl Box 4:" />
+                              <Label fx:id="card" layoutX="44.0" layoutY="35.0" prefHeight="18.0" prefWidth="234.0" text="XXXX">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font></Label>
                            </children>
                         </AnchorPane>
-                        <Label layoutX="540.0" layoutY="240.0" text="Aktueller Modus:" />
-                        <Label layoutX="540.0" layoutY="260.0" prefHeight="26.0" prefWidth="132.0" text="Lesemodus" />
-                        <SplitMenuButton layoutX="540.0" layoutY="127.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="132.0" text="Wahl Box:">
-                          <items>
-                            <MenuItem fx:id="btn_alle" mnemonicParsing="false" onAction="#alle" text="Alle" />
-                            <MenuItem fx:id="btn_box1" mnemonicParsing="false" onAction="#box1" text="Box 1" />
-                              <MenuItem fx:id="btn_box2" mnemonicParsing="false" onAction="#box2" text="Box 2" />
-                              <MenuItem fx:id="btn_box3" mnemonicParsing="false" onAction="#box3" text="Box 3" />
-                              <MenuItem fx:id="btn_box4" mnemonicParsing="false" onAction="#box4" text="Box 4" />
-                              <MenuItem fx:id="btn_box5" mnemonicParsing="false" onAction="#box5" text="Box 5" />
-                          </items>
-                        </SplitMenuButton>
+                        <Button fx:id="btn_edit" layoutX="538.0" layoutY="309.0" mnemonicParsing="false" onAction="#edit" onMouseClicked="#edit" prefHeight="26.0" prefWidth="84.0" style="-fx-border-color: grey;" text="Bearbeiten" />
+                        <Button fx:id="btn_newcard" layoutX="627.0" layoutY="309.0" mnemonicParsing="false" onAction="#newcard" onMouseClicked="#newcard" prefHeight="26.0" prefWidth="42.0" style="-fx-background-color: yellow; -fx-border-color: grey;" text="+" />
                      </children>
                   </AnchorPane>
                </content>
