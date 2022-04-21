@@ -154,13 +154,12 @@ public class SystemController {
     //AB HIER DURCHSEHEN
 
     /**
-     *
+     * Wenn es keine Karteikarten zum zurückgeben mehr gibt wirft die Methode NULL zurück.
      * @return Die nächste Karteikarte des Stapels der dem Abfragemanager übergebene wurde
      */
     public static Karteikarte getNextKarteikarte() {
-        //
+        return AbfrageManager.getNextKarteikarte();
 
-        return null;
     }
 
     /**
@@ -190,7 +189,9 @@ public class SystemController {
      */
     public static void changeBox(Karteikarte karte, boolean eingabeRichtig) {
         if (eingabeRichtig) {
-            karte.setBox((byte) (karte.getBox() + 1));
+            if (karte.getBox() < 5) {
+                karte.setBox((byte) (karte.getBox() + 1));
+            }
         } else {
             if (karte.getBox() > 1) {
                 karte.setBox((byte) (karte.getBox() - 1));

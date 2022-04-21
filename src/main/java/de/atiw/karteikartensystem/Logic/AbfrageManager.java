@@ -35,11 +35,14 @@ public class AbfrageManager {
         //If Bedingung nimmt solange die nächste Karte und setzt diese auf die aktuelle Karte
         // bis die Boxnummer der aktuellen Karte mit der gesuchten Boxnummer übereinstimmt.
         //Und das ganze logischerweise nur wenn die Boxnummer zwischen 1-5 ist weil bei 0 werden alle gesucht
-        //und darüber exisiteren keine
+        //und darüber existieren keine
 
         if (boxNummer >= 1 &&  boxNummer <= 6) {
             while (aktuelleKarteikarte.getBox() != boxNummer) {
                 aktuelleKarteikarte = stapel.getKartenSet().get(stapel.getKartenSet().indexOf(aktuelleKarteikarte) + 1);
+                if (stapel.getKartenSet().indexOf(aktuelleKarteikarte) == stapel.getKartenSet().size()) {
+                    return null;
+                }
             }
         }
 
