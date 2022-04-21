@@ -32,12 +32,23 @@ public class AbfrageManager {
      */
     public static Karteikarte getNextKarteikarte() {
 
+        //If Bedingung nimmt solange die nächste Karte und setzt diese auf die aktuelle Karte
+        // bis die Boxnummer der aktuellen Karte mit der gesuchten Boxnummer übereinstimmt.
+        //Und das ganze logischerweise nur wenn die Boxnummer zwischen 1-5 ist weil bei 0 werden alle gesucht
+        //und darüber exisiteren keine
+
+        if (boxNummer >= 1 &&  boxNummer <= 6) {
+            while (aktuelleKarteikarte.getBox() != boxNummer) {
+                aktuelleKarteikarte = stapel.getKartenSet().get(stapel.getKartenSet().indexOf(aktuelleKarteikarte) + 1);
+            }
+        }
+
         Karteikarte returnKarte = aktuelleKarteikarte;
 
         if (stapel.getKartenSet().indexOf(aktuelleKarteikarte) < stapel.getKartenSet().size()-1) {
             aktuelleKarteikarte = stapel.getKartenSet().get(stapel.getKartenSet().indexOf(aktuelleKarteikarte)+1);
         } else {
-            aktuelleKarteikarte = null;
+            aktuelleKarteikarte = stapel.getKartenSet().get(0);
         }
         return returnKarte;
     }

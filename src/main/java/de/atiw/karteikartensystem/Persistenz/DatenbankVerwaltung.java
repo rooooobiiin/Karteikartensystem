@@ -121,11 +121,13 @@ public class DatenbankVerwaltung {
 
     /***
      * Erhält eine StapelID und sammelt aus der Datenbank Karteikarten, die diesem Stapel zugewiesen sind.
-     * @param stapelID Die ID des Stapels, die einen Stapel representiert.
+     * @param stapelID Die ID des Stapels, die einen Stapel repräsentiert.
      * @return Eine Liste von Karteikarten, die dem Stapel zugewiesen sind.
      * @throws SQLException wird geworfen, wenn die übergebene StapelID nicht gefunden wird.
      */
     public static List<Karteikarte> readStapel(int stapelID) throws SQLException {
+        //TODO: Stapel zurückgeben du Spacko
+        //TODO: BEFOLGE DIE ANWEISUNGEN BEI SystemController NOCH!!!
         LinkedList<Karteikarte> liste = new LinkedList<>();
         Connection con = Instance.connectToDB(); //Verbinde zur DB
         String sql = "SELECT karte.ID, szk.Stufe, karte.Vorderseite, karte.Rückseite FROM \"Cardtiw_StapelZuKarte\" szk, \"Cardtiw_Karte\" karte WHERE szk.SID=? AND karte.ID=szk.KID";
