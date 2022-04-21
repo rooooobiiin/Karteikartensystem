@@ -15,7 +15,7 @@ public class WelcomeController {
     @FXML
     public void login(ActionEvent actionEvent) {
 //        SystemController.connectToDB(user.getText(), password.getText());
-        GUIController.switchScene(SceneName.Welcome);
+        GUIController.switchScene(SceneName.Edit);
 
         // TODO: Überprüfe, wenn nicht Fehlermeldung und nochmal veruschen
         // TODO: AMIN: --> Brauchen Textfeld für Fehlermeldung

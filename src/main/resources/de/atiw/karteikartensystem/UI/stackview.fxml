@@ -56,6 +56,11 @@
                <content>
                   <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="546.0" prefWidth="756.0">
                      <children>
+                        <ImageView fitHeight="515.0" fitWidth="759.0" layoutX="-2.0">
+                           <image>
+                              <Image url="@Pictures/Willkommen_Logo.PNG" />
+                           </image>
+                        </ImageView>
                         <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="Stackview" textAlignment="CENTER" textFill="#337cb4" wrapText="false">
                            <font>
                               <Font size="30.0" fx:id="x7" />
