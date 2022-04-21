@@ -157,9 +157,8 @@ public class SystemController {
      * Wenn es keine Karteikarten zum zurückgeben mehr gibt wirft die Methode NULL zurück.
      * @return Die nächste Karteikarte des Stapels der dem Abfragemanager übergebene wurde
      */
-    public static Karteikarte getNextKarteikarte() {
-        return AbfrageManager.getNextKarteikarte();
-
+    public static Karteikarte getaktuelleKarteikarte() {
+        return AbfrageManager.getaktuelleKarteikarte();
     }
 
     /**
@@ -182,22 +181,22 @@ public class SystemController {
     }
 
     /**
-     * Wechselt den Kasten der Karteikarte
+     * Wechselt den Kasten der Karteikarte und setzt die aktuelle Karteikarte aus dem Abfragemanager auf die nächste im Stapel
      *
-     * @param karte Karteikarte die einem anderem Kasten hinzugefügt werden soll
      * @param eingabeRichtig Boolean der aussagt, ob die Eingabe richtig war oder falsch.
      */
-    public static void changeBox(Karteikarte karte, boolean eingabeRichtig) {
+    public static void changeBox(boolean eingabeRichtig) {
         if (eingabeRichtig) {
-            if (karte.getBox() < 5) {
-                karte.setBox((byte) (karte.getBox() + 1));
+            if (AbfrageManager.getaktuelleKarteikarte().getBox() < 5) {
+                AbfrageManager.getaktuelleKarteikarte().setBox((byte) (AbfrageManager.getaktuelleKarteikarte().getBox() + 1));
             }
         } else {
-            if (karte.getBox() > 1) {
-                karte.setBox((byte) (karte.getBox() - 1));
+            if (AbfrageManager.getaktuelleKarteikarte().getBox() > 1) {
+                AbfrageManager.getaktuelleKarteikarte().setBox((byte) (AbfrageManager.getaktuelleKarteikarte().getBox() - 1));
             }
         }
-        DatenbankVerwaltung.updateKarteikarte(karte, karte.getVoderseite(), karte.getRueckseite());
+        DatenbankVerwaltung.updateKarteikarte(AbfrageManager.getaktuelleKarteikarte(), AbfrageManager.getaktuelleKarteikarte().getVoderseite(), AbfrageManager.getaktuelleKarteikarte().getRueckseite());
+        AbfrageManager.setNextKarteikarte();
     }
 
 
