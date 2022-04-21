@@ -46,7 +46,7 @@ public class GUIController {
         }
     }
 
-    private static void newStack() {
+    public static void newStack() {
         fxmlLoader = new FXMLLoader(Run.class.getResource("newStack.fxml"));
         scene = null;
         try {
@@ -57,7 +57,7 @@ public class GUIController {
         stage.setScene(scene);
     }
 
-    private static void newCard() {
+    public static void newCard() {
         fxmlLoader = new FXMLLoader(Run.class.getResource("newcard.fxml"));
         scene = null;
         try {
@@ -68,7 +68,7 @@ public class GUIController {
         stage.setScene(scene);
     }
 
-    private static void welcome(){
+    public static void welcome(){
         fxmlLoader = new FXMLLoader(Run.class.getResource("welcome.fxml"));
         scene = null;
         try {
@@ -79,7 +79,7 @@ public class GUIController {
         stage.setScene(scene);
     }
 
-    private static void stackview(){
+    public static void stackview(){
         fxmlLoader = new FXMLLoader(Run.class.getResource("stackview.fxml"));
         scene = null;
         try {
@@ -90,7 +90,7 @@ public class GUIController {
         stage.setScene(scene);
     }
 
-    private static void stack(){
+    public static void stack(){
         fxmlLoader = new FXMLLoader(Run.class.getResource("stack.fxml"));
         scene = null;
         try {
@@ -101,7 +101,7 @@ public class GUIController {
         stage.setScene(scene);
     }
 
-    private static void readFront(){
+    public static void readFront(){
         fxmlLoader = new FXMLLoader(Run.class.getResource("readfront.fxml"));
         scene = null;
         try {
@@ -112,7 +112,7 @@ public class GUIController {
         stage.setScene(scene);
     }
 
-    private static void readBack(){
+    public static void readBack(){
         fxmlLoader = new FXMLLoader(Run.class.getResource("readback.fxml"));
         scene = null;
         try {
@@ -123,7 +123,7 @@ public class GUIController {
         stage.setScene(scene);
     }
 
-    private static void writeFront(){
+    public static void writeFront(){
         fxmlLoader = new FXMLLoader(Run.class.getResource("readfront.fxml"));
         scene = null;
         try {
@@ -134,7 +134,7 @@ public class GUIController {
         stage.setScene(scene);
     }
 
-    private static void writeBack(){
+    public static void writeBack(){
         fxmlLoader = new FXMLLoader(Run.class.getResource("writeback.fxml"));
         scene = null;
         try {
