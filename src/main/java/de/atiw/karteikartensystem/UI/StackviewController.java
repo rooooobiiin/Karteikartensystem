@@ -14,7 +14,6 @@ public class StackviewController {
         //TODO: Liste der Stacks muss links angezeigt werden
         // --> Durch auswahl des Stapels wird aktueller Stapel gesetzt
         // --> Scene stack wird gezeigt
-
     }
 
     @FXML
