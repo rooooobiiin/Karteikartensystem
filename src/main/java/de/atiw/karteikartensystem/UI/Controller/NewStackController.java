@@ -1,17 +1,34 @@
 package de.atiw.karteikartensystem.UI.Controller;
 
+import de.atiw.karteikartensystem.Logic.SystemController;
+import de.atiw.karteikartensystem.UI.GUIController;
+import de.atiw.karteikartensystem.UI.SceneName;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 
 public class NewStackController {
+    @FXML
+    public TextField tf_input;
+
     public void stackview(ActionEvent actionEvent) {
+        GUIController.switchScene(SceneName.Stackview);
     }
 
     public void input(ActionEvent actionEvent) {
     }
 
     public void add(ActionEvent actionEvent) {
+        //TODO: Sobald robin geändert hat in Parameter String kann ich den eingebenen Namen übergeben
+//        SystemController.createStapel(tf_input.getText());
+        GUIController.switchScene(SceneName.Stackview);
     }
 
+    /**
+     * DONE
+     * @param actionEvent
+     */
     public void close(ActionEvent actionEvent) {
+        GUIController.switchScene(SceneName.Stackview);
     }
 }

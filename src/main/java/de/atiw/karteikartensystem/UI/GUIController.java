@@ -1,15 +1,22 @@
 package de.atiw.karteikartensystem.UI;
 
+import de.atiw.karteikartensystem.UI.Controller.StackviewController;
+import de.atiw.karteikartensystem.UI.Example.ExampleSystemController;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.LinkedList;
 
 public class GUIController {
-    private static FXMLLoader fxmlLoader;
-    private static Stage stage;
-    private static Scene scene;
+    public static FXMLLoader fxmlLoader;
+    public static Stage stage;
+    public static Scene scene;
     private static SceneName name;
 
     public static String username;
@@ -30,6 +37,22 @@ public class GUIController {
             case Stackview:
                 fxmlLoader = new FXMLLoader(Run.class.getResource("stackview.fxml"));
                 setScene();
+//                StackviewController.reload();
+
+//                VBox vboxStackview = new VBox();
+//                LinkedList<String> stapel = ExampleSystemController.readStapelList();
+//                for (String s :
+//                        stapel) {
+//                    vboxStackview.getChildren().add(new Button(s));
+//                }
+//                scene = null;
+//                try {
+//                    scene = new Scene(fxmlLoader.load(), 1000, 700);
+//
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//                stage.setScene(scene);
                 break;
             case Stack:
                 fxmlLoader = new FXMLLoader(Run.class.getResource("stack.fxml"));

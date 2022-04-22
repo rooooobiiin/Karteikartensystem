@@ -10,6 +10,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -70,9 +71,9 @@
                               <Font size="30.0" fx:id="x7" />
                            </font>
                         </Label>
-                        <AnchorPane layoutX="186.0" layoutY="48.0" prefHeight="211.0" prefWidth="339.0" style="-fx-background-color: DAE3F3; -fx-border-color: grey;">
+                        <AnchorPane id="tbFront" layoutX="186.0" layoutY="48.0" prefHeight="211.0" prefWidth="339.0" style="-fx-background-color: DAE3F3; -fx-border-color: grey;">
                            <children>
-                              <Label fx:id="card" layoutX="52.0" layoutY="53.0" prefHeight="18.0" prefWidth="234.0">
+                              <Label id="lblFront" fx:id="card" layoutX="52.0" layoutY="53.0" prefHeight="18.0" prefWidth="234.0">
                                  <font>
                                     <Font size="16.0" />
                                  </font></Label>
@@ -81,16 +82,17 @@
                                     <Font size="24.0" />
                                  </font>
                               </Label>
+                              <TextField fx:id="txtFront" layoutX="73.0" layoutY="106.0" promptText="Vorderseite" />
                            </children>
                         </AnchorPane>
                         <Button fx:id="btn_delete" layoutX="532.0" layoutY="437.0" mnemonicParsing="false" onAction="#delete" onMouseClicked="#delete" prefHeight="54.0" prefWidth="144.0" style="-fx-background-color: red; -fx-border-color: grey;" text="Löschen" />
-                        <Button fx:id="btn_right" layoutX="532.0" layoutY="173.0" mnemonicParsing="false" onAction="#right" onMouseClicked="#right" prefHeight="86.0" prefWidth="144.0" style="-fx-background-color: green; -fx-border-color: grey;" text="Bestätigen">
+                        <Button fx:id="btn_right" layoutX="532.0" layoutY="173.0" mnemonicParsing="false" onAction="#confirm" onMouseClicked="#confirm" prefHeight="86.0" prefWidth="144.0" style="-fx-background-color: green; -fx-border-color: grey;" text="Bestätigen">
                            <font>
                               <Font size="19.0" />
                            </font></Button>
-                        <AnchorPane layoutX="186.0" layoutY="281.0" prefHeight="211.0" prefWidth="339.0" style="-fx-background-color: DAE3F3; -fx-border-color: grey;">
+                        <AnchorPane id="tbBack" layoutX="186.0" layoutY="281.0" prefHeight="211.0" prefWidth="339.0" style="-fx-background-color: DAE3F3; -fx-border-color: grey;">
                            <children>
-                              <Label fx:id="card1" layoutX="52.0" layoutY="51.0" prefHeight="18.0" prefWidth="234.0">
+                              <Label id="lblBack" fx:id="card1" layoutX="52.0" layoutY="51.0" prefHeight="18.0" prefWidth="234.0">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -100,9 +102,10 @@
                                     <Font size="24.0" />
                                  </font>
                               </Label>
+                              <TextField fx:id="txtBack" layoutX="66.0" layoutY="116.0" promptText="Rückseite" />
                            </children>
                         </AnchorPane>
-                        <Button fx:id="btn_delete1" layoutX="532.0" layoutY="281.0" mnemonicParsing="false" onAction="#delete" onMouseClicked="#delete" prefHeight="86.0" prefWidth="144.0" style="-fx-background-color: pink; -fx-border-color: grey;" text="Abbrechen">
+                        <Button fx:id="btn_delete1" layoutX="532.0" layoutY="281.0" mnemonicParsing="false" onAction="#cancel" onMouseClicked="#cancel" prefHeight="86.0" prefWidth="144.0" style="-fx-background-color: pink; -fx-border-color: grey;" text="Abbrechen">
                            <font>
                               <Font size="19.0" />
                            </font>

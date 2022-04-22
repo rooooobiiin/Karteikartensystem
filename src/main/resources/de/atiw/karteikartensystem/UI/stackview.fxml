@@ -18,7 +18,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.atiw.karteikartensystem.UI.Controller.StackviewController">
+<VBox fx:id="vboxTOP" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.atiw.karteikartensystem.UI.Controller.StackviewController">
    <children>
       <Label prefHeight="26.0" prefWidth="274.0" text="CARDTIW - Karteikartensystem">
          <font>
@@ -40,7 +40,10 @@
          <items>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <VBox prefHeight="493.0" prefWidth="125.0" />
+                  <VBox fx:id="vboxStackview" prefHeight="493.0" prefWidth="125.0">
+                     <children>
+                        <Button fx:id="btnTeststapel" mnemonicParsing="false" prefHeight="33.0" prefWidth="141.0" text="Button" />
+                     </children></VBox>
                   <VBox prefHeight="39.0" prefWidth="125.0">
                      <children>
                         <Button fx:id="btn_newstack" mnemonicParsing="false" onAction="#newstack" prefHeight="50.0" prefWidth="140.0" text="+">
