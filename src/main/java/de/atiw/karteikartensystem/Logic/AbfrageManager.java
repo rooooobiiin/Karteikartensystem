@@ -2,24 +2,31 @@ package de.atiw.karteikartensystem.Logic;
 
 import de.atiw.karteikartensystem.Datas.Karteikarte;
 import de.atiw.karteikartensystem.Datas.Stapel;
+
+import java.util.List;
 import java.util.Random;
 
 public class AbfrageManager {
-    private static Stapel stapel;
+    private static Stapel aktuellerStapel;
     private static Karteikarte aktuelleKarteikarte;
+    private static List<Karteikarte> boxSet;
     private static byte boxNummer;
 
 
-    public static void setStapel(Stapel stapel) {
-        AbfrageManager.stapel = stapel;
+    public static void setAktuellerStapel(Stapel aktuellerStapel) {
+        AbfrageManager.aktuellerStapel = aktuellerStapel;
     }
 
-    public static Stapel getStapel() {
-        return stapel;
+    public static Stapel getAktuellerStapel() {
+        return aktuellerStapel;
     }
 
     public static void setBoxNummer(byte boxNummer) {
         AbfrageManager.boxNummer = boxNummer;
+        if (boxNummer != 0) {
+            boxSet = aktuellerStapel.getBoxSet(boxNummer);
+        }
+        synchronisiereBox();
     }
 
     public static void setAktuelleKarteikarte(Karteikarte aktuelleKarteikarte) {
@@ -27,28 +34,25 @@ public class AbfrageManager {
     }
 
     public static void setNextKarteikarte() {
-        //If Bedingung nimmt solange die nächste Karte und setzt diese auf die aktuelle Karte
-        // bis die Boxnummer der aktuellen Karte mit der gesuchten Boxnummer übereinstimmt.
-        //Und das ganze logischerweise nur wenn die Boxnummer zwischen 1-5 ist weil bei 0 werden alle gesucht
-        //und darüber existieren keine
-        if (boxNummer >= 1 &&  boxNummer <= 6) {
-            while (aktuelleKarteikarte.getBox() != boxNummer) {
-                if (stapel.getKartenSet().indexOf(aktuelleKarteikarte) == stapel.getKartenSet().size()-1) {
-                    aktuelleKarteikarte = null;
-                } else {
-                    aktuelleKarteikarte = stapel.getKartenSet().get(stapel.getKartenSet().indexOf(aktuelleKarteikarte) + 1);
-                }
+        if (boxNummer == 0) {
+            if (aktuellerStapel.getKartenSet().indexOf(aktuelleKarteikarte) < aktuellerStapel.getKartenSet().size() - 1) {
+                aktuelleKarteikarte = aktuellerStapel.getKartenSet().get(aktuellerStapel.getKartenSet().indexOf(aktuelleKarteikarte) + 1);
+            } else {
+                aktuelleKarteikarte = null;
+            }
+        } else {
+            if (boxSet.indexOf(aktuelleKarteikarte) <= boxSet.size() -1) {
+                aktuelleKarteikarte = boxSet.get(boxSet.indexOf(aktuelleKarteikarte)+1);
+            } else {
+                aktuelleKarteikarte = null;
             }
         }
+    }
 
-        Karteikarte returnKarte = aktuelleKarteikarte;
-
-        if (stapel.getKartenSet().indexOf(aktuelleKarteikarte) < stapel.getKartenSet().size()-1) {
-            aktuelleKarteikarte = stapel.getKartenSet().get(stapel.getKartenSet().indexOf(aktuelleKarteikarte)+1);
-        } else {
-            aktuelleKarteikarte = stapel.getKartenSet().get(0);
+    private static void synchronisiereBox() {
+        if (boxNummer != 0) {
+            aktuelleKarteikarte = boxSet.get(0);
         }
-        aktuelleKarteikarte = returnKarte;
     }
 
     /**
@@ -64,17 +68,19 @@ public class AbfrageManager {
      * @return Wirft solange zufällige Karteikarten zurück bis der Kasten leer ist.
      */
     public static Karteikarte getRandomKarte() {
+        //TODO: implementieren
         Random random = new Random();
-        return stapel.getBox(boxNummer).get(random.nextInt(stapel.getBox(boxNummer).size()));
+        return null;
+                //aktuellerStapel.getBox(boxNummer).get(random.nextInt(aktuellerStapel.getBox(boxNummer).size()));
     }
 
     /**
      *
-     * @param karteikarte Karteikarte die verglichen werden soll
      * @param input Text der zum Vergleich mit der Karteikarte eingegeben wurde
      * @return Boolean, ob die Eingabe richtig oder falsch wahr.
      */
-    public static boolean vergleicheInhaltUndInput(Karteikarte karteikarte, String input) {
-        return karteikarte.getRueckseite().equals(input);
+    public static boolean vergleicheInhaltUndInput(String input) {
+        return aktuelleKarteikarte.getRueckseite().equals(input);
     }
+
 }

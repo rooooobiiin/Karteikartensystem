@@ -14,11 +14,11 @@ public class StackController {
     @FXML
     public void quiz(ActionEvent actionEvent) {
         if (viewMode) {
-            SystemController.durchschauenInitialisieren(viewBox);
+            SystemController.abfrageInitialisieren(viewBox);
             GUIController.switchScene(SceneName.ReadFront);
         }
         else {
-            SystemController.abfrageMitInputInitialisieren(viewBox);
+            SystemController.abfrageInitialisieren(viewBox);
             GUIController.switchScene(SceneName.WriteFront);
         }
 

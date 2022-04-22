@@ -98,6 +98,7 @@ public class DatenbankVerwaltung {
         }catch(SQLException sqlEx) {
             throw new InvalidParameterException("Ungültiger Stapel: " + sqlEx);
         }
+        //TODO: Robin übergibt dir nur String. Daraus kannst du dann einen Stapel anlegen, weil ich die ID nicht weiß...
     }
 
     /***

@@ -76,12 +76,16 @@ public class Stapel {
         karte.setRueckseite(rueckseiteNEW);
     }
 
+    public void zweiKartenTauschen(Karteikarte alteKarte, Karteikarte neueKarte) {
+        kartenSet.set(kartenSet.indexOf(alteKarte), neueKarte);
+    }
+
     /**
      *
      * @param boxnummer Nummer vom zurückzuliefernden Kasten
      * @return liefert eine bestimmte Box zurück
      */
-    public List<Karteikarte> getBox(byte boxnummer) {
+    public List<Karteikarte> getBoxSet(byte boxnummer) {
         List<Karteikarte> box = new LinkedList<>();
 
         for (Karteikarte karteikarte : kartenSet)
@@ -91,23 +95,6 @@ public class Stapel {
         return box;
     }
 
-    /**
-     * Erhöhung der Nummer der Box in der sich die Karte befinden
-     *
-     * @param karte Karteikarte, die eine Box aufsteigen soll
-     */
-    public void erhoeheBox(Karteikarte karte) {
-        karte.setBox((byte) (karte.getBox()+1));
-    }
-
-    /**
-     * Die Box in der sich die Karteikarte befindet wird um einen verringert
-     *
-     * @param karte Karteikarte, die eine Box fallen soll
-     */
-    public void verringereBox(Karteikarte karte) {
-        karte.setBox((byte) (karte.getBox()+1));
-    }
 
     @Override
     public String toString() {

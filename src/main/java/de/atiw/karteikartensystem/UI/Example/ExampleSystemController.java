@@ -214,9 +214,9 @@ public class ExampleSystemController {
 
 
     public static void durchschauenInitialisieren(byte box) {
-        AbfrageManager.setStapel(aktuellerStapel);
+        AbfrageManager.setAktuellerStapel(aktuellerStapel);
         AbfrageManager.setBoxNummer(box);
-        AbfrageManager.setAktuelleKarteikarte(AbfrageManager.getStapel().getKartenSet().get(0));
+        AbfrageManager.setAktuelleKarteikarte(AbfrageManager.getAktuellerStapel().getKartenSet().get(0));
     }
 
     /**
@@ -225,9 +225,9 @@ public class ExampleSystemController {
      * @param box Die Nummer des Kastens der innerhalb dieser Box durchgesehen werden soll
      */
     public static void abfrageMitInputInitialisieren(Byte box) {
-        AbfrageManager.setStapel(aktuellerStapel);
+        AbfrageManager.setAktuellerStapel(aktuellerStapel);
         AbfrageManager.setBoxNummer(box);
-        AbfrageManager.setAktuelleKarteikarte(AbfrageManager.getStapel().getKartenSet().get(0));
+        AbfrageManager.setAktuelleKarteikarte(AbfrageManager.getAktuellerStapel().getKartenSet().get(0));
     }
 
     public static void import_csv(){

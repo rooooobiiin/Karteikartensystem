@@ -9,24 +9,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class SystemController {
-    private static Stapel aktuellerStapel;
-
-
-    /**
-     *
-     * @return Wirft den aktuell ausgewählten Stapel zurück.
-     */
-    public static Stapel getAktuellerStapel() {
-        return aktuellerStapel;
-    }
-
-    /**
-     *
-     * @param stapel Stapel, auf den der aktuelle Stapel gesetzt werden soll.
-     */
-    public static void setAktuellerStapel(Stapel stapel) {
-        aktuellerStapel = stapel;
-    }
 
     //DATENBANKCONNECTION
 
@@ -43,7 +25,7 @@ public class SystemController {
 
     /**
      *
-     * @return Wirft eine Liste aller Karteikartenstapel zurück die in der Datenbank existieren.
+     * @return Wirft eine Liste aller Karteikartenstapel zurück, die in der Datenbank existieren.
      */
     public static List<String> readStapelList() {
         List<Stapel> liste;
@@ -63,11 +45,10 @@ public class SystemController {
 
     /**
      *Erstellt einen neuen Karteikartenstapel
-     * @param stapel Das "Rohobjekt" des Stapels
      */
-    //TODO: RICO ÜBERGIBT NUR STRING
-    public static void createStapel(Stapel stapel) {
-        DatenbankVerwaltung.createStapel(stapel);
+    public static void createStapel(String nameStapel) {
+    //TODO: Wenn Kevin die Methode umgeschrieben hat, einkommentieren!
+        //DatenbankVerwaltung.createStapel(nameStapel);
     }
 
     /**
@@ -76,38 +57,34 @@ public class SystemController {
      * @return Wirft den Stapel zurück, der unter dem Namen zu finden ist.
      */
     public static Stapel readStapel(String name) {
-        List<Stapel> alleStapel = null;
+        List<Stapel> alleStapel;
 
         try {
             alleStapel = DatenbankVerwaltung.readStapelliste();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
-        int id = 0;
+            int id = 0;
 
-        for (int i = 0; i < alleStapel.size(); i++) {
-            if (alleStapel.get(i).getName().equals(name)) {
-                id = i;
+            for (int i = 0; i < alleStapel.size(); i++) {
+                if (alleStapel.get(i).getName().equals(name)) {
+                    id = i;
+                }
             }
-        }
 
-      //  try {
-            //TODO: FEHLER SOLLTE BEHOBEN SEIN WENN DU DEN STAPEL ZURÜCKGIBST
-            //TODO: DANACH NOCH VON ZEILE 96 BIS ZEILE 102 WIEDER EINKOMMENTIEREN
-      //      aktuellerStapel = DatenbankVerwaltung.readStapel(id);
-       // } catch (SQLException e) {
-         //   e.printStackTrace();
-       // }
-        return aktuellerStapel;
+            AbfrageManager.setAktuellerStapel(DatenbankVerwaltung.readStapel(id));
+            AbfrageManager.setAktuelleKarteikarte(AbfrageManager.getAktuellerStapel().getKartenSet().get(0));
+
+        } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        return AbfrageManager.getAktuellerStapel();
     }
 
     /**
-     *
-     * @param stapel Stapel der aktualisiert werden soll
+     * Der aktuelle Stapel wird aktualisiert
      */
-    public static void updateStapel(Stapel stapel) {
-        DatenbankVerwaltung.updateStapel(stapel);
+    public static void updateStapel() {
+        //TODO: Soll hier noch etwas geschehen?
+        DatenbankVerwaltung.updateStapel(AbfrageManager.getAktuellerStapel());
     }
 
     /**
@@ -115,43 +92,52 @@ public class SystemController {
      * Der aktuelle Stapel wird gelöscht.
      */
     public static void deleteStapel() {
-        DatenbankVerwaltung.deleteStapel(aktuellerStapel);
-        aktuellerStapel = null;
+        DatenbankVerwaltung.deleteStapel(AbfrageManager.getAktuellerStapel());
+        AbfrageManager.setAktuellerStapel(null);
     }
 
     /**
      * Fügt eine Karteikarte dem Stapel und der Datenbank nacheinander hinzu.
      *
-     * @param karte Karteikartenobjekt hinzugefügt werden soll
      */
-    public static void createKarteikarte(Karteikarte karte) {
-        aktuellerStapel.addKarteikarte(karte);
-        //DatenbankVerwaltung.createKarteikarte(karte);
+    public static void createKarteikarte(String vorderseite, String rueckseite) {
+        //TODO: Frage an Kevin: passt das so die ohne ID zu schreiben, also wird die dann generiert?
+        Karteikarte karte = new Karteikarte(vorderseite, rueckseite, (byte)(1));
+        Stapel stapel = AbfrageManager.getAktuellerStapel();
+        stapel.addKarteikarte(karte);
+        AbfrageManager.setAktuellerStapel(stapel);
+        DatenbankVerwaltung.createKarteikarte(karte, AbfrageManager.getAktuellerStapel().getStapelID());
     }
 
     /**
      * Updatet eine Übergebene Karteikarte erst in dem aktuellen Stapel und dann in der Datenbank
      *
-     * @param karte Karteikarte die geupdatet werden soll
      * @param vorderseiteNEW Text auf der Vorderseite der geupdatet werden soll
      * @param rueckseiteNEW Text auf der Rückseite der geupdatet werden soll
      */
-    public static void updateKarteikarte(Karteikarte karte, String vorderseiteNEW, String rueckseiteNEW) {
-        aktuellerStapel.updateKarteikarte(karte, vorderseiteNEW, rueckseiteNEW);
+    public static void updateKarteikarte(String vorderseiteNEW, String rueckseiteNEW) {
+        Stapel stapel = AbfrageManager.getAktuellerStapel();
+        Karteikarte karte = AbfrageManager.getaktuelleKarteikarte();
+
+        karte.setVoderseite(vorderseiteNEW);
+        karte.setRueckseite(rueckseiteNEW);
+        stapel.zweiKartenTauschen(AbfrageManager.getaktuelleKarteikarte(), karte);
+        AbfrageManager.setAktuelleKarteikarte(karte);
         DatenbankVerwaltung.updateKarteikarte(karte, vorderseiteNEW, rueckseiteNEW);
     }
 
     /**
      * Löscht eine Karte aus dem aktuellen Stapel und dann aus der Datenbank
      *
-     * @param karte Karteikarte die gelöscht werden soll
      */
-    public static void deleteKarteikarte(Karteikarte karte) {
-        aktuellerStapel.deleteKarteikarte(karte);
-        DatenbankVerwaltung.deleteKarteikarte(karte);
+    public static void deleteKarteikarte() {
+        Stapel stapel = AbfrageManager.getAktuellerStapel();
+        stapel.deleteKarteikarte(AbfrageManager.getaktuelleKarteikarte());
+        DatenbankVerwaltung.deleteKarteikarte(AbfrageManager.getaktuelleKarteikarte());
+        AbfrageManager.setAktuelleKarteikarte(null);
+        AbfrageManager.setAktuellerStapel(stapel);
     }
 
-    //AB HIER DURCHSEHEN
 
     /**
      * Wenn es keine Karteikarten zum zurückgeben mehr gibt wirft die Methode NULL zurück.
@@ -172,12 +158,11 @@ public class SystemController {
 
     /**
      *
-     * @param karte Zu vergleichende Karteikarte
      * @param input Zu vergleichender eingegebener Text
      * @return Wirft einen boolean zurück ob die Eingabe und der Text Karteikartenrückseite gleich sind (true) oder nicht (false)
      */
-    public static boolean vergleicheInhaltUndInput(Karteikarte karte, String input) {
-        return SystemController.vergleicheInhaltUndInput(karte, input);
+    public static boolean vergleicheInhaltUndInput(String input) {
+        return AbfrageManager.vergleicheInhaltUndInput(input);
     }
 
     /**
@@ -186,35 +171,26 @@ public class SystemController {
      * @param eingabeRichtig Boolean der aussagt, ob die Eingabe richtig war oder falsch.
      */
     public static void changeBox(boolean eingabeRichtig) {
+        Karteikarte karte = AbfrageManager.getaktuelleKarteikarte();
+        Stapel stapel = AbfrageManager.getAktuellerStapel();
+
         if (eingabeRichtig) {
-            if (AbfrageManager.getaktuelleKarteikarte().getBox() < 5) {
-                AbfrageManager.getaktuelleKarteikarte().setBox((byte) (AbfrageManager.getaktuelleKarteikarte().getBox() + 1));
-            }
+            karte.erhoeheBox(karte);
         } else {
-            if (AbfrageManager.getaktuelleKarteikarte().getBox() > 1) {
-                AbfrageManager.getaktuelleKarteikarte().setBox((byte) (AbfrageManager.getaktuelleKarteikarte().getBox() - 1));
-            }
+            karte.verringereBox(karte);
         }
-        DatenbankVerwaltung.updateKarteikarte(AbfrageManager.getaktuelleKarteikarte(), AbfrageManager.getaktuelleKarteikarte().getVoderseite(), AbfrageManager.getaktuelleKarteikarte().getRueckseite());
+
+        stapel.zweiKartenTauschen(AbfrageManager.getaktuelleKarteikarte(), karte);
+        AbfrageManager.setAktuellerStapel(stapel);
+
+        DatenbankVerwaltung.updateKarteikarte(karte, karte.getVoderseite(), karte.getRueckseite());
+
         AbfrageManager.setNextKarteikarte();
     }
 
 
-    public static void durchschauenInitialisieren(byte box) {
-        AbfrageManager.setStapel(aktuellerStapel);
+    public static void abfrageInitialisieren(byte box) {
         AbfrageManager.setBoxNummer(box);
-        AbfrageManager.setAktuelleKarteikarte(AbfrageManager.getStapel().getKartenSet().get(0));
-    }
-
-    /**
-     *
-     * Vom aktuellen Stapel wird die übergebene Box durchgeschaut.
-     * @param box Die Nummer des Kastens der innerhalb dieser Box durchgesehen werden soll
-     */
-    public static void abfrageMitInputInitialisieren(Byte box) {
-        AbfrageManager.setStapel(aktuellerStapel);
-        AbfrageManager.setBoxNummer(box);
-        AbfrageManager.setAktuelleKarteikarte(AbfrageManager.getStapel().getKartenSet().get(0));
     }
 
     public static void import_csv(){
@@ -225,3 +201,4 @@ public class SystemController {
 
     }
 }
+

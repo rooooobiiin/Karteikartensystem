@@ -88,6 +88,18 @@ public class Karteikarte {
         this.box = box;
     }
 
+    public void erhoeheBox(Karteikarte karte) {
+        if (karte.getBox() < 5) {
+            karte.setBox((byte) (karte.getBox() + 1));
+        }
+    }
+
+    public void verringereBox(Karteikarte karte) {
+        if (karte.getBox() > 1) {
+            karte.setBox((byte) (karte.getBox() + 1));
+        }
+    }
+
     @Override
     public String toString() {
         return "Karteikarte{" +
