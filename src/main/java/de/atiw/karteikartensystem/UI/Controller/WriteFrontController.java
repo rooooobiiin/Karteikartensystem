@@ -1,5 +1,7 @@
-package de.atiw.karteikartensystem.UI;
+package de.atiw.karteikartensystem.UI.Controller;
 
+import de.atiw.karteikartensystem.UI.GUIController;
+import de.atiw.karteikartensystem.UI.SceneName;
 import javafx.event.ActionEvent;
 
 public class WriteFrontController {

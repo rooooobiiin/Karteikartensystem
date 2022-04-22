@@ -5,4 +5,6 @@ module de.atiw.karteikartensystem {
 
     exports de.atiw.karteikartensystem.UI;
     opens de.atiw.karteikartensystem.UI to javafx.fxml;
+    exports de.atiw.karteikartensystem.UI.Controller;
+    opens de.atiw.karteikartensystem.UI.Controller to javafx.fxml;
 }

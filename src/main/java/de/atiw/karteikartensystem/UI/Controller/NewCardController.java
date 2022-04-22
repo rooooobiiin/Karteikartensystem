@@ -1,4 +1,4 @@
-package de.atiw.karteikartensystem.UI;
+package de.atiw.karteikartensystem.UI.Controller;
 
 import javafx.event.ActionEvent;
 
