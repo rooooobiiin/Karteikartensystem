@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -17,9 +19,34 @@
       </Label>
       <AnchorPane prefHeight="527.0" prefWidth="150.0">
          <children>
-            <TextField fx:id="user" layoutX="415.0" layoutY="212.0" />
+            <ImageView fitHeight="562.0" fitWidth="902.0" layoutX="-1.0" layoutY="12.0">
+               <image>
+                  <Image url="@Pictures/Willkommen_Logo.PNG" />
+               </image>
+            </ImageView>
+            <AnchorPane layoutX="243.0" layoutY="71.0" prefHeight="339.0" prefWidth="364.0" style="-fx-background-color: ADD8E6; -fx-border-color: grey;" />
+            <TextField fx:id="user" layoutX="415.0" layoutY="212.0" prefHeight="26.0" prefWidth="150.0" />
             <PasswordField fx:id="password" layoutX="416.0" layoutY="245.0" />
-            <Button fx:id="btn_login" layoutX="416.0" layoutY="284.0" mnemonicParsing="false" onAction="#login" onMouseClicked="#login" prefHeight="26.0" prefWidth="150.0" text="Button" />
+            <Button fx:id="btn_login" layoutX="287.0" layoutY="284.0" mnemonicParsing="false" onAction="#login" onMouseClicked="#login" prefHeight="39.0" prefWidth="279.0" style="-fx-background-color: white; -fx-border-color: grey;" text="Login">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <ImageView layoutX="287.0" layoutY="109.0">
+               <image>
+                  <Image url="@Pictures/CARDTIW_Logo.PNG" />
+               </image>
+            </ImageView>
+            <Label layoutX="287.0" layoutY="209.0" prefHeight="27.0" prefWidth="111.0" text="User:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="287.0" layoutY="241.0" prefHeight="27.0" prefWidth="111.0" text="Password:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

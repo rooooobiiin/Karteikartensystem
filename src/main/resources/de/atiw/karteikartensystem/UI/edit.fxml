@@ -10,6 +10,8 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -17,7 +19,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="de.atiw.karteikartensystem.UI.EditController">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.atiw.karteikartensystem.UI.EditController">
    <children>
       <Label prefHeight="26.0" prefWidth="274.0" text="CARDTIW - Karteikartensystem">
          <font>
@@ -58,6 +60,11 @@
                <content>
                   <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="546.0" prefWidth="756.0">
                      <children>
+                        <ImageView fitHeight="515.0" fitWidth="759.0" layoutX="-2.0">
+                           <image>
+                              <Image url="@Pictures/Willkommen_Logo.PNG" />
+                           </image>
+                        </ImageView>
                         <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="Edit" textAlignment="CENTER" textFill="#337cb4" wrapText="false">
                            <font>
                               <Font size="30.0" fx:id="x7" />
@@ -101,6 +108,11 @@
                            </font>
                         </Button>
                         <Separator layoutX="104.0" layoutY="270.0" prefHeight="3.0" prefWidth="470.0" />
+                        <ImageView fitHeight="64.0" fitWidth="172.0" layoutX="570.0" layoutY="13.0">
+                           <image>
+                              <Image url="@Pictures/CARDTIW_Logo.PNG" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                </content>
