@@ -120,30 +120,38 @@ public class DatenbankVerwaltung {
     }
 
     /***
-     * Erhält eine StapelID und sammelt aus der Datenbank Karteikarten, die diesem Stapel zugewiesen sind.
+     * Erhält eine StapelID und inititialisiert den Stapel inklusive der enthaltenen Karteikarten.
      * @param stapelID Die ID des Stapels, die einen Stapel repräsentiert.
      * @return Eine Liste von Karteikarten, die dem Stapel zugewiesen sind.
      * @throws SQLException wird geworfen, wenn die übergebene StapelID nicht gefunden wird.
      */
-    public static List<Karteikarte> readStapel(int stapelID) throws SQLException {
-        //TODO: Stapel zurückgeben du Spacko
-        //TODO: BEFOLGE DIE ANWEISUNGEN BEI SystemController NOCH!!!
-        LinkedList<Karteikarte> liste = new LinkedList<>();
+    public static Stapel readStapel(int stapelID) throws SQLException {
+        //Erhalte die Informationen des Stapels
         Connection con = Instance.connectToDB(); //Verbinde zur DB
-        String sql = "SELECT karte.ID, szk.Stufe, karte.Vorderseite, karte.Rückseite FROM \"Cardtiw_StapelZuKarte\" szk, \"Cardtiw_Karte\" karte WHERE szk.SID=? AND karte.ID=szk.KID";
+        String sql = "SELECT * FROM \"Cardtiw_Stapel\" WHERE ID=?";
         PreparedStatement statement = con.prepareStatement(sql);
-        statement.setInt(1,stapelID); //Setzt den Parameter ID
+        statement.setInt(1, stapelID);
         ResultSet results = statement.executeQuery();
+        results.next(); //Nur eine Zeile wird erwartet
+        Stapel stapel = new Stapel(results.getInt("ID"), results.getString("Name"));
+
+        //Neue SQL Abfrage, um Karteikarten für den Stapel zu finden.
+        con = Instance.connectToDB(); //Erneutes Verbinden mit der DB.
+        sql = "SELECT karte.ID, szk.Stufe, karte.Vorderseite, karte.Rückseite FROM \"Cardtiw_StapelZuKarte\" szk, \"Cardtiw_Karte\" karte WHERE szk.SID=? AND karte.ID=szk.KID";
+        statement = con.prepareStatement(sql);
+        statement.setInt(1,stapelID); //Setzt den Parameter ID
+        results = statement.executeQuery();
         //Für jede Zeile Query-Resultat, soll ein neues Karteikartenobjekt erstellt werden.
+        //Und wird dem Stapel hinzugefügt.
         while(results.next()) {
-            liste.add(new Karteikarte(
+            stapel.addKarteikarte(new Karteikarte(
                 results.getInt("ID"),
                 results.getString("Vorderseite"),
                 results.getString("Rückseite"),
                 results.getByte("Stufe")
             ));
         }
-        return liste;
+        return stapel;
     }
 
     /***
