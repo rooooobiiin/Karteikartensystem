@@ -13,11 +13,11 @@ public class ReadBackController {
     }
 
     public void wrong(ActionEvent actionEvent) {
-
-
+        SystemController.changeBox(false);
     }
 
     public void right(ActionEvent actionEvent) {
+        SystemController.changeBox(true);
     }
 
     public void stackview(ActionEvent actionEvent) {

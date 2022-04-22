@@ -17,47 +17,56 @@ public class GUIController {
 
     public static void start(){
         stage = new Stage();
-        welcome();
+        switchScene(SceneName.Welcome);
         stage.show();
     }
 
     public static void switchScene(SceneName name){
         switch (name){
             case Welcome:
-                welcome();
+                fxmlLoader = new FXMLLoader(Run.class.getResource("welcome.fxml"));
+                setScene();
                 break;
             case Stackview:
-                stackview();
+                fxmlLoader = new FXMLLoader(Run.class.getResource("stackview.fxml"));
+                setScene();
                 break;
             case Stack:
-                stack();
+                fxmlLoader = new FXMLLoader(Run.class.getResource("stack.fxml"));
+                setScene();
                 break;
             case ReadFront:
-                readFront();
+                fxmlLoader = new FXMLLoader(Run.class.getResource("readfront.fxml"));
+                setScene();
                 break;
             case ReadBack:
-                readBack();
+                fxmlLoader = new FXMLLoader(Run.class.getResource("readback.fxml"));
+                setScene();
                 break;
             case WriteFront:
-                writeFront();
+                fxmlLoader = new FXMLLoader(Run.class.getResource("writefront.fxml"));
+                setScene();
                 break;
             case WriteBack:
-                writeBack();
+                fxmlLoader = new FXMLLoader(Run.class.getResource("writeback.fxml"));
+                setScene();
                 break;
             case Edit:
-                edit();
+                fxmlLoader = new FXMLLoader(Run.class.getResource("edit.fxml"));
+                setScene();
                 break;
             case NewCard:
-                newCard();
+                fxmlLoader = new FXMLLoader(Run.class.getResource("newcard.fxml"));
+                setScene();
                 break;
             case NewStack:
-                newStack();
+                fxmlLoader = new FXMLLoader(Run.class.getResource("newStack.fxml"));
+                setScene();
                 break;
         }
     }
 
-    public static void newStack() {
-        fxmlLoader = new FXMLLoader(Run.class.getResource("newStack.fxml"));
+    private static void setScene(){
         scene = null;
         try {
             scene = new Scene(fxmlLoader.load(), 1000, 700);
@@ -66,104 +75,4 @@ public class GUIController {
         }
         stage.setScene(scene);
     }
-
-    public static void newCard() {
-        fxmlLoader = new FXMLLoader(Run.class.getResource("newcard.fxml"));
-        scene = null;
-        try {
-            scene = new Scene(fxmlLoader.load(), 1000, 700);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        stage.setScene(scene);
-    }
-
-    public static void welcome(){
-        fxmlLoader = new FXMLLoader(Run.class.getResource("welcome.fxml"));
-        scene = null;
-        try {
-            scene = new Scene(fxmlLoader.load(), 1000, 700);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        stage.setScene(scene);
-    }
-
-    public static void stackview(){
-        fxmlLoader = new FXMLLoader(Run.class.getResource("stackview.fxml"));
-        scene = null;
-        try {
-            scene = new Scene(fxmlLoader.load(), 1000, 700);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        stage.setScene(scene);
-    }
-
-    public static void stack(){
-        fxmlLoader = new FXMLLoader(Run.class.getResource("stack.fxml"));
-        scene = null;
-        try {
-            scene = new Scene(fxmlLoader.load(), 1000, 700);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        stage.setScene(scene);
-    }
-
-    public static void readFront(){
-        fxmlLoader = new FXMLLoader(Run.class.getResource("readfront.fxml"));
-        scene = null;
-        try {
-            scene = new Scene(fxmlLoader.load(), 1000, 700);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        stage.setScene(scene);
-    }
-
-    public static void readBack(){
-        fxmlLoader = new FXMLLoader(Run.class.getResource("readback.fxml"));
-        scene = null;
-        try {
-            scene = new Scene(fxmlLoader.load(), 1000, 700);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        stage.setScene(scene);
-    }
-
-    public static void writeFront(){
-        fxmlLoader = new FXMLLoader(Run.class.getResource("readfront.fxml"));
-        scene = null;
-        try {
-            scene = new Scene(fxmlLoader.load(), 1000, 700);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        stage.setScene(scene);
-    }
-
-    public static void writeBack(){
-        fxmlLoader = new FXMLLoader(Run.class.getResource("writeback.fxml"));
-        scene = null;
-        try {
-            scene = new Scene(fxmlLoader.load(), 1000, 700);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        stage.setScene(scene);
-    }
-
-    public static void edit(){
-        fxmlLoader = new FXMLLoader(Run.class.getResource("edit.fxml"));
-        scene = null;
-        try {
-            scene = new Scene(fxmlLoader.load(), 1000, 700);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        stage.setScene(scene);
-    }
-
 }
