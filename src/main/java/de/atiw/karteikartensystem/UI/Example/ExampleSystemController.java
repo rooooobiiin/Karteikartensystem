@@ -108,9 +108,10 @@ public class ExampleSystemController {
     /**
      * Löscht eine Karte aus dem aktuellen Stapel und dann aus der Datenbank
      *
-     * @param karte Karteikarte die gelöscht werden soll
      */
-    public static void deleteKarteikarte(Karteikarte karte) {
+    public static void deleteKarteikarte() {
+        Karteikarte karte = ExampleAbfrageManager.aktuelleKarteikarte;
+        ExampleAbfrageManager.setNextKarteikarte();
         ExampleAbfrageManager.aktuellerStapel.deleteKarteikarte(karte);
     }
 
