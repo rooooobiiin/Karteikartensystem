@@ -23,6 +23,7 @@ public class WelcomeController implements Initializable {
 
     @FXML
     public void login(ActionEvent actionEvent) {
+
 //        SystemController.connectToDB(user.getText(), password.getText());
         GUIController.switchScene(SceneName.Stackview);
 
