@@ -3,11 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -25,17 +21,6 @@
             <Font name="Nirmala UI Semilight" size="17.0" />
          </font>
       </Label>
-      <MenuBar nodeOrientation="RIGHT_TO_LEFT" VBox.vgrow="NEVER">
-         <menus>
-            <Menu mnemonicParsing="false" text="CSV-Options">
-               <items>
-                  <MenuItem fx:id="btn_import" mnemonicParsing="false" onAction="#csv_import" text="CSV-Import" />
-                  <MenuItem fx:id="btn_export" mnemonicParsing="false" onAction="#csv_export" text="CSV-Export" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
       <SplitPane dividerPositions="0.1426981300089047" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <items>
             <VBox prefHeight="200.0" prefWidth="100.0">
