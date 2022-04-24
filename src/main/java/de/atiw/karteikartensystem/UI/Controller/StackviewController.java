@@ -50,20 +50,11 @@ public class StackviewController implements Initializable {
 
             button.setMinWidth(vboxStackview.getPrefWidth());
             button.setOnAction(buttonHandler);
-
         }
 
-//        btnTeststapel.setText("New Text");
-
     }
 
-    public StackviewController(){
-        //TODO: Liste der Stacks muss links angezeigt werden
-        // --> Durch auswahl des Stapels wird aktueller Stapel gesetzt
-        // --> Scene stack wird gezeigt
 
-
-    }
     @FXML
     public void newstack(ActionEvent actionEvent) {
         GUIController.switchScene(SceneName.NewStack);

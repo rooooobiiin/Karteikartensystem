@@ -6,6 +6,7 @@ import de.atiw.karteikartensystem.UI.SceneName;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -17,6 +18,8 @@ public class WelcomeController implements Initializable {
     private TextField user;
     @FXML
     private PasswordField password;
+    @FXML
+    private Label messageBox;
 
     @FXML
     public void login(ActionEvent actionEvent) {

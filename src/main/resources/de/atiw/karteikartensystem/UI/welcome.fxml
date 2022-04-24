@@ -24,7 +24,14 @@
                   <Image url="@Pictures/Willkommen_Logo.PNG" />
                </image>
             </ImageView>
-            <AnchorPane layoutX="243.0" layoutY="71.0" prefHeight="339.0" prefWidth="364.0" style="-fx-background-color: ADD8E6; -fx-border-color: grey;" />
+            <AnchorPane layoutX="243.0" layoutY="71.0" prefHeight="339.0" prefWidth="364.0" style="-fx-background-color: ADD8E6; -fx-border-color: grey;">
+               <children>
+                  <Label fx:id="messageBox" layoutX="48.0" layoutY="281.0" prefHeight="37.0" prefWidth="279.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
             <TextField fx:id="user" layoutX="415.0" layoutY="212.0" prefHeight="26.0" prefWidth="150.0" />
             <PasswordField fx:id="password" layoutX="416.0" layoutY="245.0" />
             <Button fx:id="btn_login" layoutX="287.0" layoutY="284.0" mnemonicParsing="false" onAction="#login" onMouseClicked="#login" prefHeight="39.0" prefWidth="279.0" style="-fx-background-color: white; -fx-border-color: grey;" text="Login">
