@@ -137,7 +137,7 @@ public class DatenbankVerwaltung {
 
         //Neue SQL Abfrage, um Karteikarten für den Stapel zu finden.
         con = Instance.connectToDB(); //Erneutes Verbinden mit der DB.
-        sql = "SELECT karte.ID, szk.Stufe, karte.Vorderseite, karte.Rückseite FROM Cardtiw_StapelZuKarten szk, Cardtiw_Karten karte WHERE szk.SID=? AND karte.ID=szk.KID";
+        sql = "SELECT karte.ID, szk.Stufe, karte.Vorderseite, karte.Rueckseite FROM Cardtiw_StapelZuKarten szk, Cardtiw_Karten karte WHERE szk.SID=? AND karte.ID=szk.KID";
         statement = con.prepareStatement(sql);
         statement.setInt(1,stapelID); //Setzt den Parameter ID
         results = statement.executeQuery();
