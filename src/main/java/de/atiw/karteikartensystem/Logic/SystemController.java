@@ -82,8 +82,6 @@ public class SystemController {
                 }
             }
 
-            AbfrageManager.setAktuelleKarteikarte(AbfrageManager.getAktuellerStapel().getKartenSet().get(0));
-
             return AbfrageManager.getAktuellerStapel();
 
         } catch (SQLException e) {
@@ -204,6 +202,7 @@ public class SystemController {
 
     public static void abfrageInitialisieren(byte box) {
         AbfrageManager.setBoxNummer(box);
+        AbfrageManager.setAktuelleKarteikarte(AbfrageManager.getAktuellerStapel().getKartenSet().get(0));
     }
 
     public static void import_csv(){
