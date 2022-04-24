@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="vboxTOP" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.atiw.karteikartensystem.UI.Controller.StackviewController">
+   <children>
+      <Label prefHeight="26.0" prefWidth="274.0" text="CARDTIW - Karteikartensystem">
+         <font>
+            <Font name="Nirmala UI Semilight" size="17.0" />
+         </font>
+      </Label>
+      <MenuBar nodeOrientation="RIGHT_TO_LEFT" VBox.vgrow="NEVER">
+         <menus>
+            <Menu mnemonicParsing="false" text="CSV-Options">
+               <items>
+                  <MenuItem fx:id="btn_import" mnemonicParsing="false" onAction="#csv_import" text="CSV-Import" />
+                  <MenuItem fx:id="btn_export" mnemonicParsing="false" onAction="#csv_export" text="CSV-Export" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <SplitPane dividerPositions="0.1426981300089047" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+         <items>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <VBox fx:id="vboxStackview" prefHeight="493.0" prefWidth="125.0">
+                     <children>
+                        <Button fx:id="btnTeststapel" mnemonicParsing="false" prefHeight="33.0" prefWidth="141.0" text="Button" />
+                     </children></VBox>
+                  <VBox prefHeight="39.0" prefWidth="125.0">
+                     <children>
+                        <Button fx:id="btn_newstack" mnemonicParsing="false" onAction="#newstack" prefHeight="50.0" prefWidth="140.0" text="+">
+                           <font>
+                              <Font name="System Bold Italic" size="23.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
+               <content>
+                  <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="546.0" prefWidth="756.0">
+                     <children>
+                        <ImageView fitHeight="515.0" fitWidth="759.0" layoutX="-2.0">
+                           <image>
+                              <Image url="@Pictures/Willkommen_Logo.PNG" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="Bitte Stapel zum Exportieren auswählen." textAlignment="CENTER" textFill="#337cb4" wrapText="false">
+                           <font>
+                              <Font size="30.0" fx:id="x7" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="67.0" fitWidth="214.0" layoutX="528.0" layoutY="13.0">
+                           <image>
+                              <Image url="@Pictures/CARDTIW_Logo.PNG" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+         </items>
+      </SplitPane>
+      <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
+         <children>
+            <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Left status" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="11.0" fx:id="x3" />
+               </font>
+               <textFill>
+                  <Color red="0.625" green="0.625" blue="0.625" fx:id="x4" />
+               </textFill>
+            </Label>
+            <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
+            <Label font="$x3" maxWidth="-1.0" text="Right status" textFill="$x4" HBox.hgrow="NEVER" />
+         </children>
+         <padding>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+         </padding>
+      </HBox>
+   </children>
+</VBox>
