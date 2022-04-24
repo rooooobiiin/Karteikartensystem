@@ -4,6 +4,7 @@ import de.atiw.karteikartensystem.Datas.Karteikarte;
 import de.atiw.karteikartensystem.Datas.Stapel;
 import de.atiw.karteikartensystem.Persistenz.DatenbankVerwaltung;
 
+import java.security.InvalidParameterException;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,8 +18,14 @@ public class SystemController {
      * @param username Username für die Datenbankverbindung
      * @param password Passwort für die Datenbankverbindung
      */
-    public static void connectToDB(String username, String password) {
-        DatenbankVerwaltung.createInstance(username, password);
+    public static boolean connectToDB(String username, String password) {
+        try {
+            DatenbankVerwaltung.createInstance(username, password);
+            return true;
+        }
+        catch (InvalidParameterException e) {
+            return false;
+        }
     }
 
     //KARTEIKARTEN AUS DER DB BEKOMMEN
