@@ -26,6 +26,8 @@ public class NewCardController implements Initializable {
 
     public void add(ActionEvent actionEvent) {
         ExampleSystemController.createKarteikarte(vorderseite.getText(), rueckseite.getText());
+        vorderseite.clear();
+        rueckseite.clear();
         messageBox.setText("Karteikarte erfolgreich hinzugefügt.");
 
     }

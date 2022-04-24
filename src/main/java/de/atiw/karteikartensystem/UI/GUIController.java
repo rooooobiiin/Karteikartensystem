@@ -27,6 +27,7 @@ public class GUIController {
 
     public static LinkedList<String> stapelnamen = new LinkedList<>();
     public static String stapel_gewählt = "";
+    public static String message = "";
 
     public static void start(Stage stage_main){
         ExampleSystemController.initController();

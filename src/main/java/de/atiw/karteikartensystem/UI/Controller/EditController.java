@@ -23,6 +23,13 @@ public class EditController implements Initializable {
     @FXML
     public Label card1;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        txtFront.setText(ExampleSystemController.getaktuelleKarteikarte().getVoderseite());
+        txtBack.setText(ExampleSystemController.getaktuelleKarteikarte().getRueckseite());
+
+    }
+
     public void stackview(ActionEvent actionEvent) {
         GUIController.switchScene(SceneName.Stackview);
     }
@@ -42,8 +49,5 @@ public class EditController implements Initializable {
     public void cancel(ActionEvent actionEvent) {
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-    }
 }

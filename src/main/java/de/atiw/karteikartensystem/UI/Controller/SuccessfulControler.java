@@ -17,7 +17,7 @@ public class SuccessfulControler implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        message_box.setText("Stapel erfolgreich hinzugefügt.");
+        message_box.setText(GUIController.message);
         
     }
 

@@ -22,6 +22,19 @@ public class StackController implements Initializable {
     public byte viewBox = 0;
 
     @FXML
+    private Label total;
+    @FXML
+    private Label box1;
+    @FXML
+    private Label box2;
+    @FXML
+    private Label box3;
+    @FXML
+    private Label box4;
+    @FXML
+    private Label box5;
+
+    @FXML
     private Label stapel_name;
 
     @FXML
@@ -37,6 +50,12 @@ public class StackController implements Initializable {
         auswahlfeld.setText("Alle");
         modus.setText("Lesemodus");
         stapel_name.setText(ExampleSystemController.getAktuellerStapel().getName());
+        total.setText(String.valueOf(ExampleSystemController.getAktuellerStapel().getKartenSet().size()));
+        box1.setText(String.valueOf(ExampleSystemController.getAktuellerStapel().anzahlKarteninBox((byte) 1)));
+        box2.setText(String.valueOf(ExampleSystemController.getAktuellerStapel().anzahlKarteninBox((byte) 2)));
+        box3.setText(String.valueOf(ExampleSystemController.getAktuellerStapel().anzahlKarteninBox((byte) 3)));
+        box4.setText(String.valueOf(ExampleSystemController.getAktuellerStapel().anzahlKarteninBox((byte) 4)));
+        box5.setText(String.valueOf(ExampleSystemController.getAktuellerStapel().anzahlKarteninBox((byte) 5)));
     }
 
     @FXML
@@ -59,6 +78,8 @@ public class StackController implements Initializable {
 
 //        SystemController.deleteStapel();
         ExampleSystemController.deleteStapel();
+        GUIController.message = "Stapel erfolgreich gelöscht.";
+        GUIController.switchScene(SceneName.Successful);
     }
 
     @FXML

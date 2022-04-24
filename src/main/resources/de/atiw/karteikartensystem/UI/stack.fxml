@@ -79,16 +79,18 @@
                         <Button fx:id="btn_wechsel" layoutX="540.0" layoutY="297.0" mnemonicParsing="false" onAction="#wechsel" prefHeight="41.0" prefWidth="131.0" text="Modus-Wechsel" />
                         <AnchorPane layoutX="186.0" layoutY="127.0" prefHeight="211.0" prefWidth="339.0" style="-fx-background-color: DAE3F3;">
                            <children>
-                              <Label fx:id="box1" layoutX="165.0" layoutY="35.0" text="Label" />
-                              <Label fx:id="box2" layoutX="165.0" layoutY="63.0" text="Label" />
-                              <Label fx:id="box3" layoutX="165.0" layoutY="90.0" text="Label" />
-                              <Label fx:id="box4" layoutX="165.0" layoutY="116.0" text="Label" />
-                              <Label fx:id="box5" layoutX="165.0" layoutY="142.0" text="Label" />
+                              <Label fx:id="box1" layoutX="165.0" layoutY="35.0" />
+                              <Label fx:id="box2" layoutX="165.0" layoutY="63.0" />
+                              <Label fx:id="box3" layoutX="165.0" layoutY="90.0" />
+                              <Label fx:id="box4" layoutX="165.0" layoutY="116.0" />
+                              <Label fx:id="box5" layoutX="165.0" layoutY="142.0" />
                               <Label layoutX="62.0" layoutY="35.0" prefHeight="18.0" prefWidth="119.0" text="Anzahl Box 1:" />
                               <Label layoutX="62.0" layoutY="63.0" text="Anzahl Box 2:" />
                               <Label layoutX="62.0" layoutY="90.0" text="Anzahl Box 3:" />
                               <Label layoutX="62.0" layoutY="142.0" text="Anzahl Box 5:" />
                               <Label layoutX="62.0" layoutY="116.0" text="Anzahl Box 4:" />
+                              <Label layoutX="62.0" layoutY="14.0" prefHeight="18.0" prefWidth="119.0" text="Insgesamt:" />
+                              <Label fx:id="total" layoutX="166.0" layoutY="15.0" />
                            </children>
                         </AnchorPane>
                         <Label layoutX="540.0" layoutY="240.0" text="Aktueller Modus:" />
