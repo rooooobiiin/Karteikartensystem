@@ -8,6 +8,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 
@@ -25,6 +27,10 @@ public class ExportController implements Initializable {
 
     @FXML
     private Button btnTeststapel;
+    @FXML
+    private Label stapelname;
+    @FXML
+    private Label pfad;
 
     public LinkedList<Button> liste_stapelButtons = new LinkedList<>();
 
@@ -47,6 +53,8 @@ public class ExportController implements Initializable {
                     ExampleSystemController.readStapel(s);
                     FileChooser fc = new FileChooser();
                     File file = fc.showOpenDialog(GUIController.stage);
+                    pfad.setText(file.getAbsolutePath());
+                    stapelname.setText(ExampleSystemController.getAktuellerStapel().getName());
 //                    GUIController.switchScene(SceneName.Stack);
 //                    SystemController.readStapel(s);
                 }
@@ -64,6 +72,9 @@ public class ExportController implements Initializable {
     }
 
 
+    public void ok(ActionEvent actionEvent) {
+    }
 
-
+    public void keypressed(KeyEvent keyEvent) {
+    }
 }
