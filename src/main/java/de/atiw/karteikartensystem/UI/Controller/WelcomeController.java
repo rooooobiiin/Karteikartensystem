@@ -5,10 +5,14 @@ import de.atiw.karteikartensystem.UI.GUIController;
 import de.atiw.karteikartensystem.UI.SceneName;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class WelcomeController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class WelcomeController implements Initializable {
     @FXML
     private TextField user;
     @FXML
@@ -23,4 +27,8 @@ public class WelcomeController {
         // TODO: AMIN: --> Brauchen Textfeld für Fehlermeldung
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }

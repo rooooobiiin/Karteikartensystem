@@ -5,8 +5,12 @@ import de.atiw.karteikartensystem.UI.GUIController;
 import de.atiw.karteikartensystem.UI.SceneName;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 
-public class StackController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class StackController implements Initializable {
 
     public static boolean viewMode = true;
     public static byte viewBox = 0;
@@ -62,5 +66,10 @@ public class StackController {
 
     public void box5(ActionEvent actionEvent) {
         viewBox = 5;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 }

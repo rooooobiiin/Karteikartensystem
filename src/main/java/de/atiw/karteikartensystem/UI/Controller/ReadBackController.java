@@ -4,8 +4,12 @@ import de.atiw.karteikartensystem.Logic.SystemController;
 import de.atiw.karteikartensystem.UI.GUIController;
 import de.atiw.karteikartensystem.UI.SceneName;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 
-public class ReadBackController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ReadBackController implements Initializable {
     public void edit(ActionEvent actionEvent) {
         GUIController.switchScene(SceneName.Edit);
     }
@@ -24,5 +28,10 @@ public class ReadBackController {
 
     public void stackview(ActionEvent actionEvent) {
         GUIController.switchScene(SceneName.Stackview);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 }

@@ -5,9 +5,13 @@ import de.atiw.karteikartensystem.UI.GUIController;
 import de.atiw.karteikartensystem.UI.SceneName;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
-public class NewStackController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class NewStackController implements Initializable {
     @FXML
     public TextField tf_input;
 
@@ -30,5 +34,10 @@ public class NewStackController {
      */
     public void close(ActionEvent actionEvent) {
         GUIController.switchScene(SceneName.Stackview);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 }

@@ -5,10 +5,14 @@ import de.atiw.karteikartensystem.UI.GUIController;
 import de.atiw.karteikartensystem.UI.SceneName;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class EditController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class EditController implements Initializable {
     @FXML
     public TextField txtFront;
 
@@ -33,5 +37,10 @@ public class EditController {
     }
 
     public void cancel(ActionEvent actionEvent) {
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 }

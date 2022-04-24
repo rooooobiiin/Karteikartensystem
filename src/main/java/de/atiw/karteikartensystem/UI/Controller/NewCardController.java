@@ -1,8 +1,12 @@
 package de.atiw.karteikartensystem.UI.Controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 
-public class NewCardController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class NewCardController implements Initializable {
     public void stackview(ActionEvent actionEvent) {
     }
 
@@ -10,5 +14,10 @@ public class NewCardController {
     }
 
     public void close(ActionEvent actionEvent) {
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 }

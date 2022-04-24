@@ -3,8 +3,12 @@ package de.atiw.karteikartensystem.UI.Controller;
 import de.atiw.karteikartensystem.UI.GUIController;
 import de.atiw.karteikartensystem.UI.SceneName;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 
-public class ReadFrontController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ReadFrontController implements Initializable {
 
 
 
@@ -22,5 +26,10 @@ public class ReadFrontController {
 
     public void newcard(ActionEvent actionEvent) {
         GUIController.switchScene(SceneName.NewCard);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 }
