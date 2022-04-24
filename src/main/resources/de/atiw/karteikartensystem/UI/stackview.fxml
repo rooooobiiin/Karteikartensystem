@@ -64,7 +64,7 @@
                               <Image url="@Pictures/Willkommen_Logo.PNG" />
                            </image>
                         </ImageView>
-                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="Stackview" textAlignment="CENTER" textFill="#337cb4" wrapText="false">
+                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="Stapelübersicht" textAlignment="CENTER" textFill="#337cb4" wrapText="false">
                            <font>
                               <Font size="30.0" fx:id="x7" />
                            </font>
