@@ -23,6 +23,9 @@ public class GUIController {
     public static String username;
     public static String password;
 
+    public static LinkedList<String> stapelnamen = new LinkedList<>();
+    public static String stapel_gewählt = "";
+
     public static void start(Stage stage_main){
         stage = stage_main;
         switchScene(SceneName.Welcome);
@@ -38,22 +41,19 @@ public class GUIController {
             case Stackview:
                 fxmlLoader = new FXMLLoader(Run.class.getResource("stackview.fxml"));
                 setScene();
-//                StackviewController.reload();
 
+                //ADDING BUTTONS
 //                VBox vboxStackview = new VBox();
 //                LinkedList<String> stapel = ExampleSystemController.readStapelList();
 //                for (String s :
 //                        stapel) {
 //                    vboxStackview.getChildren().add(new Button(s));
 //                }
-//                scene = null;
-//                try {
-//                    scene = new Scene(fxmlLoader.load(), 1000, 700);
-//
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
+////                scene = null;
+//                scene = new Scene(vboxStackview, 1000, 700);
 //                stage.setScene(scene);
+
+
                 break;
             case Stack:
                 fxmlLoader = new FXMLLoader(Run.class.getResource("stack.fxml"));

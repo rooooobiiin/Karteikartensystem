@@ -1,19 +1,35 @@
 package de.atiw.karteikartensystem.UI.Controller;
 
 import de.atiw.karteikartensystem.Logic.SystemController;
+import de.atiw.karteikartensystem.UI.Example.ExampleSystemController;
 import de.atiw.karteikartensystem.UI.GUIController;
 import de.atiw.karteikartensystem.UI.SceneName;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 public class StackController implements Initializable {
 
-    public static boolean viewMode = true;
-    public static byte viewBox = 0;
+    public boolean viewMode = true;
+    public byte viewBox = 0;
+
+    @FXML
+    private Label stapel_name;
+
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        stapel_name.setText(GUIController.stapel_gewählt);
+
+    }
 
     @FXML
     public void quiz(ActionEvent actionEvent) {
@@ -68,8 +84,5 @@ public class StackController implements Initializable {
         viewBox = 5;
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-    }
 }
