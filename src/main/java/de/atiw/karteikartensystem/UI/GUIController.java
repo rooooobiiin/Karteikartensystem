@@ -28,6 +28,13 @@ public class GUIController {
     public static String stapel_gewählt = "";
     public static String message = "";
 
+    public static String answer_write = "";
+    public static String input_write = "";
+    public static String antwort_write = "";
+    public static String eingabe_write = "";
+    public static boolean allCardsDone = false;
+
+
     public static void start(Stage stage_main){
         ExampleSystemController.initController();
         stage = stage_main;

@@ -20,10 +20,22 @@ public class SuccessfulControler implements Initializable{
     private Label message_box;
     @FXML
     private Button btn_ok;
+    @FXML
+    private Label answer;
+    @FXML
+    private Label input;
+    @FXML
+    private Label says_antwort;
+    @FXML
+    private Label says_ihreeingabe;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         message_box.setText(GUIController.message);
+        answer.setText(GUIController.answer_write);
+        input.setText(GUIController.input_write);
+        says_antwort.setText(GUIController.antwort_write);
+        says_ihreeingabe.setText(GUIController.eingabe_write);
 
         
     }
@@ -33,7 +45,20 @@ public class SuccessfulControler implements Initializable{
     }
 
     public void ok(ActionEvent actionEvent) {
-        GUIController.switchScene(GUIController.lastScene);
+        if(!GUIController.allCardsDone){
+            GUIController.switchScene(GUIController.lastScene);
+        }
+        else{
+            GUIController.message = "Alle Karten bearbeitet.";
+            GUIController.lastScene = SceneName.Stack;
+            GUIController.answer_write = "";
+            GUIController.input_write = "";
+            GUIController.eingabe_write = "";
+            GUIController.antwort_write = "";
+            GUIController.allCardsDone = false;
+            GUIController.switchScene(SceneName.Successful);
+        }
+
     }
 
     public void keypressed(KeyEvent keyEvent) {

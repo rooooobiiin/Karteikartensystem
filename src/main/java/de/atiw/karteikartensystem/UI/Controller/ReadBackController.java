@@ -36,7 +36,7 @@ public class ReadBackController implements Initializable {
 
         ExampleSystemController.changeBox(false);
         if (ExampleSystemController.getaktuelleKarteikarte() == null){
-            GUIController.message = "Alle Karteikarten der Box wurden bearbeitet";
+            GUIController.message = "Alle Karten bearbeitet.";
             GUIController.lastScene = SceneName.Stack;
             GUIController.switchScene(SceneName.Successful);
         }
@@ -57,7 +57,7 @@ public class ReadBackController implements Initializable {
 //        SystemController.changeBox(true);
         ExampleSystemController.changeBox(true);
         if (ExampleSystemController.getaktuelleKarteikarte() == null){
-            GUIController.message = "Alle Karteikarten der Box wurden bearbeitet";
+            GUIController.message = "Alle Karten bearbeitet.";
             GUIController.lastScene = SceneName.Stack;
             GUIController.switchScene(SceneName.Successful);
         }

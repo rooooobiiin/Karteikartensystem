@@ -64,14 +64,14 @@
                               <Image url="@Pictures/Willkommen_Logo.PNG" />
                            </image>
                         </ImageView>
-                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="NewStack" textAlignment="CENTER" textFill="#337cb4" wrapText="false">
+                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" textAlignment="CENTER" textFill="#337cb4" wrapText="false">
                            <font>
                               <Font size="30.0" fx:id="x7" />
                            </font>
                         </Label>
                         <AnchorPane layoutX="165.0" layoutY="125.0" prefHeight="311.0" prefWidth="409.0" style="-fx-background-color: DAE3F3; -fx-border-color: grey;">
                            <children>
-                              <Label fx:id="message_box" layoutX="30.0" layoutY="23.0" prefHeight="29.0" prefWidth="342.0">
+                              <Label fx:id="message_box" layoutX="30.0" layoutY="23.0" prefHeight="66.0" prefWidth="342.0">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -81,6 +81,10 @@
                                     <Font size="19.0" />
                                  </font>
                               </Button>
+                              <Label fx:id="says_antwort" layoutX="30.0" layoutY="76.0" prefHeight="28.0" prefWidth="138.0" />
+                              <Label fx:id="says_ihreeingabe" layoutX="30.0" layoutY="110.0" prefHeight="28.0" prefWidth="138.0" />
+                              <Label fx:id="answer" layoutX="136.0" layoutY="76.0" prefHeight="28.0" prefWidth="138.0" />
+                              <Label fx:id="input" layoutX="136.0" layoutY="110.0" prefHeight="28.0" prefWidth="138.0" />
                            </children>
                         </AnchorPane>
                         <ImageView fitHeight="67.0" fitWidth="214.0" layoutX="528.0" layoutY="13.0">
