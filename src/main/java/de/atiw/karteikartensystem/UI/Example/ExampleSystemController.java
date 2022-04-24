@@ -92,10 +92,9 @@ public class ExampleSystemController {
     /**
      * Fügt eine Karteikarte dem Stapel und der Datenbank nacheinander hinzu.
      *
-     * @param karte Karteikartenobjekt hinzugefügt werden soll
      */
-    public static void createKarteikarte(Karteikarte karte) {
-        ExampleAbfrageManager.aktuellerStapel.addKarteikarte(karte);
+    public static void createKarteikarte(String vorderseite, String rueckseite) {
+        ExampleAbfrageManager.aktuellerStapel.addKarteikarte(new Karteikarte(vorderseite, rueckseite, (byte) 1));
     }
 
 
