@@ -1,5 +1,6 @@
 package de.atiw.karteikartensystem.UI.Controller;
 
+import de.atiw.karteikartensystem.Logic.SystemController;
 import de.atiw.karteikartensystem.UI.Example.ExampleSystemController;
 import de.atiw.karteikartensystem.UI.GUIController;
 import de.atiw.karteikartensystem.UI.SceneName;
@@ -11,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 
 import java.io.File;
@@ -37,7 +39,7 @@ public class ExportController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         vboxStackview.getChildren().clear();
-        LinkedList<String> stapel = ExampleSystemController.readStapelList();
+        LinkedList<String> stapel = (LinkedList<String>) SystemController.readStapelList();
         for (String s :
                 stapel) {
             Button button = new Button(s);
@@ -50,11 +52,13 @@ public class ExportController implements Initializable {
                 @Override
                 public void handle(ActionEvent event) {
                     GUIController.stapel_gewählt = s;
-                    ExampleSystemController.readStapel(s);
-                    FileChooser fc = new FileChooser();
-                    File file = fc.showOpenDialog(GUIController.stage);
+                    SystemController.readStapel(s);
+                    DirectoryChooser dc = new DirectoryChooser();
+                    File file = dc.showDialog(GUIController.stage);
+//                    FileChooser fc = new FileChooser();
+//                    File file = fc.showOpenDialog(GUIController.stage);
                     pfad.setText(file.getAbsolutePath());
-                    stapelname.setText(ExampleSystemController.getAktuellerStapel().getName());
+                    stapelname.setText(SystemController.getAktuellerStapel().getName());
 //                    GUIController.switchScene(SceneName.Stack);
 //                    SystemController.readStapel(s);
                 }
@@ -72,9 +76,11 @@ public class ExportController implements Initializable {
     }
 
 
-    public void ok(ActionEvent actionEvent) {
+
+    public void back(ActionEvent actionEvent) {
+        GUIController.switchScene(SceneName.Stackview);
     }
 
-    public void keypressed(KeyEvent keyEvent) {
+    public void export(ActionEvent actionEvent) {
     }
 }

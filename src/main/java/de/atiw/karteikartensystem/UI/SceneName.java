@@ -12,5 +12,6 @@ public enum SceneName {
     NewStack,
     NewCard,
     Successful,
-    Export
+    Export,
+    Import
 }

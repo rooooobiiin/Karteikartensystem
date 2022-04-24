@@ -25,8 +25,8 @@ public class EditController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        txtFront.setText(ExampleSystemController.getaktuelleKarteikarte().getVoderseite());
-        txtBack.setText(ExampleSystemController.getaktuelleKarteikarte().getRueckseite());
+        txtFront.setText(SystemController.getaktuelleKarteikarte().getVoderseite());
+        txtBack.setText(SystemController.getaktuelleKarteikarte().getRueckseite());
 
     }
 
@@ -35,13 +35,10 @@ public class EditController implements Initializable {
     }
 
     public void delete(ActionEvent actionEvent) {
-        //TODO: insert command after Robin corrected parameter
-//        SystemController.deleteKarteikarte();
-        ExampleSystemController.deleteKarteikarte();
+        SystemController.deleteKarteikarte();
     }
 
     public void confirm(ActionEvent actionEvent) {
-        //TODO: insert command after Robin corrected parameter
         card1.setText(txtFront.getText());
 
     }

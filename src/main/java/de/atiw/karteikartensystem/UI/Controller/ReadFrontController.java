@@ -1,5 +1,6 @@
 package de.atiw.karteikartensystem.UI.Controller;
 
+import de.atiw.karteikartensystem.Logic.SystemController;
 import de.atiw.karteikartensystem.UI.Example.ExampleSystemController;
 import de.atiw.karteikartensystem.UI.GUIController;
 import de.atiw.karteikartensystem.UI.SceneName;
@@ -19,11 +20,11 @@ public class ReadFrontController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         GUIController.lastScene = SceneName.ReadFront;
-        if (ExampleSystemController.getaktuelleKarteikarte() == null){
+        if (SystemController.getaktuelleKarteikarte() == null){
             GUIController.switchScene(SceneName.Stack);
         }
         else{
-            card.setText(ExampleSystemController.getaktuelleKarteikarte().getVoderseite());
+            card.setText(SystemController.getaktuelleKarteikarte().getVoderseite());
         }
 
     }

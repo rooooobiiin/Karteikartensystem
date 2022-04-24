@@ -21,18 +21,23 @@ public class WelcomeController implements Initializable {
     @FXML
     private Label messageBox;
 
-    @FXML
-    public void login(ActionEvent actionEvent) {
-
-//        SystemController.connectToDB(user.getText(), password.getText());
-        GUIController.switchScene(SceneName.Stackview);
-
-        // TODO: Überprüfe, wenn nicht Fehlermeldung und nochmal veruschen
-        // TODO: AMIN: --> Brauchen Textfeld für Fehlermeldung
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        messageBox.setText(GUIController.error);
+    }
 
+    @FXML
+    public void login(ActionEvent actionEvent) {
+//        boolean correct = SystemController.connectToDB(user.getText(), password.getText());
+        boolean correct = SystemController.connectToDB("cardtiw", "cardtiwpassword");
+        if (correct){
+            GUIController.error = "";
+            GUIController.switchScene(SceneName.Stackview);
+        }
+        else{
+            GUIController.error = "Anmeldedaten falsch!";
+            GUIController.switchScene(SceneName.Welcome);
+
+        }
     }
 }

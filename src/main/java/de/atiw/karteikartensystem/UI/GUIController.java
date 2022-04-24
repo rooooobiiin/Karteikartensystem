@@ -33,6 +33,8 @@ public class GUIController {
     public static String antwort_write = "";
     public static String eingabe_write = "";
     public static boolean allCardsDone = false;
+    public static String error = "";
+    public static String pfad_import = "";
 
 
     public static void start(Stage stage_main){
@@ -90,6 +92,10 @@ public class GUIController {
                 break;
             case Export:
                 fxmlLoader = new FXMLLoader(Run.class.getResource("export.fxml"));
+                setScene();
+                break;
+            case Import:
+                fxmlLoader = new FXMLLoader(Run.class.getResource("import.fxml"));
                 setScene();
                 break;
         }

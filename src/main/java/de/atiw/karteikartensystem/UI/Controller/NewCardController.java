@@ -1,5 +1,6 @@
 package de.atiw.karteikartensystem.UI.Controller;
 
+import de.atiw.karteikartensystem.Logic.SystemController;
 import de.atiw.karteikartensystem.UI.Example.ExampleSystemController;
 import de.atiw.karteikartensystem.UI.GUIController;
 import de.atiw.karteikartensystem.UI.SceneName;
@@ -25,7 +26,7 @@ public class NewCardController implements Initializable {
     }
 
     public void add(ActionEvent actionEvent) {
-        ExampleSystemController.createKarteikarte(vorderseite.getText(), rueckseite.getText());
+        SystemController.createKarteikarte(vorderseite.getText(), rueckseite.getText());
         vorderseite.clear();
         rueckseite.clear();
         messageBox.setText("Karteikarte erfolgreich hinzugefügt.");

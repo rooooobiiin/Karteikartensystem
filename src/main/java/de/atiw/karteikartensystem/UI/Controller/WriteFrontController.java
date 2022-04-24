@@ -1,5 +1,6 @@
 package de.atiw.karteikartensystem.UI.Controller;
 
+import de.atiw.karteikartensystem.Logic.SystemController;
 import de.atiw.karteikartensystem.UI.Example.ExampleSystemController;
 import de.atiw.karteikartensystem.UI.GUIController;
 import de.atiw.karteikartensystem.UI.SceneName;
@@ -22,7 +23,7 @@ public class WriteFrontController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        card.setText(ExampleSystemController.getaktuelleKarteikarte().getVoderseite());
+        card.setText(SystemController.getaktuelleKarteikarte().getVoderseite());
         GUIController.lastScene = SceneName.WriteFront;
 
     }
@@ -33,12 +34,12 @@ public class WriteFrontController implements Initializable {
 
     public void enter(ActionEvent actionEvent) {
 
-        boolean correct = ExampleSystemController.vergleicheInhaltUndInput(tf_input.getText());
-        GUIController.answer_write = ExampleSystemController.getaktuelleKarteikarte().getVoderseite();
+        boolean correct = SystemController.vergleicheInhaltUndInput(tf_input.getText());
+        GUIController.answer_write = SystemController.getaktuelleKarteikarte().getVoderseite();
         GUIController.input_write = tf_input.getText();
-        ExampleSystemController.changeBox(correct);
+        SystemController.changeBox(correct);
 
-        if (ExampleSystemController.getaktuelleKarteikarte() == null){
+        if (SystemController.getaktuelleKarteikarte() == null){
             GUIController.allCardsDone = true;
             GUIController.switchScene(SceneName.Successful);
         }

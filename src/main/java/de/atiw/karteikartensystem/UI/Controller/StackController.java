@@ -53,26 +53,26 @@ public class StackController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         auswahlfeld.setText("Alle");
         modus.setText("Lesemodus");
-        stapel_name.setText(ExampleSystemController.getAktuellerStapel().getName());
-        total.setText(String.valueOf(ExampleSystemController.getAktuellerStapel().getKartenSet().size()));
-        box1.setText(String.valueOf(ExampleSystemController.getAktuellerStapel().anzahlKarteninBox((byte) 1)));
-        box2.setText(String.valueOf(ExampleSystemController.getAktuellerStapel().anzahlKarteninBox((byte) 2)));
-        box3.setText(String.valueOf(ExampleSystemController.getAktuellerStapel().anzahlKarteninBox((byte) 3)));
-        box4.setText(String.valueOf(ExampleSystemController.getAktuellerStapel().anzahlKarteninBox((byte) 4)));
-        box5.setText(String.valueOf(ExampleSystemController.getAktuellerStapel().anzahlKarteninBox((byte) 5)));
+        stapel_name.setText(SystemController.getAktuellerStapel().getName());
+        total.setText(String.valueOf(SystemController.getAktuellerStapel().getKartenSet().size()));
+        box1.setText(String.valueOf(SystemController.getAktuellerStapel().anzahlKarteninBox((byte) 1)));
+        box2.setText(String.valueOf(SystemController.getAktuellerStapel().anzahlKarteninBox((byte) 2)));
+        box3.setText(String.valueOf(SystemController.getAktuellerStapel().anzahlKarteninBox((byte) 3)));
+        box4.setText(String.valueOf(SystemController.getAktuellerStapel().anzahlKarteninBox((byte) 4)));
+        box5.setText(String.valueOf(SystemController.getAktuellerStapel().anzahlKarteninBox((byte) 5)));
     }
 
     @FXML
     public void quiz(ActionEvent actionEvent) {
         boolean hasCards = true;
         if (viewBox == 0){
-            if(ExampleSystemController.getAktuellerStapel().getKartenSet().size() == 0){
+            if(SystemController.getAktuellerStapel().getKartenSet().size() == 0){
                 hasCards = false;
                 message.setText("Die gewählte Box ist leer.");
             }
         }
         else{
-            if (ExampleSystemController.getAktuellerStapel().anzahlKarteninBox((viewBox)) == 0){
+            if (SystemController.getAktuellerStapel().anzahlKarteninBox((viewBox)) == 0){
                 hasCards = false;
                 message.setText("Die gewählte Box ist leer.");
             }
@@ -81,12 +81,12 @@ public class StackController implements Initializable {
         if (hasCards){
             if (viewMode) {
 //            SystemController.abfrageInitialisieren(viewBox);
-                ExampleSystemController.durchschauenInitialisieren(viewBox);
+                SystemController.abfrageInitialisieren(viewBox);
                 GUIController.switchScene(SceneName.ReadFront);
             }
             else {
 //            SystemController.abfrageInitialisieren(viewBox);
-                ExampleSystemController.durchschauenInitialisieren(viewBox);
+                SystemController.abfrageInitialisieren(viewBox);
                 GUIController.switchScene(SceneName.WriteFront);
             }
         }
@@ -96,7 +96,7 @@ public class StackController implements Initializable {
     public void delete(ActionEvent actionEvent) {
 
 //        SystemController.deleteStapel();
-        ExampleSystemController.deleteStapel();
+        SystemController.deleteStapel();
         GUIController.lastScene = SceneName.Stackview;
         GUIController.message = "Stapel erfolgreich gelöscht.";
         GUIController.switchScene(SceneName.Successful);

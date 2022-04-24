@@ -20,7 +20,7 @@ public class WriteBackController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         GUIController.lastScene = SceneName.WriteBack;
-        card.setText(ExampleSystemController.getaktuelleKarteikarte().getRueckseite());
+        card.setText(SystemController.getaktuelleKarteikarte().getRueckseite());
     }
 
     public void stackview(ActionEvent actionEvent) {

@@ -32,7 +32,7 @@ public class StackviewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         vboxStackview.getChildren().clear();
-        LinkedList<String> stapel = ExampleSystemController.readStapelList();
+        LinkedList<String> stapel = (LinkedList<String>) SystemController.readStapelList();
         for (String s :
                 stapel) {
             Button button = new Button(s);
@@ -45,7 +45,7 @@ public class StackviewController implements Initializable {
                 @Override
                 public void handle(ActionEvent event) {
                     GUIController.stapel_gewählt = s;
-                    ExampleSystemController.readStapel(s);
+                    SystemController.readStapel(s);
                     GUIController.switchScene(SceneName.Stack);
 //                    SystemController.readStapel(s);
                 }
@@ -68,6 +68,8 @@ public class StackviewController implements Initializable {
 //        SystemController.import_csv();
         FileChooser fc = new FileChooser();
         File file = fc.showOpenDialog(GUIController.stage);
+        GUIController.pfad_import = file.getAbsolutePath();
+        GUIController.switchScene(SceneName.Import);
     }
 
     @FXML

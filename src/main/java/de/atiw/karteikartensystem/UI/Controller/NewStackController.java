@@ -26,7 +26,7 @@ public class NewStackController implements Initializable {
     public void add(ActionEvent actionEvent) {
         //TODO: Sobald robin geändert hat in Parameter String kann ich den eingebenen Namen übergeben
 //        SystemController.createStapel(tf_input.getText());
-        ExampleSystemController.createStapel(tf_input.getText());
+        SystemController.createStapel(tf_input.getText());
         GUIController.message = "Stapel erfolgreich hinzugefügt.";
         GUIController.lastScene = SceneName.Stackview;
         GUIController.switchScene(SceneName.Successful);

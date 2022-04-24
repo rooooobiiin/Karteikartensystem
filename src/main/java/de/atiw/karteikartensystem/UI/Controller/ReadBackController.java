@@ -18,7 +18,7 @@ public class ReadBackController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        card.setText(ExampleSystemController.getaktuelleKarteikarte().getRueckseite());
+        card.setText(SystemController.getaktuelleKarteikarte().getRueckseite());
         GUIController.lastScene = SceneName.ReadBack;
     }
 
@@ -34,14 +34,14 @@ public class ReadBackController implements Initializable {
 
 //        SystemController.changeBox(false);
 
-        ExampleSystemController.changeBox(false);
-        if (ExampleSystemController.getaktuelleKarteikarte() == null){
+        SystemController.changeBox(false);
+        if (SystemController.getaktuelleKarteikarte() == null){
             GUIController.message = "Alle Karten bearbeitet.";
             GUIController.lastScene = SceneName.Stack;
             GUIController.switchScene(SceneName.Successful);
         }
         else{
-            if (ExampleSystemController.getaktuelleKarteikarte() == null){
+            if (SystemController.getaktuelleKarteikarte() == null){
                 GUIController.switchScene(SceneName.Stack);
             }
             else{
@@ -55,14 +55,14 @@ public class ReadBackController implements Initializable {
     public void right(ActionEvent actionEvent) {
 
 //        SystemController.changeBox(true);
-        ExampleSystemController.changeBox(true);
-        if (ExampleSystemController.getaktuelleKarteikarte() == null){
+        SystemController.changeBox(true);
+        if (SystemController.getaktuelleKarteikarte() == null){
             GUIController.message = "Alle Karten bearbeitet.";
             GUIController.lastScene = SceneName.Stack;
             GUIController.switchScene(SceneName.Successful);
         }
         else{
-            if (ExampleSystemController.getaktuelleKarteikarte() == null){
+            if (SystemController.getaktuelleKarteikarte() == null){
                 GUIController.switchScene(SceneName.Stack);
             }
             else{
