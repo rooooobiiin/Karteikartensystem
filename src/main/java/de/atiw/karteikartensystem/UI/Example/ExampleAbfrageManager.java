@@ -12,9 +12,7 @@ public class ExampleAbfrageManager {
      public static List<Karteikarte> boxSet;
      public static byte boxNummer;
 
-    public static void addKarte(Karteikarte karte) {
-        aktuellerStapel.addKarteikarte(karte);
-    }
+
 
     public static void updateKarte() {
 

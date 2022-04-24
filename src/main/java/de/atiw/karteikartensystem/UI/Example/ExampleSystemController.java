@@ -19,6 +19,14 @@ public class ExampleSystemController {
         Stapel stapel1 = new Stapel(1, "Robin");
         Stapel stapel2 = new Stapel(2, "Kevin");
 
+        stapel1.addKarteikarte(new Karteikarte("A", "A", (byte) 1));
+        stapel1.addKarteikarte(new Karteikarte("B", "B", (byte) 1));
+        stapel1.addKarteikarte(new Karteikarte("C", "C", (byte) 1));
+
+        stapel2.addKarteikarte(new Karteikarte("D", "D", (byte) 1));
+        stapel2.addKarteikarte(new Karteikarte("E", "E", (byte) 1));
+        stapel2.addKarteikarte(new Karteikarte("F", "F", (byte) 1));
+
         stapelListe.add(stapel1);
         stapelListe.add(stapel2);
     }
