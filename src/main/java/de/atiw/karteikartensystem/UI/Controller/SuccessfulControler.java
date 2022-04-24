@@ -29,17 +29,17 @@ public class SuccessfulControler implements Initializable{
     }
 
     public void stackview(ActionEvent actionEvent) {
+        GUIController.switchScene(SceneName.Stackview);
     }
 
     public void ok(ActionEvent actionEvent) {
-
         GUIController.switchScene(GUIController.lastScene);
     }
 
 
     public void keypressed (KeyEvent k){
             if (k.getCode().equals(KeyCode.ENTER)) {
-                System.out.println("HALLO");
+                GUIController.switchScene(GUIController.lastScene);
             }
     }
 

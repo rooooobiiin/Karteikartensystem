@@ -88,6 +88,7 @@ public class StackController implements Initializable {
 
 //        SystemController.deleteStapel();
         ExampleSystemController.deleteStapel();
+        GUIController.lastScene = SceneName.Stackview;
         GUIController.message = "Stapel erfolgreich gelöscht.";
         GUIController.switchScene(SceneName.Successful);
     }
