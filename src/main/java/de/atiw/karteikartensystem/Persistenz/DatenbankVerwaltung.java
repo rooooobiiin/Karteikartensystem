@@ -84,23 +84,19 @@ public class DatenbankVerwaltung {
 
     /***
      * Fügt den übergebenen Stapel der Datenbank hinzu.
-     * @param stapel Ein einzufügender Stapel.
+     * @param stapelName Der Name des einzufügenden Stapels
      * @throws SQLException wird bei einem
      */
-    public static Stapel createStapel(Stapel stapel) throws InvalidParameterException {
+    public static void createStapel(String stapelName) throws InvalidParameterException {
         try {
             Connection con = Instance.connectToDB(); //Mit Datenbank verbinden
             String sql = "INSERT INTO Cardtiw_Stapel(Name) VALUES (?)";
             PreparedStatement statement = con.prepareStatement(sql);
-            statement.setString(1, stapel.getName());
+            statement.setString(1, stapelName);
             statement.executeUpdate();//SQL Statement ausführen
-            //Setze den übegebenen Stapel seine ID.
-            stapel.setStapelID(getStapelLastID());
-            return stapel;
         }catch(SQLException sqlEx) {
             throw new InvalidParameterException("Ungültiger Stapel: " + sqlEx);
         }
-        //TODO: Robin übergibt dir nur String. Daraus kannst du dann einen Stapel anlegen, weil ich die ID nicht weiß...
     }
 
     /***
