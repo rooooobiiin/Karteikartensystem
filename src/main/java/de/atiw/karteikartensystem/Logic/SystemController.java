@@ -85,6 +85,8 @@ public class SystemController {
                 }
             }
 
+            AbfrageManager.setAktuellerStapel(DatenbankVerwaltung.readStapel(id));
+
             return AbfrageManager.getAktuellerStapel();
 
         } catch (SQLException e) {
