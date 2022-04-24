@@ -146,12 +146,11 @@ public class ExampleSystemController {
 
     /**
      *
-     * @param karte Zu vergleichende Karteikarte
      * @param input Zu vergleichender eingegebener Text
      * @return Wirft einen boolean zurück ob die Eingabe und der Text Karteikartenrückseite gleich sind (true) oder nicht (false)
      */
-    public static boolean vergleicheInhaltUndInput(Karteikarte karte, String input) {
-        return ExampleSystemController.vergleicheInhaltUndInput(karte, input);
+    public static boolean vergleicheInhaltUndInput(String input) {
+        return ExampleSystemController.vergleicheInhaltUndInput(input);
     }
 
     /**
