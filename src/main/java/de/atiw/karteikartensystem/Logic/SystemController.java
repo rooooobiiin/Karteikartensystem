@@ -50,6 +50,10 @@ public class SystemController {
         return returnList;
     }
 
+    public static Stapel getAktuellerStapel () {
+        return AbfrageManager.getAktuellerStapel();
+    }
+
     /**
      *Erstellt einen neuen Karteikartenstapel
      */
