@@ -11,6 +11,7 @@ import java.util.List;
 import java.sql.*;
 
 public class DatenbankVerwaltung {
+    public static final String ConnectionString = "jdbc:mysql://82.165.240.186:3306/Cardtiw_DB";
     private static DatenbankVerwaltung Instance;
     private String Username;
     private String Password;
@@ -51,12 +52,13 @@ public class DatenbankVerwaltung {
      * @throws InvalidParameterException wird geworfen, falls ein Verbindungsfehler entsteht.
      */
     private Connection connectToDB() throws InvalidParameterException {
-        try {
-            Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@db-server.s-atiw.de:1521:atiwora", this.Username, this.Password);
+        try{
+            Connection conn = DriverManager.getConnection(ConnectionString, this.Username, this.Password);
             return conn;
-        }catch(SQLException sqlEx) {
-            throw new InvalidParameterException("Benutzername oder Passwort ist falsch");
+        }catch(SQLException sqlex) {
+            throw new InvalidParameterException("Ungültige Benutzername und Passwort Kombination.");
         }
+
 
     }
 
@@ -69,7 +71,7 @@ public class DatenbankVerwaltung {
         LinkedList<Stapel> stapelListe = new LinkedList<>();
         Connection con = Instance.connectToDB(); //Verbinden mit der Datenbank
         Statement statement = con.createStatement(); //Erstellen eines SQL Statements
-        ResultSet results = statement.executeQuery("SELECT * FROM \"Cardtiw_Stapel\""); //Ausführen
+        ResultSet results = statement.executeQuery("SELECT * FROM Cardtiw_Stapel"); //Ausführen
         //Für jede Zeile soll ein Stapel Objekt erstellt werden.
         while(results.next()) {
             stapelListe.add(new Stapel(
@@ -88,7 +90,7 @@ public class DatenbankVerwaltung {
     public static Stapel createStapel(Stapel stapel) throws InvalidParameterException {
         try {
             Connection con = Instance.connectToDB(); //Mit Datenbank verbinden
-            String sql = "INSERT INTO \"Cardtiw_Stapel\"(Name) VALUES (?)";
+            String sql = "INSERT INTO Cardtiw_Stapel(Name) VALUES (?)";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, stapel.getName());
             statement.executeUpdate();//SQL Statement ausführen
@@ -109,7 +111,7 @@ public class DatenbankVerwaltung {
         try {
             //Verbinde zur DB
             Connection con = Instance.connectToDB();
-            String sql = "SELECT max(ID) AS \"Last ID\" FROM \"Cardtiw_Stapel\" cs";
+            String sql = "SELECT max(ID) AS \"Last ID\" FROM Cardtiw_Stapel cs";
             Statement statement = con.createStatement();
             //Lese Resultate, sollte nur eine Zeile sein
             ResultSet result = statement.executeQuery(sql);
@@ -129,7 +131,7 @@ public class DatenbankVerwaltung {
     public static Stapel readStapel(int stapelID) throws SQLException {
         //Erhalte die Informationen des Stapels
         Connection con = Instance.connectToDB(); //Verbinde zur DB
-        String sql = "SELECT * FROM \"Cardtiw_Stapel\" WHERE ID=?";
+        String sql = "SELECT * FROM Cardtiw_Stapel WHERE ID=?";
         PreparedStatement statement = con.prepareStatement(sql);
         statement.setInt(1, stapelID);
         ResultSet results = statement.executeQuery();
@@ -138,7 +140,7 @@ public class DatenbankVerwaltung {
 
         //Neue SQL Abfrage, um Karteikarten für den Stapel zu finden.
         con = Instance.connectToDB(); //Erneutes Verbinden mit der DB.
-        sql = "SELECT karte.ID, szk.Stufe, karte.Vorderseite, karte.Rückseite FROM \"Cardtiw_StapelZuKarte\" szk, \"Cardtiw_Karte\" karte WHERE szk.SID=? AND karte.ID=szk.KID";
+        sql = "SELECT karte.ID, szk.Stufe, karte.Vorderseite, karte.Rückseite FROM Cardtiw_StapelZuKarten szk, Cardtiw_Karten karte WHERE szk.SID=? AND karte.ID=szk.KID";
         statement = con.prepareStatement(sql);
         statement.setInt(1,stapelID); //Setzt den Parameter ID
         results = statement.executeQuery();
@@ -163,7 +165,7 @@ public class DatenbankVerwaltung {
     public static void updateStapel(Stapel stapel) throws InvalidParameterException {
         try {
             Connection con = Instance.connectToDB();//Verbinde mit DB
-            String sql = "UPDATE \"Cardtiw_Stapel\" SET Name=? WHERE ID=?";
+            String sql = "UPDATE Cardtiw_Stapel SET Name=? WHERE ID=?";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, stapel.getName()); //Setzt neuen Namen
             statement.setInt(2, stapel.getStapelID()); //Setzt ID
@@ -182,13 +184,13 @@ public class DatenbankVerwaltung {
         try {
             //Zuerst den Key constraint löschen
             Connection con = Instance.connectToDB();
-            String sql = "DELETE FROM \"Cardtiw_StapelZuKarte\" cszk WHERE SID=?";
+            String sql = "DELETE FROM Cardtiw_StapelZuKarten cszk WHERE SID=?";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setInt(1, stapel.getStapelID());
             statement.executeUpdate();
             //Danach lösche den Stapel
             con = Instance.connectToDB();
-            sql = "DELETE FROM \"Cardtiw_Stapel\" WHERE ID=?";
+            sql = "DELETE FROM Cardtiw_Stapel WHERE ID=?";
             statement = con.prepareStatement(sql);
             statement.executeUpdate();
         }catch(SQLException sqlEx) {
@@ -205,7 +207,7 @@ public class DatenbankVerwaltung {
         try {
             //Füge die Karteikarte in die Datenbank ein.
             Connection con = Instance.connectToDB();
-            String sql = "INSERT INTO \"Cardtiw_Karte\"(Vorderseite, Rückseite) VALUES(?,?)";
+            String sql = "INSERT INTO Cardtiw_Karten(Vorderseite, Rückseite) VALUES(?,?)";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, karte.getVoderseite());
             statement.setString(2, karte.getRueckseite());
@@ -213,7 +215,7 @@ public class DatenbankVerwaltung {
             int id = getKarteikarteLastID();//Finde passende ID
             //Füge die Verbindung von Stapel und der Karteikarte hinzu.
             con = Instance.connectToDB();
-            sql = "INSERT INTO \"Cardtiw_StapelZuKarte\"(SID, KID, Stufe) VALUES (?,?,?)";
+            sql = "INSERT INTO Cardtiw_StapelZuKarten(SID, KID, Stufe) VALUES (?,?,?)";
             statement = con.prepareStatement(sql);
             statement.setInt(1, StapelID);
             statement.setInt(2, id);
@@ -231,7 +233,7 @@ public class DatenbankVerwaltung {
      */
     private static int getKarteikarteLastID() throws SQLException {
         Connection con = Instance.connectToDB();
-        String sql = "SELECT ID FROM \"Cardtiw_Karte\" ck WHERE ck.ID=(SELECT max(ID) FROM \"Cardtiw_Karte\" ck2 )";
+        String sql = "SELECT ID FROM Cardtiw_Karten ck WHERE ck.ID=(SELECT max(ID) FROM Cardtiw_Karte ck2 )";
         Statement statement = con.createStatement();
         ResultSet result = statement.executeQuery(sql);
         result.next();
@@ -248,7 +250,7 @@ public class DatenbankVerwaltung {
     public static void updateKarteikarte(Karteikarte karte, String vorderseiteNeu, String rueckseiteNeu) throws InvalidParameterException {
         try {
             Connection con = Instance.connectToDB();
-            String sql = "UPDATE \"Cardtiw_Karte\" SET VORDERSEITE='?', RÜCKSEITE='?' WHERE ID=?";
+            String sql = "UPDATE Cardtiw_Karten SET VORDERSEITE='?', RÜCKSEITE='?' WHERE ID=?";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, vorderseiteNeu);
             statement.setString(2, rueckseiteNeu);
@@ -268,14 +270,14 @@ public class DatenbankVerwaltung {
         try {
             //Zuerst Key constraint löschen
             Connection con = Instance.connectToDB();
-            String sql = "DELETE FROM \"Cardtiw_StapelZuKarte\" ck  WHERE KID=?";
+            String sql = "DELETE FROM Cardtiw_StapelZuKarten ck  WHERE KID=?";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setInt(1, karte.getKarteiKartenID());
             statement.executeUpdate();
 
             //Danach die Karte an sich.
             con = Instance.connectToDB();
-            sql = "DELETE FROM \"Cardtiw_Karte\" ck  WHERE ID=?";
+            sql = "DELETE FROM Cardtiw_Karten ck  WHERE ID=?";
             statement = con.prepareStatement(sql);
             statement.setInt(1, karte.getKarteiKartenID());
             statement.executeUpdate();
@@ -293,7 +295,7 @@ public class DatenbankVerwaltung {
         try {
             //Zuerst Key constraint löschen
             Connection con = Instance.connectToDB();
-            String sql = "DELETE FROM \"Cardtiw_StapelZuKarte\" ck  WHERE KID=? AND SID=?";
+            String sql = "DELETE FROM Cardtiw_StapelZuKarten ck  WHERE KID=? AND SID=?";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setInt(1, karte.getKarteiKartenID());
             statement.setInt(2, stapelID);

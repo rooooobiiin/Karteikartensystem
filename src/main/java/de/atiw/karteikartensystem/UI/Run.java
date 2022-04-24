@@ -7,14 +7,13 @@ import de.atiw.karteikartensystem.Persistenz.DatenbankVerwaltung;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Run extends Application {
-    public static void main(String[] args) throws SQLException {
-
+    public static void main(String[] args) {
         launch();
 
 //        SystemController controller = new SystemController();
