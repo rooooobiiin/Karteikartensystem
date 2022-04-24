@@ -204,7 +204,7 @@ public class DatenbankVerwaltung {
         try {
             //Füge die Karteikarte in die Datenbank ein.
             Connection con = Instance.connectToDB();
-            String sql = "INSERT INTO Cardtiw_Karten(Vorderseite, Rueckseite) VALUES(\"?\",\"?\")";
+            String sql = "INSERT INTO Cardtiw_Karten(Vorderseite, Rueckseite) VALUES(?,?)";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, karte.getVoderseite());
             statement.setString(2, karte.getRueckseite());
@@ -212,11 +212,11 @@ public class DatenbankVerwaltung {
             int id = getKarteikarteLastID();//Finde passende ID
             //Füge die Verbindung von Stapel und der Karteikarte hinzu.
             con = Instance.connectToDB();
-            sql = "INSERT INTO Cardtiw_StapelZuKarten(SID, KID, Stufe) VALUES (?,?,?)";
+            sql = "INSERT INTO Cardtiw_StapelZuKarten(SID, KID, Stufe) VALUES (?,?,1)";
             statement = con.prepareStatement(sql);
             statement.setInt(1, StapelID);
             statement.setInt(2, id);
-            statement.setInt(3, 1); //Neu erstellte Karteikarten kommen in die 1. Stufe
+            System.out.println(statement.toString());
             statement.executeUpdate();
         }catch(SQLException sqlEx){
             throw new InvalidParameterException(sqlEx.getMessage());
@@ -230,7 +230,7 @@ public class DatenbankVerwaltung {
      */
     private static int getKarteikarteLastID() throws SQLException {
         Connection con = Instance.connectToDB();
-        String sql = "SELECT ID FROM Cardtiw_Karten ck WHERE ck.ID=(SELECT max(ID) FROM Cardtiw_Karte ck2 )";
+        String sql = "SELECT ID FROM Cardtiw_Karten ck WHERE ck.ID=(SELECT max(ID) FROM Cardtiw_Karten ck2 )";
         Statement statement = con.createStatement();
         ResultSet result = statement.executeQuery(sql);
         result.next();
