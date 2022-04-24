@@ -47,7 +47,7 @@ public class SystemController {
      *Erstellt einen neuen Karteikartenstapel
      */
     public static void createStapel(String nameStapel) {
-        //DatenbankVerwaltung.createStapel(nameStapel);
+        DatenbankVerwaltung.createStapel(nameStapel);
     }
 
     /**
