@@ -179,7 +179,9 @@ public class ExampleSystemController {
 
     public static void durchschauenInitialisieren(byte box) {
         ExampleAbfrageManager.setBoxNummer(box);
+        ExampleAbfrageManager.aktuelleKarteikarte = ExampleAbfrageManager.aktuellerStapel.getKartenSet().get(0);
     }
+
 
 
     public static void import_csv(){
