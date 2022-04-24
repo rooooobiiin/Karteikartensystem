@@ -178,7 +178,7 @@ public class ExampleSystemController {
 
 
     public static void durchschauenInitialisieren(byte box) {
-        AbfrageManager.setBoxNummer(box);
+        ExampleAbfrageManager.setBoxNummer(box);
     }
 
 

@@ -62,7 +62,7 @@ public class ExampleAbfrageManager {
                 aktuelleKarteikarte = null;
             }
         } else {
-            if (boxSet.indexOf(aktuelleKarteikarte) <= boxSet.size() -1) {
+            if (boxSet.indexOf(aktuelleKarteikarte) < boxSet.size() -1) {
                 aktuelleKarteikarte = boxSet.get(boxSet.indexOf(aktuelleKarteikarte)+1);
             } else {
                 aktuelleKarteikarte = null;
