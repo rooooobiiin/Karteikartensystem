@@ -77,7 +77,7 @@ public class SystemController {
 
             for (int i = 0; i < alleStapel.size(); i++) {
                 if (alleStapel.get(i).getName().equals(name)) {
-                    id = i;
+                    id = alleStapel.get(i).getStapelID();
                 }
             }
 
