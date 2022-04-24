@@ -20,6 +20,8 @@ public class GUIController {
     public static Scene scene;
     private static SceneName name;
 
+    public static SceneName lastScene;
+
     public static String username;
     public static String password;
 
@@ -27,6 +29,7 @@ public class GUIController {
     public static String stapel_gewählt = "";
 
     public static void start(Stage stage_main){
+        ExampleSystemController.initController();
         stage = stage_main;
         switchScene(SceneName.Welcome);
         stage.show();

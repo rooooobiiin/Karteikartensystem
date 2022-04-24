@@ -7,25 +7,31 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class NewCardController implements Initializable {
     @FXML
-    private Label vorderseite;
+    private TextField vorderseite;
     @FXML
-    private Label rueckseite;
+    private TextField rueckseite;
+    @FXML
+    private Label messageBox;
 
     public void stackview(ActionEvent actionEvent) {
+        GUIController.switchScene(SceneName.Stackview);
     }
 
     public void add(ActionEvent actionEvent) {
         ExampleSystemController.createKarteikarte(vorderseite.getText(), rueckseite.getText());
+        messageBox.setText("Karteikarte erfolgreich hinzugefügt.");
+
     }
 
     public void close(ActionEvent actionEvent) {
-        GUIController.switchScene(SceneName.Stackview);
+        GUIController.switchScene(SceneName.Stack);
     }
 
     @Override

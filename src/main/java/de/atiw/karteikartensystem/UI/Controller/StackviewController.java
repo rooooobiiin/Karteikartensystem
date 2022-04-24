@@ -31,7 +31,6 @@ public class StackviewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ExampleSystemController.initController();
         vboxStackview.getChildren().clear();
         LinkedList<String> stapel = ExampleSystemController.readStapelList();
         for (String s :

@@ -1,6 +1,7 @@
 package de.atiw.karteikartensystem.UI.Controller;
 
 import de.atiw.karteikartensystem.Logic.SystemController;
+import de.atiw.karteikartensystem.UI.Example.ExampleSystemController;
 import de.atiw.karteikartensystem.UI.GUIController;
 import de.atiw.karteikartensystem.UI.SceneName;
 import javafx.event.ActionEvent;
@@ -28,6 +29,8 @@ public class EditController implements Initializable {
 
     public void delete(ActionEvent actionEvent) {
         //TODO: insert command after Robin corrected parameter
+//        SystemController.deleteKarteikarte();
+        ExampleSystemController.deleteKarteikarte();
     }
 
     public void confirm(ActionEvent actionEvent) {

@@ -42,11 +42,13 @@ public class StackController implements Initializable {
     @FXML
     public void quiz(ActionEvent actionEvent) {
         if (viewMode) {
-            SystemController.abfrageInitialisieren(viewBox);
+//            SystemController.abfrageInitialisieren(viewBox);
+            ExampleSystemController.durchschauenInitialisieren(viewBox);
             GUIController.switchScene(SceneName.ReadFront);
         }
         else {
-            SystemController.abfrageInitialisieren(viewBox);
+//            SystemController.abfrageInitialisieren(viewBox);
+            ExampleSystemController.durchschauenInitialisieren(viewBox);
             GUIController.switchScene(SceneName.WriteFront);
         }
 
@@ -54,7 +56,9 @@ public class StackController implements Initializable {
 
     @FXML
     public void delete(ActionEvent actionEvent) {
-        SystemController.deleteStapel();
+
+//        SystemController.deleteStapel();
+        ExampleSystemController.deleteStapel();
     }
 
     @FXML

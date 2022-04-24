@@ -10,6 +10,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class WriteBackController implements Initializable {
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+
     public void stackview(ActionEvent actionEvent) {
         GUIController.switchScene(SceneName.Stackview);
     }
@@ -30,8 +36,5 @@ public class WriteBackController implements Initializable {
         SystemController.changeBox(true);
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-    }
 }

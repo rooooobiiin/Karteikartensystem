@@ -71,7 +71,7 @@
                         </Label>
                         <AnchorPane layoutX="186.0" layoutY="125.0" prefHeight="211.0" prefWidth="339.0" style="-fx-background-color: DAE3F3; -fx-border-color: grey;">
                            <children>
-                              <Label fx:id="card" layoutX="52.0" layoutY="51.0" prefHeight="18.0" prefWidth="234.0" text="XXXX">
+                              <Label fx:id="card" layoutX="52.0" layoutY="51.0" prefHeight="18.0" prefWidth="234.0">
                                  <font>
                                     <Font size="20.0" />
                                  </font></Label>
