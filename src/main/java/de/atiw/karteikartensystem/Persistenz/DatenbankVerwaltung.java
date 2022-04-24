@@ -316,4 +316,5 @@ public class DatenbankVerwaltung {
     public static void writeCSV(File file) {
         //TODO: implementieren
     }
+
 }
