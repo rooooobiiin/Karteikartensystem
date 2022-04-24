@@ -95,6 +95,18 @@ public class Stapel {
         return box;
     }
 
+    public int anzahlKarteninBox(byte boxnummer) {
+        int zaehler = 0;
+
+        for (int i = 0; i < kartenSet.size(); i++) {
+            if (kartenSet.get(i).getBox() == boxnummer) {
+                zaehler++;
+            }
+        }
+
+        return zaehler;
+    }
+
 
     @Override
     public String toString() {
