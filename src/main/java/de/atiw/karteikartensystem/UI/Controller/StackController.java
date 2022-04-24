@@ -64,23 +64,32 @@ public class StackController implements Initializable {
 
     @FXML
     public void quiz(ActionEvent actionEvent) {
-
-        if(ExampleSystemController.getAktuellerStapel().anzahlKarteninBox((viewBox)) == 0 || ExampleSystemController.getAktuellerStapel().getKartenSet().size() == 0){
-            message.setText("Die gewählte Box ist leer.");
+        boolean hasCards = true;
+        if (viewBox == 0){
+            if(ExampleSystemController.getAktuellerStapel().getKartenSet().size() == 0){
+                hasCards = false;
+                message.setText("Die gewählte Box ist leer.");
+            }
+        }
+        else{
+            if (ExampleSystemController.getAktuellerStapel().anzahlKarteninBox((viewBox)) == 0){
+                hasCards = false;
+                message.setText("Die gewählte Box ist leer.");
+            }
         }
 
-
-        if (viewMode) {
+        if (hasCards){
+            if (viewMode) {
 //            SystemController.abfrageInitialisieren(viewBox);
-            ExampleSystemController.durchschauenInitialisieren(viewBox);
-            GUIController.switchScene(SceneName.ReadFront);
-        }
-        else {
+                ExampleSystemController.durchschauenInitialisieren(viewBox);
+                GUIController.switchScene(SceneName.ReadFront);
+            }
+            else {
 //            SystemController.abfrageInitialisieren(viewBox);
-            ExampleSystemController.durchschauenInitialisieren(viewBox);
-            GUIController.switchScene(SceneName.WriteFront);
+                ExampleSystemController.durchschauenInitialisieren(viewBox);
+                GUIController.switchScene(SceneName.WriteFront);
+            }
         }
-
     }
 
     @FXML

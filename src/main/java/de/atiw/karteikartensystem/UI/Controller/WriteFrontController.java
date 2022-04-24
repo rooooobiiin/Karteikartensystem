@@ -30,17 +30,25 @@ public class WriteFrontController implements Initializable {
     }
 
     public void enter(ActionEvent actionEvent) {
-        boolean correct = ExampleSystemController.vergleicheInhaltUndInput(tf_input.getText());
-        ExampleSystemController.changeBox(correct);
-        GUIController.lastScene = SceneName.WriteFront;
-        if (correct){
-            GUIController.message = "Korrekt!";
-            GUIController.switchScene(SceneName.Successful);
+        if (ExampleSystemController.getaktuelleKarteikarte() != null){
+            boolean correct = ExampleSystemController.vergleicheInhaltUndInput(tf_input.getText());
+            ExampleSystemController.changeBox(correct);
+            GUIController.lastScene = SceneName.WriteFront;
+            if (correct){
+                GUIController.message = "Korrekt!";
+                GUIController.switchScene(SceneName.Successful);
+            }
+            else{
+                GUIController.message = "Leider Falsch!";
+                GUIController.switchScene(SceneName.Successful);
+            }
         }
         else{
-            GUIController.message = "Leider Falsch!";
+            GUIController.message = "Alle Karteikarten der Box wurden bearbeitet";
+            GUIController.lastScene = SceneName.Stack;
             GUIController.switchScene(SceneName.Successful);
         }
+
 
     }
 
