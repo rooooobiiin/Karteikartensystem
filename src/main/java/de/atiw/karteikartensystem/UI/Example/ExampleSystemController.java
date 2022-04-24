@@ -155,7 +155,7 @@ public class ExampleSystemController {
      * @return Wirft einen boolean zurück ob die Eingabe und der Text Karteikartenrückseite gleich sind (true) oder nicht (false)
      */
     public static boolean vergleicheInhaltUndInput(String input) {
-        return ExampleSystemController.vergleicheInhaltUndInput(input);
+        return ExampleAbfrageManager.vergleicheInhaltUndInput(input);
     }
 
     /**
