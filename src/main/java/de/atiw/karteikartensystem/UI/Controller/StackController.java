@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.SplitMenuButton;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
@@ -23,10 +24,18 @@ public class StackController implements Initializable {
     @FXML
     private Label stapel_name;
 
+    @FXML
+    private SplitMenuButton auswahlfeld;
+
+    @FXML
+    private Label modus;
+
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        auswahlfeld.setText("Alle");
+        modus.setText("Lesemodus");
         stapel_name.setText(GUIController.stapel_gewählt);
 
     }
@@ -51,8 +60,14 @@ public class StackController implements Initializable {
 
     @FXML
     public void wechsel(ActionEvent actionEvent) {
-        if (viewMode) viewMode = false;
-        else viewMode = true;
+        if (viewMode) {
+            viewMode = false;
+            modus.setText("Eingabemodus");
+        }
+        else {
+            viewMode = true;
+            modus.setText("Lesemodus");
+        }
     }
 
     @FXML
@@ -62,27 +77,37 @@ public class StackController implements Initializable {
 
     public void alle(ActionEvent actionEvent) {
         viewBox = 0;
+        auswahlfeld.setText("Alle");
     }
 
     public void box1(ActionEvent actionEvent) {
+
         viewBox = 1;
+        auswahlfeld.setText("Box 1");
     }
 
     public void box2(ActionEvent actionEvent) {
         viewBox = 2;
+        auswahlfeld.setText("Box 2");
     }
 
     public void box3(ActionEvent actionEvent) {
         viewBox = 3;
+        auswahlfeld.setText("Box 3");
     }
 
     public void box4(ActionEvent actionEvent) {
         viewBox = 4;
+        auswahlfeld.setText("Box 4");
     }
 
     public void box5(ActionEvent actionEvent) {
         viewBox = 5;
+        auswahlfeld.setText("Box 5");
     }
 
 
+    public void addCard(ActionEvent actionEvent) {
+        GUIController.switchScene(SceneName.NewCard);
+    }
 }
