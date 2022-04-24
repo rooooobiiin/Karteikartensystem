@@ -24,8 +24,8 @@ public class SystemController {
     //KARTEIKARTEN AUS DER DB BEKOMMEN
 
     /**
-     *
-     * @return Wirft eine Liste aller Karteikartenstapel zurück, die in der Datenbank existieren.
+     * Erhält eine Liste mit Stapeln und wandelt die in eine String-Liste um die zurückgegeben wird.
+     * @return Wirft eine String-Liste aller Karteikartenstapel zurück, die in der Datenbank existieren.
      */
     public static List<String> readStapelList() {
         List<Stapel> liste;
@@ -54,7 +54,7 @@ public class SystemController {
     /**
      *
      * @param name die Bezeichnung des Stapels
-     * @return Wirft den Stapel zurück, der unter dem Namen zu finden ist.
+     * @return Wirft den Stapel zurück, der in der Datenbank unter dem Namen zu finden ist.
      */
     public static Stapel readStapel(String name) {
         List<Stapel> alleStapel;
@@ -89,7 +89,7 @@ public class SystemController {
 
     /**
      *
-     * Der aktuelle Stapel wird gelöscht.
+     * Der aktuelle Stapel wird gelöscht. Sowohl im Abfragemanager als auch in der Datenbank.
      */
     public static void deleteStapel() {
         DatenbankVerwaltung.deleteStapel(AbfrageManager.getAktuellerStapel());
@@ -110,10 +110,10 @@ public class SystemController {
     }
 
     /**
-     * Updatet eine Übergebene Karteikarte erst in dem aktuellen Stapel und dann in der Datenbank
+     * Updatet eine übergebene Karteikarte erst in dem aktuellen Stapel und dann in der Datenbank
      *
-     * @param vorderseiteNEW Text auf der Vorderseite der geupdatet werden soll
-     * @param rueckseiteNEW Text auf der Rückseite der geupdatet werden soll
+     * @param vorderseiteNEW Text auf der Vorderseite der aktualisiert werden soll
+     * @param rueckseiteNEW Text auf der Rückseite der aktualisiert werden soll
      */
     public static void updateKarteikarte(String vorderseiteNEW, String rueckseiteNEW) {
         Stapel stapel = AbfrageManager.getAktuellerStapel();
@@ -140,7 +140,7 @@ public class SystemController {
 
 
     /**
-     * Wenn es keine Karteikarten zum zurückgeben mehr gibt wirft die Methode NULL zurück.
+     * Wirft die aktuelle Karteikarte zurück
      * @return Die nächste Karteikarte des Stapels der dem Abfragemanager übergebene wurde
      */
     public static Karteikarte getaktuelleKarteikarte() {
@@ -148,18 +148,18 @@ public class SystemController {
     }
 
     /**
-     *
-     * @return Wirft eine Zufällige Karteikarte aus dem übergebenen Stapel des Abfragemanagers zurück
+     * Diese Methode kann nur bei der Abfrage bei einer bestimmten Box angewendet werden.
+     * Grund dafür ist die implementierung im AbfrageManager!
+     * @return Wirft eine zufällige Karteikarte aus dem übergebenen Stapel des Abfragemanagers zurück.
      */
     public static Karteikarte getRandomKarteikarte() {
-        //TODO: implementieren
-        return null;
+        return AbfrageManager.getRandomKarte();
     }
 
     /**
      *
      * @param input Zu vergleichender eingegebener Text
-     * @return Wirft einen boolean zurück ob die Eingabe und der Text Karteikartenrückseite gleich sind (true) oder nicht (false)
+     * @return Wirft einen boolean zurück, ob die Eingabe und die Karteikartenrückseite gleich sind (true) oder nicht (false)
      */
     public static boolean vergleicheInhaltUndInput(String input) {
         return AbfrageManager.vergleicheInhaltUndInput(input);
