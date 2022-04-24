@@ -92,8 +92,9 @@
                            </children>
                         </AnchorPane>
                         <Label layoutX="540.0" layoutY="240.0" text="Aktueller Modus:" />
-                        <Label layoutX="540.0" layoutY="260.0" prefHeight="26.0" prefWidth="132.0" text="Lesemodus" />
-                        <SplitMenuButton layoutX="540.0" layoutY="127.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="132.0" text="Wahl Box:">
+                        <Button layoutX="540.0" layoutY="127.0" mnemonicParsing="false" onAction="#addCard" prefHeight="35.0" prefWidth="131.0" text="Karte hinzufügen" />
+                        <Label fx:id="modus" layoutX="540.0" layoutY="260.0" prefHeight="26.0" prefWidth="132.0" />
+                        <SplitMenuButton fx:id="auswahlfeld" layoutX="540.0" layoutY="182.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="132.0">
                           <items>
                             <MenuItem fx:id="btn_alle" mnemonicParsing="false" onAction="#alle" text="Alle" />
                             <MenuItem fx:id="btn_box1" mnemonicParsing="false" onAction="#box1" text="Box 1" />
@@ -105,7 +106,7 @@
                         </SplitMenuButton>
                         <Label fx:id="stapel_name" alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" textAlignment="CENTER" textFill="#337cb4" wrapText="false">
                            <font>
-                              <Font size="30.0" fx:id="x7" />
+                              <Font size="30.0" fx:id="x71" />
                            </font>
                         </Label>
                         <ImageView fitHeight="67.0" fitWidth="214.0" layoutX="528.0" layoutY="13.0">

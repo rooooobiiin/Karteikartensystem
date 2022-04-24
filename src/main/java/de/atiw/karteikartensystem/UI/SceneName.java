@@ -10,5 +10,6 @@ public enum SceneName {
     WriteBack,
     Edit,
     NewStack,
-    NewCard
+    NewCard,
+    Successful
 }

@@ -64,22 +64,9 @@ public class StackviewController implements Initializable {
 
 
     }
-
-
-
-
     @FXML
     public void newstack(ActionEvent actionEvent) {
-
-//        GUIController.switchScene(SceneName.NewStack);
-//        LinkedList<String> stapel = ExampleSystemController.readStapelList();
-//        for (String s :
-//                stapel) {
-//            vboxStackview.getChildren().add(new Button(s));
-//        }
-
-
-        vboxTOP.getChildren().clear();
+        GUIController.switchScene(SceneName.NewStack);
     }
 
     @FXML

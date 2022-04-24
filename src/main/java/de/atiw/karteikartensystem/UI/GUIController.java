@@ -87,13 +87,17 @@ public class GUIController {
                 fxmlLoader = new FXMLLoader(Run.class.getResource("newStack.fxml"));
                 setScene();
                 break;
+            case Successful:
+                fxmlLoader = new FXMLLoader(Run.class.getResource("successful.fxml"));
+                setScene();
+                break;
         }
     }
 
     private static void setScene(){
         scene = null;
         try {
-            scene = new Scene(fxmlLoader.load(), 1000, 700);
+            scene = new Scene(fxmlLoader.load(), 910, 615);
         } catch (IOException e) {
             e.printStackTrace();
         }
