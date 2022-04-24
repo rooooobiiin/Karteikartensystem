@@ -147,7 +147,7 @@ public class DatenbankVerwaltung {
             stapel.addKarteikarte(new Karteikarte(
                 results.getInt("ID"),
                 results.getString("Vorderseite"),
-                results.getString("Rückseite"),
+                results.getString("Rueckseite"),
                 results.getByte("Stufe")
             ));
         }
