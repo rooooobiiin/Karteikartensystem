@@ -204,7 +204,7 @@ public class DatenbankVerwaltung {
         try {
             //Füge die Karteikarte in die Datenbank ein.
             Connection con = Instance.connectToDB();
-            String sql = "INSERT INTO Cardtiw_Karten(Vorderseite, Rückseite) VALUES(?,?)";
+            String sql = "INSERT INTO Cardtiw_Karten(Vorderseite, Rueckseite) VALUES(?,?)";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, karte.getVoderseite());
             statement.setString(2, karte.getRueckseite());
@@ -247,7 +247,7 @@ public class DatenbankVerwaltung {
     public static void updateKarteikarte(Karteikarte karte, String vorderseiteNeu, String rueckseiteNeu) throws InvalidParameterException {
         try {
             Connection con = Instance.connectToDB();
-            String sql = "UPDATE Cardtiw_Karten SET VORDERSEITE='?', RÜCKSEITE='?' WHERE ID=?";
+            String sql = "UPDATE Cardtiw_Karten SET VORDERSEITE='?', RUECKSEITE='?' WHERE ID=?";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, vorderseiteNeu);
             statement.setString(2, rueckseiteNeu);
