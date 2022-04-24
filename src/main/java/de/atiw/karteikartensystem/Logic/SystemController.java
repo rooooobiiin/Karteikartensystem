@@ -78,10 +78,10 @@ public class SystemController {
             for (int i = 0; i < alleStapel.size(); i++) {
                 if (alleStapel.get(i).getName().equals(name)) {
                     id = alleStapel.get(i).getStapelID();
+                    AbfrageManager.setAktuellerStapel(alleStapel.get(i));
                 }
             }
 
-            AbfrageManager.setAktuellerStapel(DatenbankVerwaltung.readStapel(id));
             AbfrageManager.setAktuelleKarteikarte(AbfrageManager.getAktuellerStapel().getKartenSet().get(0));
 
             return AbfrageManager.getAktuellerStapel();
