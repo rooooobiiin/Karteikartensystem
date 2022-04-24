@@ -41,19 +41,6 @@ public class GUIController {
             case Stackview:
                 fxmlLoader = new FXMLLoader(Run.class.getResource("stackview.fxml"));
                 setScene();
-
-                //ADDING BUTTONS
-//                VBox vboxStackview = new VBox();
-//                LinkedList<String> stapel = ExampleSystemController.readStapelList();
-//                for (String s :
-//                        stapel) {
-//                    vboxStackview.getChildren().add(new Button(s));
-//                }
-////                scene = null;
-//                scene = new Scene(vboxStackview, 1000, 700);
-//                stage.setScene(scene);
-
-
                 break;
             case Stack:
                 fxmlLoader = new FXMLLoader(Run.class.getResource("stack.fxml"));
@@ -103,6 +90,4 @@ public class GUIController {
         }
         stage.setScene(scene);
     }
-
-
 }

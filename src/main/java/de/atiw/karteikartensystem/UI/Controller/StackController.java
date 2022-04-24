@@ -36,8 +36,7 @@ public class StackController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         auswahlfeld.setText("Alle");
         modus.setText("Lesemodus");
-        stapel_name.setText(GUIController.stapel_gewählt);
-
+        stapel_name.setText(ExampleSystemController.getAktuellerStapel().getName());
     }
 
     @FXML

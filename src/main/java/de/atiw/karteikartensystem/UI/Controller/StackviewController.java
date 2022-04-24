@@ -31,11 +31,14 @@ public class StackviewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ExampleSystemController.initController();
         vboxStackview.getChildren().clear();
         LinkedList<String> stapel = ExampleSystemController.readStapelList();
         for (String s :
                 stapel) {
             Button button = new Button(s);
+            button.setMinWidth(vboxStackview.getPrefWidth());
+
             GUIController.stapelnamen.addLast(s);
             vboxStackview.getChildren().add(button);
 
@@ -43,12 +46,12 @@ public class StackviewController implements Initializable {
                 @Override
                 public void handle(ActionEvent event) {
                     GUIController.stapel_gewählt = s;
+                    ExampleSystemController.readStapel(s);
                     GUIController.switchScene(SceneName.Stack);
-                    SystemController.readStapel(s);
+//                    SystemController.readStapel(s);
                 }
             };
 
-            button.setMinWidth(vboxStackview.getPrefWidth());
             button.setOnAction(buttonHandler);
         }
 
