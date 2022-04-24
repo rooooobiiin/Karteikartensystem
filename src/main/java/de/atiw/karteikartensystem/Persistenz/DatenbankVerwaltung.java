@@ -247,7 +247,7 @@ public class DatenbankVerwaltung {
     public static void updateKarteikarte(Karteikarte karte, String vorderseiteNeu, String rueckseiteNeu) throws InvalidParameterException {
         try {
             Connection con = Instance.connectToDB();
-            String sql = "UPDATE Cardtiw_Karten SET VORDERSEITE='?', RUECKSEITE='?' WHERE ID=?";
+            String sql = "UPDATE Cardtiw_Karten SET VORDERSEITE=?, RUECKSEITE=? WHERE ID=?";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, vorderseiteNeu);
             statement.setString(2, rueckseiteNeu);
