@@ -1,6 +1,5 @@
 package de.atiw.karteikartensystem.UI.Controller;
 
-import de.atiw.karteikartensystem.Logic.SystemController;
 import de.atiw.karteikartensystem.UI.Example.ExampleSystemController;
 import de.atiw.karteikartensystem.UI.GUIController;
 import de.atiw.karteikartensystem.UI.SceneName;
@@ -17,7 +16,7 @@ import java.net.URL;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 
-public class StackviewController implements Initializable {
+public class ExportController implements Initializable {
     @FXML
     private VBox vboxStackview;
 
@@ -74,9 +73,8 @@ public class StackviewController implements Initializable {
     public void csv_export(ActionEvent actionEvent) {
 
 //        SystemController.export_csv();
-//        FileChooser fc = new FileChooser();
-//        File file = fc.showOpenDialog(GUIController.stage);
-        GUIController.switchScene(SceneName.Export);
+        FileChooser fc = new FileChooser();
+        File file = fc.showOpenDialog(GUIController.stage);
     }
 
 

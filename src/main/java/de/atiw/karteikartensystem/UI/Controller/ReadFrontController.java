@@ -18,6 +18,7 @@ public class ReadFrontController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        GUIController.lastScene = SceneName.ReadFront;
         if (ExampleSystemController.getaktuelleKarteikarte() == null){
             GUIController.switchScene(SceneName.Stack);
         }
@@ -46,4 +47,7 @@ public class ReadFrontController implements Initializable {
     }
 
 
+    public void back(ActionEvent actionEvent) {
+        GUIController.switchScene(SceneName.Stack);
+    }
 }

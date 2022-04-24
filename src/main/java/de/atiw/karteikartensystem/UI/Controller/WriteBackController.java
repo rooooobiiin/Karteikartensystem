@@ -1,19 +1,26 @@
 package de.atiw.karteikartensystem.UI.Controller;
 
 import de.atiw.karteikartensystem.Logic.SystemController;
+import de.atiw.karteikartensystem.UI.Example.ExampleSystemController;
 import de.atiw.karteikartensystem.UI.GUIController;
 import de.atiw.karteikartensystem.UI.SceneName;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class WriteBackController implements Initializable {
 
+    @FXML
+    private Label card;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        GUIController.lastScene = SceneName.WriteBack;
+        card.setText(ExampleSystemController.getaktuelleKarteikarte().getRueckseite());
     }
 
     public void stackview(ActionEvent actionEvent) {
@@ -37,4 +44,7 @@ public class WriteBackController implements Initializable {
     }
 
 
+    public void back(ActionEvent actionEvent) {
+        GUIController.switchScene(SceneName.Stack);
+    }
 }

@@ -89,6 +89,7 @@
                               <Image url="@Pictures/CARDTIW_Logo.PNG" />
                            </image>
                         </ImageView>
+                        <Button fx:id="back" onAction="#back" layoutX="429.0" layoutY="13.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="85.0" text="Zurück" />
                      </children>
                   </AnchorPane>
                </content>

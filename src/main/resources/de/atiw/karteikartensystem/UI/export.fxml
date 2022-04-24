@@ -9,7 +9,6 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -19,7 +18,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.atiw.karteikartensystem.UI.Controller.WriteFrontController">
+<VBox fx:id="vboxTOP" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.atiw.karteikartensystem.UI.Controller.StackviewController">
    <children>
       <Label prefHeight="26.0" prefWidth="274.0" text="CARDTIW - Karteikartensystem">
          <font>
@@ -28,18 +27,11 @@
       </Label>
       <MenuBar nodeOrientation="RIGHT_TO_LEFT" VBox.vgrow="NEVER">
          <menus>
-            <Menu mnemonicParsing="false">
+            <Menu mnemonicParsing="false" text="CSV-Options">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Undo" />
-                  <MenuItem mnemonicParsing="false" text="Redo" />
+                  <MenuItem fx:id="btn_import" mnemonicParsing="false" onAction="#csv_import" text="CSV-Import" />
+                  <MenuItem fx:id="btn_export" mnemonicParsing="false" onAction="#csv_export" text="CSV-Export" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Cut" />
-                  <MenuItem mnemonicParsing="false" text="Copy" />
-                  <MenuItem mnemonicParsing="false" text="Paste" />
-                  <MenuItem mnemonicParsing="false" text="Delete" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Select All" />
-                  <MenuItem mnemonicParsing="false" text="Unselect All" />
                </items>
             </Menu>
          </menus>
@@ -48,10 +40,17 @@
          <items>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <VBox prefHeight="630.0" prefWidth="126.0" />
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <VBox fx:id="vboxStackview" prefHeight="493.0" prefWidth="125.0">
                      <children>
-                        <Button fx:id="btn_stackview" mnemonicParsing="false" onAction="#stackview" onMouseClicked="#stackview" prefHeight="47.0" prefWidth="135.0" text="Stackview" />
+                        <Button fx:id="btnTeststapel" mnemonicParsing="false" prefHeight="33.0" prefWidth="141.0" text="Button" />
+                     </children></VBox>
+                  <VBox prefHeight="39.0" prefWidth="125.0">
+                     <children>
+                        <Button fx:id="btn_newstack" mnemonicParsing="false" onAction="#newstack" prefHeight="50.0" prefWidth="140.0" text="+">
+                           <font>
+                              <Font name="System Bold Italic" size="23.0" />
+                           </font>
+                        </Button>
                      </children>
                   </VBox>
                </children>
@@ -65,37 +64,16 @@
                               <Image url="@Pictures/Willkommen_Logo.PNG" />
                            </image>
                         </ImageView>
-                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="WriteFront" textAlignment="CENTER" textFill="#337cb4" wrapText="false">
+                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="Bitte Stapel zum Exportieren auswählen." textAlignment="CENTER" textFill="#337cb4" wrapText="false">
                            <font>
                               <Font size="30.0" fx:id="x7" />
                            </font>
                         </Label>
-                        <Button fx:id="btn_enter" layoutX="537.0" layoutY="352.0" mnemonicParsing="false" onAction="#enter" onMouseClicked="#enter" prefHeight="82.0" prefWidth="133.0" style="-fx-background-color: Grey; -fx-border-color: black;" text="Enter!">
-                           <font>
-                              <Font name="System Bold Italic" size="23.0" />
-                           </font>
-                        </Button>
-                        <AnchorPane layoutX="186.0" layoutY="125.0" prefHeight="211.0" prefWidth="339.0" style="-fx-background-color: DAE3F3; -fx-border-color: grey;">
-                           <children>
-                              <Label fx:id="card" layoutX="44.0" layoutY="35.0" prefHeight="18.0" prefWidth="234.0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font></Label>
-                           </children>
-                        </AnchorPane>
-                        <Button fx:id="btn_edit" layoutX="537.0" layoutY="310.0" mnemonicParsing="false" onAction="#edit" onMouseClicked="#edit" prefHeight="26.0" prefWidth="84.0" style="-fx-border-color: grey;" text="Bearbeiten" />
-                        <Button fx:id="btn_newcard" layoutX="628.0" layoutY="310.0" mnemonicParsing="false" onAction="#newcard" onMouseClicked="#newcard" prefHeight="26.0" prefWidth="42.0" style="-fx-background-color: yellow; -fx-border-color: grey;" text="+" />
-                        <TextField fx:id="tf_input" layoutX="186.0" layoutY="352.0" onAction="#input" prefHeight="83.0" prefWidth="338.0">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                        </TextField>
                         <ImageView fitHeight="67.0" fitWidth="214.0" layoutX="528.0" layoutY="13.0">
                            <image>
                               <Image url="@Pictures/CARDTIW_Logo.PNG" />
                            </image>
                         </ImageView>
-                        <Button fx:id="back" onAction="#back" layoutX="428.0" layoutY="14.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="85.0" text="Zurück" />
                      </children>
                   </AnchorPane>
                </content>

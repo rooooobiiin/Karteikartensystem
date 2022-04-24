@@ -18,7 +18,6 @@ public class GUIController {
     public static FXMLLoader fxmlLoader;
     public static Stage stage;
     public static Scene scene;
-    private static SceneName name;
 
     public static SceneName lastScene;
 
@@ -80,6 +79,10 @@ public class GUIController {
                 break;
             case Successful:
                 fxmlLoader = new FXMLLoader(Run.class.getResource("successful.fxml"));
+                setScene();
+                break;
+            case Export:
+                fxmlLoader = new FXMLLoader(Run.class.getResource("export.fxml"));
                 setScene();
                 break;
         }

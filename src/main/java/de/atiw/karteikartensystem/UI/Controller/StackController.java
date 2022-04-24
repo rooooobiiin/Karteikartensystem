@@ -20,7 +20,11 @@ public class StackController implements Initializable {
 
     public boolean viewMode = true;
     public byte viewBox = 0;
+    public int amountCards = 0;
 
+
+    @FXML
+    private Label message;
     @FXML
     private Label total;
     @FXML
@@ -60,6 +64,12 @@ public class StackController implements Initializable {
 
     @FXML
     public void quiz(ActionEvent actionEvent) {
+
+        if(ExampleSystemController.getAktuellerStapel().anzahlKarteninBox((viewBox)) == 0 || ExampleSystemController.getAktuellerStapel().getKartenSet().size() == 0){
+            message.setText("Die gewählte Box ist leer.");
+        }
+
+
         if (viewMode) {
 //            SystemController.abfrageInitialisieren(viewBox);
             ExampleSystemController.durchschauenInitialisieren(viewBox);

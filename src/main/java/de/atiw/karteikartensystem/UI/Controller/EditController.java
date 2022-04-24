@@ -47,6 +47,7 @@ public class EditController implements Initializable {
     }
 
     public void cancel(ActionEvent actionEvent) {
+        GUIController.switchScene(GUIController.lastScene);
     }
 
 

@@ -19,6 +19,7 @@ public class ReadBackController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         card.setText(ExampleSystemController.getaktuelleKarteikarte().getRueckseite());
+        GUIController.lastScene = SceneName.ReadBack;
     }
 
     public void edit(ActionEvent actionEvent) {
@@ -60,4 +61,7 @@ public class ReadBackController implements Initializable {
     }
 
 
+    public void back(ActionEvent actionEvent) {
+        GUIController.switchScene(SceneName.Stack);
+    }
 }

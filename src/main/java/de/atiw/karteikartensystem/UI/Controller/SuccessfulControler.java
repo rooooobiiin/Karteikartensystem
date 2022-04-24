@@ -6,11 +6,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SuccessfulControler implements Initializable {
+public class SuccessfulControler implements Initializable{
 
     @FXML
     private Label message_box;
@@ -25,6 +26,14 @@ public class SuccessfulControler implements Initializable {
     }
 
     public void ok(ActionEvent actionEvent) {
-        GUIController.switchScene(SceneName.Stackview);
+        GUIController.switchScene(GUIController.lastScene);
+    }
+
+
+    public void keypressed(KeyEvent keyEvent) {
+//        String character = keyEvent.getCharacter();
+//        GUIController.message = character;
+//        GUIController.switchScene(SceneName.Successful);
+
     }
 }
