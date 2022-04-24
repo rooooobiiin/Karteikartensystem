@@ -6,6 +6,7 @@ import de.atiw.karteikartensystem.Persistenz.DataHandler;
 import de.atiw.karteikartensystem.Persistenz.DatenbankVerwaltung;
 
 import java.io.File;
+import java.io.IOException;
 import java.security.InvalidParameterException;
 import java.sql.SQLException;
 import java.util.LinkedList;
@@ -208,7 +209,11 @@ public class SystemController {
     }
 
     public static void import_csv(File file){
-        DataHandler.readCSV(file);
+        try {
+            DataHandler.readCSV(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void export_csv(File file){
