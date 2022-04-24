@@ -36,11 +36,9 @@ public class SuccessfulControler implements Initializable{
         GUIController.switchScene(GUIController.lastScene);
     }
 
-
-    public void keypressed (KeyEvent k){
-            if (k.getCode().equals(KeyCode.ENTER)) {
+    public void keypressed(KeyEvent keyEvent) {
+            if (keyEvent.getCode().equals(KeyCode.ENTER)) {
                 GUIController.switchScene(GUIController.lastScene);
             }
     }
-
 }
