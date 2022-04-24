@@ -2,8 +2,11 @@ package de.atiw.karteikartensystem.Logic;
 
 import de.atiw.karteikartensystem.Datas.Karteikarte;
 import de.atiw.karteikartensystem.Datas.Stapel;
+import de.atiw.karteikartensystem.Persistenz.DataHandler;
 import de.atiw.karteikartensystem.Persistenz.DatenbankVerwaltung;
 
+import java.io.File;
+import java.io.IOException;
 import java.security.InvalidParameterException;
 import java.sql.SQLException;
 import java.util.LinkedList;
@@ -205,12 +208,16 @@ public class SystemController {
         AbfrageManager.setAktuelleKarteikarte(AbfrageManager.getAktuellerStapel().getKartenSet().get(0));
     }
 
-    public static void import_csv(){
-
+    public static void import_csv(File file){
+        try {
+            DataHandler.readCSV(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void export_csv(){
-
+    public static void export_csv(File file){
+        export_csv(file);
     }
 }
 
