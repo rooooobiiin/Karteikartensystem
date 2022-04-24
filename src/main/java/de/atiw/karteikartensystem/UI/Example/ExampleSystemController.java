@@ -88,7 +88,6 @@ public class ExampleSystemController {
         }
 
             ExampleAbfrageManager.aktuellerStapel = stapelListe.get(id);
-            ExampleAbfrageManager.aktuelleKarteikarte = ExampleAbfrageManager.aktuellerStapel.getKartenSet().get(0);
 
         return ExampleAbfrageManager.aktuellerStapel;
     }

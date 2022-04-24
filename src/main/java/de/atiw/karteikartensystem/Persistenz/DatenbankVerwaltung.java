@@ -29,7 +29,7 @@ public class DatenbankVerwaltung {
             //Attribute setzten
             this.Username = username;
             this.Password = password;
-            //Überprüfe ob man sich verbinden kann.
+            //Überprüfe, ob man sich verbinden kann.
             Connection con = connectToDB();
             con.close();
         }catch(SQLException sqlEx) {

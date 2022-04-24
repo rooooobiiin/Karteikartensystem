@@ -48,6 +48,7 @@ public class SystemController {
      */
     public static void createStapel(String nameStapel) {
         DatenbankVerwaltung.createStapel(nameStapel);
+
     }
 
     /**
@@ -72,10 +73,12 @@ public class SystemController {
             AbfrageManager.setAktuellerStapel(DatenbankVerwaltung.readStapel(id));
             AbfrageManager.setAktuelleKarteikarte(AbfrageManager.getAktuellerStapel().getKartenSet().get(0));
 
+            return AbfrageManager.getAktuellerStapel();
+
         } catch (SQLException e) {
                 e.printStackTrace();
             }
-        return AbfrageManager.getAktuellerStapel();
+        return null;
     }
 
     /**
