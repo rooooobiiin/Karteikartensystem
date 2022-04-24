@@ -3,12 +3,13 @@ package de.atiw.karteikartensystem.Persistenz;
 import de.atiw.karteikartensystem.Datas.Karteikarte;
 import de.atiw.karteikartensystem.Datas.Stapel;
 
-import java.io.File;
+import java.io.*;
 import java.security.InvalidParameterException;
 import java.util.LinkedList;
 import java.util.List;
 
 import java.sql.*;
+import java.util.Scanner;
 
 public class DatenbankVerwaltung {
     public static final String ConnectionString = "jdbc:mysql://82.165.240.186:3306/Cardtiw_DB";
@@ -305,14 +306,24 @@ public class DatenbankVerwaltung {
         //TODO: implementieren
     }
 
-
-    public static Stapel readCSV(File file) {
-        //TODO: implementieren
-        return null;
-    }
-
-    public static void writeCSV(File file) {
-        //TODO: implementieren
+    /**
+     * Bekommt eine CSV-Datei übergeben und wandelt diese in einen Liste von Karteikarten um.
+     * @param file CSV-Datei mit den enthaltenen Daten.
+     * @return Liste an Karteikarten.
+     * @throws IOException wird geworfen, sobald das Laden der Datei fehlschlägt.
+     */
+    public static List<Karteikarte> readCSV(File file) throws IOException {
+        FileReader fr = new FileReader(file);
+        BufferedReader br = new BufferedReader(fr);
+        String line = " ";
+        LinkedList<Karteikarte> karten = new LinkedList<>();
+        String[] tempArr;
+        while ((line = br.readLine()) != null) {
+            tempArr = line.split(";");
+            karten.add(new Karteikarte(tempArr[0],tempArr[1],Byte.parseByte("1")));
+        }
+        br.close();
+        return karten;
     }
 
 }

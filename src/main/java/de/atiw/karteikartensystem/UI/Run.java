@@ -7,15 +7,16 @@ import de.atiw.karteikartensystem.Persistenz.DatenbankVerwaltung;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.*;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Run extends Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         launch();
-
 //        SystemController controller = new SystemController();
 //        Stapel stapel = new Stapel("test");
 //        stapel.addKarteikarte(new Karteikarte(1, "a", "a", (byte) 1));
