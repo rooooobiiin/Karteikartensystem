@@ -69,6 +69,10 @@ public class ExampleSystemController {
     }
 
 
+    public static void createStapel(String name) {
+        stapelListe.add(new Stapel(name));
+    }
+
     /**
      *
      * @param name die Bezeichnung des Stapels
