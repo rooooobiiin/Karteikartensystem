@@ -100,6 +100,7 @@ public class ExampleSystemController {
      * Der aktuelle Stapel wird gelöscht.
      */
     public static void deleteStapel() {
+        stapelListe.remove(ExampleAbfrageManager.aktuellerStapel);
         ExampleAbfrageManager.setAktuellerStapel(null);
     }
 

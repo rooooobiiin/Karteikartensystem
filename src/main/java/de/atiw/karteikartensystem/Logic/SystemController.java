@@ -48,7 +48,6 @@ public class SystemController {
      */
     public static void createStapel(String nameStapel) {
         DatenbankVerwaltung.createStapel(new Stapel(nameStapel));
-
     }
 
     /**
