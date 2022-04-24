@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,8 +23,8 @@ public class GUIController {
     public static String username;
     public static String password;
 
-    public static void start(){
-        stage = new Stage();
+    public static void start(Stage stage_main){
+        stage = stage_main;
         switchScene(SceneName.Welcome);
         stage.show();
     }
@@ -98,4 +99,6 @@ public class GUIController {
         }
         stage.setScene(scene);
     }
+
+
 }

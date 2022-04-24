@@ -74,7 +74,7 @@ public class Run extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        GUIController.start();
+        GUIController.start(stage);
     }
 
 }

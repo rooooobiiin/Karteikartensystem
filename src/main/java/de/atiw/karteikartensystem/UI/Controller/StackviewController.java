@@ -13,7 +13,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -90,11 +92,17 @@ public class StackviewController {
 
     @FXML
     public void csv_import(ActionEvent actionEvent) {
-        SystemController.import_csv();
+
+//        SystemController.import_csv();
+        FileChooser fc = new FileChooser();
+        File file = fc.showOpenDialog(GUIController.stage);
     }
 
     @FXML
     public void csv_export(ActionEvent actionEvent) {
-        SystemController.export_csv();
+
+//        SystemController.export_csv();
+        FileChooser fc = new FileChooser();
+        File file = fc.showOpenDialog(GUIController.stage);
     }
 }
