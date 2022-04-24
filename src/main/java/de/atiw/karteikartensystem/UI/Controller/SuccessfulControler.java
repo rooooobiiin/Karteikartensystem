@@ -32,6 +32,7 @@ public class SuccessfulControler implements Initializable{
     }
 
     public void ok(ActionEvent actionEvent) {
+
         GUIController.switchScene(GUIController.lastScene);
     }
 

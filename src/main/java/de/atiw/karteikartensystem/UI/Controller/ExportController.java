@@ -45,7 +45,9 @@ public class ExportController implements Initializable {
                 public void handle(ActionEvent event) {
                     GUIController.stapel_gewählt = s;
                     ExampleSystemController.readStapel(s);
-                    GUIController.switchScene(SceneName.Stack);
+                    FileChooser fc = new FileChooser();
+                    File file = fc.showOpenDialog(GUIController.stage);
+//                    GUIController.switchScene(SceneName.Stack);
 //                    SystemController.readStapel(s);
                 }
             };
@@ -61,21 +63,7 @@ public class ExportController implements Initializable {
         GUIController.switchScene(SceneName.NewStack);
     }
 
-    @FXML
-    public void csv_import(ActionEvent actionEvent) {
 
-//        SystemController.import_csv();
-        FileChooser fc = new FileChooser();
-        File file = fc.showOpenDialog(GUIController.stage);
-    }
-
-    @FXML
-    public void csv_export(ActionEvent actionEvent) {
-
-//        SystemController.export_csv();
-        FileChooser fc = new FileChooser();
-        File file = fc.showOpenDialog(GUIController.stage);
-    }
 
 
 }

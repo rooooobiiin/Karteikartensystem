@@ -28,6 +28,7 @@ public class NewStackController implements Initializable {
 //        SystemController.createStapel(tf_input.getText());
         ExampleSystemController.createStapel(tf_input.getText());
         GUIController.message = "Stapel erfolgreich hinzugefügt.";
+        GUIController.lastScene = SceneName.Stackview;
         GUIController.switchScene(SceneName.Successful);
     }
 
