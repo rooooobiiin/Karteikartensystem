@@ -204,7 +204,7 @@ public class DatenbankVerwaltung {
         try {
             //Füge die Karteikarte in die Datenbank ein.
             Connection con = Instance.connectToDB();
-            String sql = "INSERT INTO Cardtiw_Karten(Vorderseite, Rueckseite) VALUES(?,?)";
+            String sql = "INSERT INTO Cardtiw_Karten(Vorderseite, Rueckseite) VALUES(\"?\",\"?\")";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, karte.getVoderseite());
             statement.setString(2, karte.getRueckseite());
