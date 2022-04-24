@@ -21,8 +21,10 @@ public class WriteFrontController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         card.setText(ExampleSystemController.getaktuelleKarteikarte().getVoderseite());
         GUIController.lastScene = SceneName.WriteFront;
+
     }
 
     public void stackview(ActionEvent actionEvent) {
@@ -30,17 +32,29 @@ public class WriteFrontController implements Initializable {
     }
 
     public void enter(ActionEvent actionEvent) {
+
         boolean correct = ExampleSystemController.vergleicheInhaltUndInput(tf_input.getText());
         ExampleSystemController.changeBox(correct);
-        GUIController.lastScene = SceneName.WriteFront;
-        if (correct){
-            GUIController.message = "Korrekt!";
+
+        if (ExampleSystemController.getaktuelleKarteikarte() == null){
+            GUIController.message = "Alle Karteikarten der Box wurden bearbeitet";
+            GUIController.lastScene = SceneName.Stack;
             GUIController.switchScene(SceneName.Successful);
         }
         else{
-            GUIController.message = "Leider Falsch!";
-            GUIController.switchScene(SceneName.Successful);
+            GUIController.lastScene = SceneName.WriteFront;
+            if (correct){
+                GUIController.message = "Korrekt!";
+                GUIController.switchScene(SceneName.Successful);
+            }
+            else{
+                GUIController.message = "Leider Falsch!";
+                GUIController.switchScene(SceneName.Successful);
+            }
         }
+
+
+
 
     }
 

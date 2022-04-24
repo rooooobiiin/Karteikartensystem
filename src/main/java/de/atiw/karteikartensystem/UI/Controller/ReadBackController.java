@@ -36,11 +36,19 @@ public class ReadBackController implements Initializable {
 
         ExampleSystemController.changeBox(false);
         if (ExampleSystemController.getaktuelleKarteikarte() == null){
-            GUIController.switchScene(SceneName.Stack);
+            GUIController.message = "Alle Karteikarten der Box wurden bearbeitet";
+            GUIController.lastScene = SceneName.Stack;
+            GUIController.switchScene(SceneName.Successful);
         }
         else{
-            GUIController.switchScene(SceneName.ReadFront);
+            if (ExampleSystemController.getaktuelleKarteikarte() == null){
+                GUIController.switchScene(SceneName.Stack);
+            }
+            else{
+                GUIController.switchScene(SceneName.ReadFront);
+            }
         }
+
 
     }
 
@@ -49,11 +57,20 @@ public class ReadBackController implements Initializable {
 //        SystemController.changeBox(true);
         ExampleSystemController.changeBox(true);
         if (ExampleSystemController.getaktuelleKarteikarte() == null){
-            GUIController.switchScene(SceneName.Stack);
+            GUIController.message = "Alle Karteikarten der Box wurden bearbeitet";
+            GUIController.lastScene = SceneName.Stack;
+            GUIController.switchScene(SceneName.Successful);
         }
         else{
-            GUIController.switchScene(SceneName.ReadFront);
+            if (ExampleSystemController.getaktuelleKarteikarte() == null){
+                GUIController.switchScene(SceneName.Stack);
+            }
+            else{
+                GUIController.switchScene(SceneName.ReadFront);
+            }
         }
+
+
     }
 
     public void stackview(ActionEvent actionEvent) {
