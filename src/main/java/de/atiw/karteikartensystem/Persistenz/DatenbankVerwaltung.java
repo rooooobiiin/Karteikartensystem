@@ -189,6 +189,7 @@ public class DatenbankVerwaltung {
             con = Instance.connectToDB();
             sql = "DELETE FROM Cardtiw_Stapel WHERE ID=?";
             statement = con.prepareStatement(sql);
+            statement.setInt(1, stapel.getStapelID());
             statement.executeUpdate();
         }catch(SQLException sqlEx) {
             throw new InvalidParameterException(sqlEx.getMessage());
