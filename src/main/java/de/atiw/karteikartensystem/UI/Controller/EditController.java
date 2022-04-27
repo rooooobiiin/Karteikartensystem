@@ -42,7 +42,10 @@ public class EditController implements Initializable {
     }
 
     public void confirm(ActionEvent actionEvent) {
-        card1.setText(txtFront.getText());
+        SystemController.updateKarteikarte(txtFront.getText(), txtBack.getText());
+        GUIController.message = "Karteikarte gespeichert.";
+        GUIController.lastScene = SceneName.ReadFront;
+        GUIController.switchScene(SceneName.Successful);
 
     }
 
