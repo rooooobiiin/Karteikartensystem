@@ -66,6 +66,7 @@ public class SystemController {
 
     }
 
+
     /**
      *
      * @param name die Bezeichnung des Stapels
@@ -210,7 +211,7 @@ public class SystemController {
         AbfrageManager.setAktuelleKarteikarte(AbfrageManager.getAktuellerStapel().getKartenSet().get(0));
     }
 
-    public static void import_csv(File file){
+    public static void import_csv(File file, String stapelName){
         try {
             DataHandler.readCSV(file);
         } catch (IOException e) {

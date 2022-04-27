@@ -27,7 +27,6 @@ public class EditController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         txtFront.setText(SystemController.getaktuelleKarteikarte().getVoderseite());
         txtBack.setText(SystemController.getaktuelleKarteikarte().getRueckseite());
-
     }
 
     public void stackview(ActionEvent actionEvent) {
