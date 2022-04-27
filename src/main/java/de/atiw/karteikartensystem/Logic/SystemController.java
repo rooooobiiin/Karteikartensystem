@@ -149,9 +149,11 @@ public class SystemController {
      */
     public static void deleteKarteikarte() {
         Stapel stapel = AbfrageManager.getAktuellerStapel();
-        stapel.deleteKarteikarte(AbfrageManager.getaktuelleKarteikarte());
-        DatenbankVerwaltung.deleteKarteikarte(AbfrageManager.getaktuelleKarteikarte());
-        AbfrageManager.setAktuelleKarteikarte(null);
+        Karteikarte karte = AbfrageManager.getaktuelleKarteikarte();
+
+        stapel.deleteKarteikarte(karte);
+        DatenbankVerwaltung.deleteKarteikarte(karte);
+        AbfrageManager.setNextKarteikarte();
         AbfrageManager.setAktuellerStapel(stapel);
     }
 
@@ -212,10 +214,18 @@ public class SystemController {
     }
 
     public static void import_csv(File file, String stapelName){
+        createStapel(stapelName);
+        List<Karteikarte> neueKarten;
         try {
-            DataHandler.readCSV(file);
+             neueKarten = DataHandler.readCSV(file);
         } catch (IOException e) {
             e.printStackTrace();
+            neueKarten = null;
+        }
+        for (int i = 0 ; i < neueKarten.size(); i++) {
+
+            //(neueKarten.get(i).getVoderseite(), neueKarten.get(i).getRueckseite());
+
         }
     }
 
