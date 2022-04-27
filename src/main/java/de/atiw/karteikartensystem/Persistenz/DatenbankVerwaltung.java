@@ -259,13 +259,18 @@ public class DatenbankVerwaltung {
         }
     }
 
-    public static void updateKarteikarteStufe(Karteikarte karte, int StapleID) {
+    /**
+     *
+     * @param karte karte
+     * @param StapelID StapelID
+     */
+    public static void updateKarteikarteStufe(Karteikarte karte, int StapelID) {
         try {
             Connection con = Instance.connectToDB();
             String sql = "UPDATE Cardtiw_StapelZuKarten SET STUFE=? WHERE SID=? AND KID=?";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setInt(1,karte.getBox());
-            statement.setInt(2, StapleID);
+            statement.setInt(2, StapelID);
             statement.setInt(3, karte.getKarteiKartenID());
             statement.executeUpdate();
 
