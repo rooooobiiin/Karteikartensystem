@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
 
@@ -35,6 +36,7 @@ public class GUIController {
     public static boolean allCardsDone = false;
     public static String error = "";
     public static String pfad_import = "";
+    public static File import_file;
 
 
     public static void start(Stage stage_main){
