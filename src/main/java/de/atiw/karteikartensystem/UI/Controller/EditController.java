@@ -37,12 +37,13 @@ public class EditController implements Initializable {
 
         SystemController.deleteKarteikarte();
         GUIController.message = "Karteikarte gelöscht";
-        GUIController.lastScene = SceneName.ReadFront;
         GUIController.switchScene(SceneName.Successful);
     }
 
     public void confirm(ActionEvent actionEvent) {
-        card1.setText(txtFront.getText());
+        SystemController.updateKarteikarte(txtFront.getText(), txtBack.getText());
+        GUIController.message = "Karteikarte gespeichert.";
+        GUIController.switchScene(SceneName.Successful);
 
     }
 
