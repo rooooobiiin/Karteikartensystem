@@ -222,11 +222,15 @@ public class SystemController {
             e.printStackTrace();
             neueKarten = null;
         }
+
+        Stapel stapel = readStapel(stapelName);
+
         for (int i = 0 ; i < neueKarten.size(); i++) {
-
-            //(neueKarten.get(i).getVoderseite(), neueKarten.get(i).getRueckseite());
-
+            stapel.addKarteikarte(new Karteikarte(neueKarten.get(i).getVoderseite(), neueKarten.get(i).getRueckseite(), (byte) 1));
         }
+
+        DatenbankVerwaltung.updateStapel(stapel);
+
     }
 
     public static void export_csv(File file){
