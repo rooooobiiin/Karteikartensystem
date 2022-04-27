@@ -34,7 +34,7 @@ public class ImportController implements Initializable {
 
 
     public void btnImport(ActionEvent actionEvent) {
-        SystemController.import_csv(GUIController.import_file);
+        SystemController.import_csv(GUIController.import_file, import_stapelname.getText());
         GUIController.message = "Stapel erfolgreich importiert.";
         GUIController.lastScene = SceneName.Stackview;
         GUIController.switchScene(SceneName.Successful);
