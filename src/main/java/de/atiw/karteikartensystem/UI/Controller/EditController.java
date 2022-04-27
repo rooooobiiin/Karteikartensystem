@@ -34,7 +34,11 @@ public class EditController implements Initializable {
     }
 
     public void delete(ActionEvent actionEvent) {
+
         SystemController.deleteKarteikarte();
+        GUIController.message = "Karteikarte gelöscht";
+        GUIController.lastScene = SceneName.ReadFront;
+        GUIController.switchScene(SceneName.Successful);
     }
 
     public void confirm(ActionEvent actionEvent) {
