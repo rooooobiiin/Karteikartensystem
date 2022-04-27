@@ -206,7 +206,6 @@ public class SystemController {
 
         DatenbankVerwaltung.updateKarteikarte(karte, karte.getVoderseite(), karte.getRueckseite());
         DatenbankVerwaltung.updateKarteikarteStufe(karte, stapel.getStapelID());
-
     }
 
 
