@@ -62,6 +62,11 @@ public class Stapel {
         kartenSet.remove(karte);
     }
 
+    /**
+     *
+     * @param alteKarte Die alte Karte
+     * @param neueKarte Die neue Karte
+     */
     public void zweiKartenTauschen(Karteikarte alteKarte, Karteikarte neueKarte) {
         kartenSet.set(kartenSet.indexOf(alteKarte), neueKarte);
     }

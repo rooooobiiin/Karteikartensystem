@@ -95,9 +95,8 @@ public class Karteikarte {
     }
 
     public void verringereBox(Karteikarte karte) {
-        if (karte.getBox() > 1) {
-            karte.setBox((byte) (karte.getBox() + 1));
-        }
+            karte.setBox((byte) (1));
+
     }
 
     @Override

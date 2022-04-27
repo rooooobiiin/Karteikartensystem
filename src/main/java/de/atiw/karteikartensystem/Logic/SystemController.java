@@ -201,10 +201,11 @@ public class SystemController {
 
         stapel.zweiKartenTauschen(AbfrageManager.getaktuelleKarteikarte(), karte);
         AbfrageManager.setAktuellerStapel(stapel);
+        AbfrageManager.setAktuelleKarteikarte(AbfrageManager.getAktuellerStapel().getKartenSet().get(AbfrageManager.getAktuellerStapel().getKartenSet().indexOf(karte)));
+        AbfrageManager.setNextKarteikarte();
 
         DatenbankVerwaltung.updateKarteikarte(karte, karte.getVoderseite(), karte.getRueckseite());
 
-        AbfrageManager.setNextKarteikarte();
     }
 
 
