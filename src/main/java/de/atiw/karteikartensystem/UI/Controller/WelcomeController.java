@@ -28,8 +28,8 @@ public class WelcomeController implements Initializable {
 
     @FXML
     public void login(ActionEvent actionEvent) {
-//        boolean correct = SystemController.connectToDB(user.getText(), password.getText());
-        boolean correct = SystemController.connectToDB("cardtiw", "cardtiwpassword");
+        boolean correct = SystemController.connectToDB(user.getText(), password.getText());
+//        boolean correct = SystemController.connectToDB("cardtiw", "cardtiwpassword");
         if (correct){
             GUIController.error = "";
             GUIController.switchScene(SceneName.Stackview);
