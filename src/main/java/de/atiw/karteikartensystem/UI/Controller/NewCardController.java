@@ -26,10 +26,16 @@ public class NewCardController implements Initializable {
     }
 
     public void add(ActionEvent actionEvent) {
-        SystemController.createKarteikarte(vorderseite.getText(), rueckseite.getText());
-        vorderseite.clear();
-        rueckseite.clear();
-        messageBox.setText("Karteikarte erfolgreich hinzugefügt.");
+        if (!vorderseite.getText().isBlank() && !rueckseite.getText().isBlank()){
+            SystemController.createKarteikarte(vorderseite.getText(), rueckseite.getText());
+            vorderseite.clear();
+            rueckseite.clear();
+            messageBox.setText("Karteikarte erfolgreich hinzugefügt.");
+        }
+        else{
+            messageBox.setText("Beide Felder müssen ausgefüllt sein.");
+        }
+
 
     }
 

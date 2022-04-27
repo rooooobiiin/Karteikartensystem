@@ -217,7 +217,6 @@ public class DatenbankVerwaltung {
             statement = con.prepareStatement(sql);
             statement.setInt(1, StapelID);
             statement.setInt(2, id);
-            System.out.println(statement.toString());
             statement.executeUpdate();
         }catch(SQLException sqlEx){
             throw new InvalidParameterException(sqlEx.getMessage());
@@ -254,6 +253,22 @@ public class DatenbankVerwaltung {
             statement.setString(2, rueckseiteNeu);
             statement.setInt(3, karte.getKarteiKartenID());
             statement.executeUpdate();
+
+        }catch(SQLException sqlEx){
+            throw new InvalidParameterException(sqlEx.getMessage());
+        }
+    }
+
+    public static void updateKarteikarteStufe(Karteikarte karte, int StapleID) {
+        try {
+            Connection con = Instance.connectToDB();
+            String sql = "UPDATE Cardtiw_StapelZuKarten SET STUFE=? WHERE SID=? AND KID=?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setInt(1,karte.getBox());
+            statement.setInt(2, StapleID);
+            statement.setInt(3, karte.getKarteiKartenID());
+            statement.executeUpdate();
+
         }catch(SQLException sqlEx){
             throw new InvalidParameterException(sqlEx.getMessage());
         }

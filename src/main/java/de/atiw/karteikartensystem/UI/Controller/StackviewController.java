@@ -63,6 +63,7 @@ public class StackviewController implements Initializable {
         FileChooser fc = new FileChooser();
         File file = fc.showOpenDialog(GUIController.stage);
         GUIController.pfad_import = file.getAbsolutePath();
+        GUIController.import_file = file;
         GUIController.switchScene(SceneName.Import);
     }
 
