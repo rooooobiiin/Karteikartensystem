@@ -1,5 +1,6 @@
 package de.atiw.karteikartensystem.UI.Controller;
 
+import de.atiw.karteikartensystem.Logic.SystemController;
 import de.atiw.karteikartensystem.UI.GUIController;
 import de.atiw.karteikartensystem.UI.SceneName;
 import javafx.event.ActionEvent;
@@ -9,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.w3c.dom.Text;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -32,6 +34,7 @@ public class ImportController implements Initializable {
 
 
     public void btnImport(ActionEvent actionEvent) {
+        SystemController.import_csv(GUIController.import_file);
     }
 
 
