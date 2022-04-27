@@ -22,9 +22,6 @@ public class Stapel {
         this.kartenSet = new LinkedList<>();
     }
 
-    public void setStapelID(int id) {
-        this.stapelID = id;
-    }
     public int getStapelID() {return this.stapelID;}
     /**
      * @return Wirft eine Liste mit in dem Stapel gespeicherten <Karteikarten> zurück.
@@ -63,17 +60,6 @@ public class Stapel {
      */
     public void deleteKarteikarte(Karteikarte karte) {
         kartenSet.remove(karte);
-    }
-
-    /**
-     *
-     * @param karte Die Karteikarte die aktualisiert werden soll
-     * @param vorderseiteNEW Neuer Wert der Vorderseite
-     * @param rueckseiteNEW Neuer Wert der Rückseite
-     */
-    public void updateKarteikarte(Karteikarte karte, String vorderseiteNEW, String rueckseiteNEW) {
-        karte.setVoderseite(vorderseiteNEW);
-        karte.setRueckseite(rueckseiteNEW);
     }
 
     public void zweiKartenTauschen(Karteikarte alteKarte, Karteikarte neueKarte) {

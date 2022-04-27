@@ -302,11 +302,4 @@ public class DatenbankVerwaltung {
             throw new InvalidParameterException(sqlEx.getMessage());
         }
     }
-
-    public static void stapelSynchronisieren(Stapel stapel) {
-        //TODO: implementieren
-    }
-
-
-
 }
