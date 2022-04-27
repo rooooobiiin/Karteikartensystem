@@ -24,7 +24,6 @@ public class NewStackController implements Initializable {
     }
 
     public void add(ActionEvent actionEvent) {
-        //TODO: Sobald robin geändert hat in Parameter String kann ich den eingebenen Namen übergeben
         if (!tf_input.getText().isBlank()){
             SystemController.createStapel(tf_input.getText());
             GUIController.message = "Stapel erfolgreich hinzugefügt.";
@@ -39,10 +38,6 @@ public class NewStackController implements Initializable {
 
     }
 
-    /**
-     * DONE
-     * @param actionEvent
-     */
     public void close(ActionEvent actionEvent) {
         GUIController.switchScene(SceneName.Stackview);
     }
