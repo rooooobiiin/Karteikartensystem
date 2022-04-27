@@ -41,6 +41,8 @@ public class WriteFrontController implements Initializable {
 
         if (SystemController.getaktuelleKarteikarte() == null){
             GUIController.allCardsDone = true;
+            GUIController.eingabe_write = "";
+            GUIController.antwort_write = "";
             GUIController.switchScene(SceneName.Successful);
         }
         else{
