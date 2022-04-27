@@ -41,7 +41,6 @@ public class EditController implements Initializable {
         GUIController.message = "Karteikarte gelöscht";
         if (SystemController.getaktuelleKarteikarte() == null){
             GUIController.lastScene = SceneName.Stack;
-            //TODO: NASING
         }
         GUIController.switchScene(SceneName.Successful);
     }

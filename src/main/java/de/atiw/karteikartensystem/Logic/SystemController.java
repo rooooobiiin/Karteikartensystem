@@ -227,16 +227,12 @@ public class SystemController {
         Stapel stapel = readStapel(stapelName);
 
         for (int i = 0 ; i < neueKarten.size(); i++) {
-            stapel.addKarteikarte(new Karteikarte(neueKarten.get(i).getVoderseite(), neueKarten.get(i).getRueckseite(), (byte) 1));
+            DatenbankVerwaltung.createKarteikarte(new Karteikarte(neueKarten.get(i).getVoderseite(), neueKarten.get(i).getRueckseite(), (byte) 1), stapel.getStapelID());
         }
-
-        DatenbankVerwaltung.updateStapel(stapel);
 
     }
 
     public static void export_csv(File file){
-        export_csv(file);
+        DataHandler.writeCSV(file);
     }
 }
-
-//ÄNDERUING

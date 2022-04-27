@@ -31,7 +31,7 @@ public class DataHandler {
         return karten;
     }
 
-    public static void writeCSV(Stapel stapel, File file) {
+    public static void writeCSV(File file) {
         //TODO: implementieren
     }
 }
