@@ -25,7 +25,7 @@ public class DataHandler {
         String[] tempArr;
         while ((line = br.readLine()) != null) {
             tempArr = line.split(";");
-            karten.add(new Karteikarte(tempArr[0],tempArr[1],Byte.parseByte("1")));
+            karten.add(new Karteikarte(tempArr[0],tempArr[1],(byte) 1));
         }
         br.close();
         return karten;

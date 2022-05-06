@@ -204,6 +204,7 @@ public class SystemController {
         AbfrageManager.setAktuelleKarteikarte(AbfrageManager.getAktuellerStapel().getKartenSet().get(AbfrageManager.getAktuellerStapel().getKartenSet().indexOf(karte)));
         AbfrageManager.setNextKarteikarte();
 
+        System.out.println(karte.getVoderseite() + karte.getRueckseite());
         DatenbankVerwaltung.updateKarteikarte(karte, karte.getVoderseite(), karte.getRueckseite());
         DatenbankVerwaltung.updateKarteikarteStufe(karte, stapel.getStapelID());
     }
